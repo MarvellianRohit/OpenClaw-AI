@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+websockets
+psutil
+aiofiles
+aiohttp
+requests
+llama-cpp-python
+openai-whisper
+sentence-transformers
+chromadb
+torch
+numpy
+scipy

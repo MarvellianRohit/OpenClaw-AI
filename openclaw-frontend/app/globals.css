@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  /* Industrial Minimalist Palette */
+  --color-obsidian: #0A0A0A;
+  --color-titanium: #8E8E93;
+  /* Updated per request */
+  --color-titanium-dim: #636366;
+  --color-neon-cyan: #00F3FF;
+  --color-neon-cyan-dim: #00F3FF80;
+
+  --background: var(--color-obsidian);
+  --foreground: var(--color-titanium);
+
+  /* Advanced Glassmorphism */
+  --glass-bg: rgba(17, 25, 40, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.125);
+  --glass-blur: 16px;
+  --glass-saturate: 180%;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-obsidian: var(--color-obsidian);
+  --color-titanium: var(--color-titanium);
+  --color-titanium-dim: var(--color-titanium-dim);
+  --color-neon-cyan: var(--color-neon-cyan);
+  --color-neon-cyan-dim: var(--color-neon-cyan-dim);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --animate-pulse-cyan: pulse-cyan 2s infinite;
+
+  @keyframes pulse-cyan {
+
+    0%,
+    100% {
+      box-shadow: 0 0 5px var(--color-neon-cyan-dim);
+      border-color: var(--color-neon-cyan-dim);
+    }
+
+    50% {
+      box-shadow: 0 0 15px var(--color-neon-cyan);
+      border-color: var(--color-neon-cyan);
+    }
+  }
+}
+
+/* Glassmorphism Utility Class */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Typography Gradient */
+.text-gradient-titanium {
+  background: linear-gradient(to right, #C0C0C0, #00E5FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-cyan);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  /* App-like feel */
+}
