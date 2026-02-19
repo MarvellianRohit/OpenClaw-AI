@@ -206,3 +206,12 @@
 - [x] **Phase AJ: Visual Knowledge Graph (Interaction Upgrade)**
     - [x] UI: Add "Architecture" toggle to Chat Input.
     - [x] Logic: Click node to open file, hover to see functions.
+
+- [x] **Phase AK: Version History Sidebar**
+    - [x] Backend: Create `version_history.py` and manage file snapshots.
+    - [x] Backend: Integrate snapshot trigger into successful build/save cycles.
+    - [x] Backend: Add `/history/list` and `/history/read` endpoints.
+    - [x] Frontend: Create `VersionHistory.tsx` timeline component.
+    - [x] Frontend: Add "History" tab to `Sidebar.tsx`.
+    - [x] Frontend: Update `DiffModal.tsx` with Titanium-Green/Obsidian-Red theme.
+

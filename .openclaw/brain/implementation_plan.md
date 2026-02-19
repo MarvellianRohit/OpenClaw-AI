@@ -150,13 +150,35 @@ Build a high-performance local AI assistant interface ("OpenClaw AI") utilizing:
         - Python check for `llama_cpp` GPU offload.
     - **Visuals**: ANSI escape codes for Titanium Grey/Cyan text.
 
-## Intelli-Comment Magic Wand (Phase AI)
-- **Goal**: One-click documentation for AI snippets.
-- **Implementation**:
-    - **Frontend**:
-        - `ChatInterface.tsx`: Update `TypewriterMarkdown` to include a `Wand2` button.
-        - Logic: `handleMagicComment(code, lang)` -> POST `/tools/docs`.
-        - State: Update the specific message's content with the response.
-    - **Visuals**: Purple glow / Sparkle animation on click.
+### Phase AI: Intelli-Comment (Magic Wand)
+Implement a one-click documentation helper for code blocks.
+- [NEW] Backend Logic: `/tools/docs` endpoint using the compiler agent to inject senior-level comments.
+- [MODIFY] Chat UI: Add a "Magic Wand" icon to code block headers with a purple glow animation.
 
+---
 
+### Phase AK: Version History Sidebar
+Implement a timeline-based version tracking system with high-contrast diffing.
+
+#### [NEW] version_history.py (Backend Utility)
+- Manages a hidden `snapshots/` directory.
+- `save_snapshot(filepath, content)`: Stores a copy of the file with a timestamp.
+- `list_snapshots(filepath)`: Returns metadata (time, size) for all snapshots of a specific file.
+- `get_snapshot(filepath, timestamp)`: Retrieves the content of a specific snapshot.
+
+#### [MODIFY] gateway.py (API Integration)
+- Add `/history/list` and `/history/read` endpoints.
+- Trigger `save_snapshot` in the compiler self-correction loop when `all_passed` is true.
+
+#### [NEW] VersionHistory.tsx (Frontend Component)
+- A vertical timeline displayed in the Sidebar's new "HISTORY" tab.
+- Displays snapshots for the currently active file.
+- Interaction: Clicking a snapshot opens the `DiffModal`.
+
+#### [MODIFY] Sidebar.tsx
+- Add a third tab "History" alongside Chat and Files.
+
+#### [MODIFY] DiffModal.tsx
+- Update colors:
+  - Additions: Titanium-Green (`#B5FF00` or similar neon-green on dark background).
+  - Removals: Obsidian-Red (`#FF3131` or deep red).

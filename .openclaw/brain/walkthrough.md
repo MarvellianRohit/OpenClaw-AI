@@ -82,8 +82,12 @@ OpenClaw AI is now a highly integrated, performance-optimized, and aesthetically
 5. **Interactive Architecture Graph** (Visual navigation).
 6. **One-Click Setup** (Metal-optimized environment config).
 7. **Clean Version Control** (Flattened repo, optimized `.gitignore`).
+8. **Version History Timeline** (Titanium-Green & Obsidian-Red Diffing).
 
-## GitHub Repository
+## Version History (Phase AK)
+- **Engine**: Automated snapshots on every successful LLM-driven build.
+- **Visuals**: A high-performance vertical timeline in the sidebar.
+- **Diff Mode**: "Obsidian-Red" for removals and "Titanium-Green" for additions, providing high-contrast visual verification.
 - **URL**: [https://github.com/MarvellianRohit/OpenClaw-AI.git](https://github.com/MarvellianRohit/OpenClaw-AI.git)
 - **Status**: ✅ Pushed and Synced.
 - **Includes**: All frontend components, backend engines, setup scripts, and brain artifacts.
