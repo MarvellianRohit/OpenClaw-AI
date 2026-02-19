@@ -23,6 +23,7 @@ import MorningBriefModal from "@/components/MorningBriefModal";
 import PlanningPanel from "@/components/PlanningPanel";
 import AgentThoughts from "@/components/AgentThoughts";
 import InterventionDialogue from "@/components/InterventionDialogue";
+import SecurityReportModal from "@/components/SecurityReportModal";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -58,6 +59,10 @@ export default function Home() {
     message: "",
     onApply: () => { }
   });
+
+  // Phase BH: Security Report
+  const [showSecurityReport, setShowSecurityReport] = useState(false);
+  const [securityFindings, setSecurityFindings] = useState<any[]>([]);
 
   // Phase AK: Version History Diff
   const [showDiffModal, setShowDiffModal] = useState(false);
@@ -290,6 +295,10 @@ export default function Home() {
                       onOpenSettings={() => setShowSettings(true)}
                       onOpenGraph={() => setShowGraph(true)}
                       activeFile={activeFile}
+                      onOpenSecurityReport={(findings) => {
+                        setSecurityFindings(findings);
+                        setShowSecurityReport(true);
+                      }}
                     />
                   </motion.div>
                 )}
@@ -456,6 +465,17 @@ export default function Home() {
                 setIntervention(prev => ({ ...prev, isOpen: false }));
               }}
               message={intervention.message}
+            />
+
+            <SecurityReportModal
+              isOpen={showSecurityReport}
+              onClose={() => setShowSecurityReport(false)}
+              findings={securityFindings}
+              filepath={activeFile || "Unknown File"}
+              onApplyFix={(finding) => {
+                handleSend(`Fix security vulnerability: ${finding.title} on line ${finding.line}. ${finding.description}`);
+                setShowSecurityReport(false);
+              }}
             />
 
           </motion.div>

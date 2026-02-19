@@ -2,6 +2,7 @@ from fastapi import FastAPI, WebSocket, Request, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import asyncio
+import time
 import json
 import os
 import shutil
@@ -33,8 +34,12 @@ from memory_system import MemorySystem
 import memory_system as memory_module
 from lore_engine import LoreEngine
 import lore_engine as lore_module
+from security_scanner import SecurityScanner
+import security_scanner as security_module
 
 app = FastAPI()
+LAST_ACTIVITY_TIME = time.time()
+ACTIVE_FILE_PATH = None
 
 GLOBAL_PROJECT_CONTEXT = ""
 
@@ -146,6 +151,11 @@ async def startup_event():
     lore_db_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "lore_db")
     lore_module.lore_engine = LoreEngine(lore_db_path)
     print("📜 Lore Engine Online.")
+
+    # Phase BH: Security Scanner
+    security_module.security_scanner = SecurityScanner(call_llm)
+    print("💓 System Heartbeat Active.")
+    asyncio.create_task(heartbeat_loop())
 
 # ... existing ...
 
@@ -349,6 +359,24 @@ async def execute_voice_command_actions(command: str):
 
 # --- System Events (Phase AU) ---
 # We can reuse the vitals or terminal socket, but let's have a dedicated system broadcast
+async def heartbeat_loop():
+    """Monitors inactivity and triggers background scans."""
+    global LAST_ACTIVITY_TIME, ACTIVE_FILE_PATH
+    while True:
+        await asyncio.sleep(10) # Check every 10s
+        if time.time() - LAST_ACTIVITY_TIME > 60: # 60s inactivity
+            if ACTIVE_FILE_PATH and security_module.security_scanner:
+                print(f"💓 Heartbeat: Auditing {ACTIVE_FILE_PATH}...")
+                report = await security_module.security_scanner.scan_file(ACTIVE_FILE_PATH)
+                if report.get("findings"):
+                    await broadcast_system_event({
+                        "type": "heartbeat_warning",
+                        "findings": report["findings"],
+                        "filepath": ACTIVE_FILE_PATH
+                    })
+                # Reset activity to prevent back-to-back scans unless new activity happens
+                LAST_ACTIVITY_TIME = time.time()
+
 async def broadcast_system_event(data: Dict[str, Any]):
     """Broadcasts a system event (like context scaling) to all active terminal and chat clients."""
     # For simplicity, we broadcast this to the voice clients or terminal clients
@@ -448,10 +476,13 @@ async def transcribe_audio(file: UploadFile = File(...)):
 # --- Secure File API (Phase R) ---
 @app.post("/file/read")
 async def read_file_post(request: FileFixRequest):
+    global ACTIVE_FILE_PATH, LAST_ACTIVITY_TIME
     if not sandbox.is_safe_path(request.filepath):
         raise HTTPException(status_code=403, detail="Access Denied: Unsafe path")
     
     try:
+        ACTIVE_FILE_PATH = request.filepath
+        LAST_ACTIVITY_TIME = time.time()
         async with aiofiles.open(request.filepath, mode='r') as f:
             content = await f.read()
         return {"content": content}
@@ -462,10 +493,12 @@ async def read_file_post(request: FileFixRequest):
 
 @app.post("/file/save")
 async def save_file_post(request: FileFixRequest):
+    global LAST_ACTIVITY_TIME
     if not sandbox.is_safe_path(request.filepath):
         raise HTTPException(status_code=403, detail="Access Denied: Unsafe path")
         
     try:
+        LAST_ACTIVITY_TIME = time.time()
         # Atomic write pattern could be better, but simple write for now
         async with aiofiles.open(request.filepath, mode='w') as f:
             await f.write(request.content)

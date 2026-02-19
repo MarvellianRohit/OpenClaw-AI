@@ -24,9 +24,10 @@ interface SidebarProps {
     onOpenSettings?: () => void; // New Prop
     onOpenGraph?: () => void;
     activeFile: string | null; // Phase AK
+    onOpenSecurityReport?: (findings: any[]) => void; // Phase BH
 }
 
-export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph, activeFile }: SidebarProps) {
+export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph, activeFile, onOpenSecurityReport }: SidebarProps) {
     // If controlled props not provided, manage state internally (hybrid)
     const [internalOpen, setInternalOpen] = useState(true);
     const isCollapsed = isOpen !== undefined ? !isOpen : !internalOpen;
@@ -227,7 +228,7 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
             {/* Phase AY: EKG Monitor */}
             {!isCollapsed && (
                 <div className="px-4 py-3 shrink-0">
-                    <EKGMonitor />
+                    <EKGMonitor onOpenReport={onOpenSecurityReport} />
                 </div>
             )}
 

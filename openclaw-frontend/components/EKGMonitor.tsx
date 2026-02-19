@@ -3,13 +3,18 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export type MonitorState = "healthy" | "processing" | "error";
+export type MonitorState = "healthy" | "processing" | "error" | "warning";
 
-export default function EKGMonitor() {
+export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings: any[]) => void }) {
     const [state, setState] = useState<MonitorState>("healthy");
     const [points, setPoints] = useState<number[]>(new Array(40).fill(50));
+    const [findings, setFindings] = useState<any[]>([]); // Store security findings
     const requestRef = useRef<number | null>(null);
     const pulseRef = useRef(0);
+
+    interface EKGMonitorProps {
+        onOpenReport?: (findings: any[]) => void;
+    }
 
     useEffect(() => {
         const connect = () => {
@@ -22,11 +27,14 @@ export default function EKGMonitor() {
                         // Check for errors in pulse data
                         if (data.data.compilation_errors > 0) {
                             setState("error");
-                        } else {
+                        } else if (state !== "warning") {
                             setState("healthy");
                         }
                     } else if (data.state === "processing") {
                         setState("processing");
+                    } else if (data.type === "heartbeat_warning") {
+                        setState("warning");
+                        setFindings(data.findings);
                     }
                 } catch (e) { }
             };
@@ -68,6 +76,7 @@ export default function EKGMonitor() {
         switch (state) {
             case "error": return "#FF003C";
             case "processing": return "#FFB800";
+            case "warning": return "#FFA500"; // Warning Orange
             default: return "#00F3FF";
         }
     };
@@ -75,17 +84,24 @@ export default function EKGMonitor() {
     const path = points.map((p, i) => `${i * 5},${p}`).join(" L");
 
     return (
-        <div className="w-full flex flex-col gap-2 p-3 bg-obsidian/40 backdrop-blur-xl border border-white/5 rounded-xl shadow-inner relative overflow-hidden group">
+        <div
+            onClick={() => state === "warning" && onOpenReport?.(findings)}
+            className={`w-full flex flex-col gap-2 p-3 bg-obsidian/40 backdrop-blur-xl border border-white/5 rounded-xl shadow-inner relative overflow-hidden group ${state === 'warning' ? 'cursor-pointer hover:bg-warning-orange/5' : ''}`}
+        >
             {/* Titanium Brushed Border Effect */}
             <div className="absolute inset-0 border border-white/10 rounded-xl pointer-events-none" />
             <div className="absolute inset-[1px] border border-black/20 rounded-xl pointer-events-none" />
 
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: getColor() }} />
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-titanium-dim uppercase">Brain Telemetry</span>
+                    <div className={`w-1.5 h-1.5 rounded-full ${state === 'warning' ? 'animate-ping' : 'animate-pulse'}`} style={{ backgroundColor: getColor() }} />
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-titanium-dim uppercase">
+                        {state === 'warning' ? 'SECURITY FLICKER' : 'Brain Telemetry'}
+                    </span>
                 </div>
-                <span className="text-[9px] font-mono text-titanium-dim opacity-50 uppercase">72 BPM</span>
+                <span className="text-[9px] font-mono text-titanium-dim opacity-50 uppercase">
+                    {state === 'warning' ? 'THREAT DETECTED' : '72 BPM'}
+                </span>
             </div>
 
             <div className="h-16 w-full relative">
