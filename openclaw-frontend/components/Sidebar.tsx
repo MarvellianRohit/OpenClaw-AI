@@ -5,6 +5,7 @@ import { MessageSquare, Settings, FolderTree, Cpu, Activity, Database, ChevronLe
 import SystemVitals from "./SystemVitals";
 import FileExplorer from "./FileExplorer";
 import VersionHistory from "./VersionHistory";
+import MemoryVisualizer from "./MemoryVisualizer";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
@@ -28,7 +29,7 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
     const isCollapsed = isOpen !== undefined ? !isOpen : !internalOpen;
     const toggle = () => setIsOpen ? setIsOpen(!isOpen) : setInternalOpen(!internalOpen);
 
-    const [activeTab, setActiveTab] = useState<"chat" | "files" | "history">("chat");
+    const [activeTab, setActiveTab] = useState<"chat" | "files" | "history" | "memory">("chat");
     const [shimmer, setShimmer] = useState(false);
 
     const triggerShimmer = () => {
@@ -114,6 +115,15 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                         HISTORY
                         {activeTab === "history" && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon-cyan" />}
                     </button>
+                    <button
+                        onClick={() => setActiveTab("memory")}
+                        className={`flex-1 py-3 text-[10px] font-mono flex items-center justify-center gap-1.5 transition-colors relative
+                            ${activeTab === "memory" ? "text-white" : "text-titanium-dim hover:text-white"}`}
+                    >
+                        <Cpu size={12} />
+                        MEMORY
+                        {activeTab === "memory" && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon-cyan" />}
+                    </button>
                 </div>
             )}
 
@@ -137,6 +147,8 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                         }} />
                     ) : activeTab === "history" ? (
                         <VersionHistory activeFile={activeFile} />
+                    ) : activeTab === "memory" ? (
+                        <MemoryVisualizer />
                     ) : (
                         <div className="p-4 space-y-2 overflow-y-auto">
                             <button className="w-full flex items-center gap-3 p-3 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all text-left group">

@@ -18,6 +18,7 @@ from sandbox import sandbox  # Security Check
 from lint_engine import lint_engine
 from graph_engine import project_graph
 from version_history import save_snapshot, list_snapshots, get_snapshot_content
+from memory_profiler import mock_memory_trace, trace_memory
 
 app = FastAPI()
 
@@ -607,6 +608,28 @@ async def terminal_socket(websocket: WebSocket):
                 await run_safe_command(data, websocket)
     except Exception as e:
         print(f"Terminal Socket Closed: {e}")
+
+@app.websocket("/ws/memory")
+async def websocket_memory(websocket: WebSocket):
+    await websocket.accept()
+    print("🧠 Memory Visualizer Connected")
+    
+    async def send_event(data):
+        try:
+            await websocket.send_json(data)
+        except:
+            pass
+
+    # For now, we use the mock tracer to demonstrate the UI grid
+    # In a real scenario, this would be triggered by a specific binary run command
+    trace_task = asyncio.create_task(mock_memory_trace(send_event))
+    
+    try:
+        while True:
+            await websocket.receive_text() # Keep connection alive
+    except WebSocketDisconnect:
+        trace_task.cancel()
+        print("🧠 Memory Visualizer Disconnected")
 
 if __name__ == "__main__":
     uvicorn.run("gateway:app", host="0.0.0.0", port=8000, reload=True)
