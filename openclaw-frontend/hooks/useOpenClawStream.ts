@@ -20,6 +20,8 @@ export function useOpenClawStream() {
     const [statusMessage, setStatusMessage] = useState("");
     const [status, setStatus] = useState<ConnectionStatus>("connecting");
     const [socket, setSocket] = useState<WebSocket | null>(null);
+    const [thoughtTrace, setThoughtTrace] = useState<any>(null);
+    const [thoughtStatus, setThoughtStatus] = useState<"idle" | "thinking" | "planned">("idle");
 
     const wsRef = useRef<WebSocket | null>(null);
     const reconnectTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -52,6 +54,9 @@ export function useOpenClawStream() {
                     setStatusMessage((prev) => prev.includes("Compiling") ? prev : "Streaming...");
                     streamRef.current += data.chunk;
                     setCurrentStream(streamRef.current);
+                } else if (data.type === "thought") {
+                    setThoughtStatus(data.status);
+                    if (data.trace) setThoughtTrace(data.trace);
                 } else if (data.done) {
                     setIsProcessing(false);
                     setStatusMessage("");
@@ -182,6 +187,8 @@ export function useOpenClawStream() {
         currentStream,
         connectionStatus: status,
         statusMessage,
-        socket
+        socket,
+        thoughtTrace,
+        thoughtStatus
     };
 }

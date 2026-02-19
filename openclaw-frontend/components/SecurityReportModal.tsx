@@ -25,6 +25,7 @@ interface SecurityReportModalProps {
     findings: SecurityFinding[];
     filepath: string;
     onApplyFix: (finding: SecurityFinding) => void;
+    isPatching?: boolean;
 }
 
 export default function SecurityReportModal({
@@ -32,7 +33,8 @@ export default function SecurityReportModal({
     onClose,
     findings,
     filepath,
-    onApplyFix
+    onApplyFix,
+    isPatching = false
 }: SecurityReportModalProps) {
     return (
         <AnimatePresence>
@@ -91,10 +93,17 @@ export default function SecurityReportModal({
                                             </div>
                                             <button
                                                 onClick={() => onApplyFix(finding)}
-                                                className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group/btn"
+                                                disabled={isPatching}
+                                                className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group/btn disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
-                                                <Wand2 size={14} className="text-neon-cyan group-hover/btn:rotate-12 transition-transform" />
-                                                <span className="text-[10px] font-black uppercase tracking-widest text-white">Patch Now</span>
+                                                {isPatching ? (
+                                                    <span className="animate-spin">⟳</span>
+                                                ) : (
+                                                    <Wand2 size={14} className="text-neon-cyan group-hover/btn:rotate-12 transition-transform" />
+                                                )}
+                                                <span className="text-[10px] font-black uppercase tracking-widest text-white">
+                                                    {isPatching ? "Patching..." : "Patch Now"}
+                                                </span>
                                             </button>
                                         </div>
                                     </div>

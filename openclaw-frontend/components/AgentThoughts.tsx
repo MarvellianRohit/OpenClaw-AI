@@ -23,7 +23,14 @@ const thoughts = [
     { id: "vector", label: "Vectorizing Workspace", icon: <Network size={20} />, status: "pending" },
 ];
 
-export default function AgentThoughts() {
+import ThoughtTrace from "./ThoughtTrace";
+
+interface AgentThoughtsProps {
+    trace?: any;
+    status?: "thinking" | "planned" | "idle";
+}
+
+export default function AgentThoughts({ trace, status = "idle" }: AgentThoughtsProps) {
     const [activeStep, setActiveStep] = useState(1);
 
     useEffect(() => {
@@ -122,6 +129,11 @@ export default function AgentThoughts() {
                 <p className="max-w-md text-center text-xs text-titanium-dim leading-relaxed italic opacity-60">
                     OpenClaw is scanning your vector workspace and optimizing for M3 Max neural cores. Background intelligence is fully prioritized.
                 </p>
+            </div>
+
+            {/* Phase BJ: Thought Trace */}
+            <div className="relative z-20 w-full max-w-4xl mt-8">
+                <ThoughtTrace trace={trace} status={status} />
             </div>
         </div>
     );

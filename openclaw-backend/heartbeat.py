@@ -63,12 +63,21 @@ class HeartbeatService:
         # For demo purposes, we scan a few key files or the whole project for syntax errors
         # In a real scenario, this might run a 'make' or 'npm run build' check
         
+        # Determine Status Text
+        if errors > 0:
+            status_text = "DIAGNOSING ERRORS"
+        elif len(todos) > 0:
+            status_text = "ANALYZING TASKS"
+        else:
+            status_text = "SYSTEM IDLE"
+
         return {
             "timestamp": os.getpid(), # Simplified
             "thermals": vitals.get("temperature_c", 0),
             "cpu_load": vitals.get("cpu_usage_percent", 0),
             "compilation_errors": errors, 
-            "high_priority_todos": todos[:5] # Top 5
+            "high_priority_todos": todos[:5], # Top 5
+            "status_text": status_text
         }
 
     async def scan_for_todos(self) -> List[Dict[str, Any]]:

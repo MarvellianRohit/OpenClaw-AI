@@ -15,27 +15,57 @@ class SecurityScanner:
         with open(filepath, 'r') as f:
             content = f.read()
 
-        # Step 1: Basic Static Analysis (Placeholder for cppcheck/bandit)
         findings = []
-        if filepath.endswith(".c"):
-            if "gets(" in content:
-                findings.append({
-                    "type": "security",
-                    "severity": "high",
-                    "title": "Buffer Overflow (gets)",
-                    "description": "The 'gets()' function is dangerous as it does not check buffer limits. Use 'fgets()' instead.",
-                    "line": content.count("\n", 0, content.find("gets(")) + 1
-                })
-            if "scanf(\"%s\"" in content:
-                findings.append({
-                    "type": "security",
-                    "severity": "medium",
-                    "title": "Unbounded Input",
-                    "description": "Using scanf with %s without length limits can lead to memory corruption.",
-                    "line": content.count("\n", 0, content.find("scanf(\"%s\"")) + 1
-                })
 
-        # Step 2: LLM-Assisted Audit (Strategic)
+        # Step 1: Real Static Analysis (cppcheck / bandit)
+        try:
+            if filepath.endswith(".c"):
+                # Run cppcheck
+                result = subprocess.run(
+                    ["cppcheck", "--enable=all", "--inconclusive", "--xml", filepath],
+                    capture_output=True, text=True
+                )
+                xml_output = result.stderr # cppcheck writes XML to stderr
+                if "<error " in xml_output:
+                    # Simple XML parsing (avoid lxml dep for now)
+                    import re
+                    errors = re.findall(r'<error id="([^"]+)" severity="([^"]+)" msg="([^"]+)"', xml_output)
+                    for err in errors:
+                        findings.append({
+                            "type": "security",
+                            "severity": err[1], # error, warning, style
+                            "title": err[0], # id
+                            "description": err[2], # msg
+                            "line": 0 # TODO: Parse line number from location tag if needed, complex regex
+                        })
+                        # Try to find line number
+                        line_match = re.search(r'<location file=".*" line="(\d+)"', xml_output)
+                        if line_match:
+                            findings[-1]['line'] = int(line_match.group(1))
+
+            elif filepath.endswith(".py"):
+                # Run bandit
+                result = subprocess.run(
+                    ["bandit", "-f", "json", filepath],
+                    capture_output=True, text=True
+                )
+                if result.stdout.strip():
+                    try:
+                        bandit_data = json.loads(result.stdout)
+                        for result in bandit_data.get('results', []):
+                            findings.append({
+                                "type": "security",
+                                "severity": result['issue_severity'].lower(),
+                                "title": result['test_id'] + ": " + result['test_name'],
+                                "description": result['issue_text'],
+                                "line": result['line_number']
+                            })
+                    except:
+                        pass
+        except Exception as tool_err:
+            print(f"Tool execution failed: {tool_err}")
+
+        # Step 2: LLM-Assisted Audit (Strategic Fallback or Enrichment)
         prompt = (
             f"Audit the following code for security vulnerabilities and logical errors.\n"
             f"File: {filepath}\n"

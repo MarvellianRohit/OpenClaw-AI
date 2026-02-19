@@ -7,6 +7,7 @@ export type MonitorState = "healthy" | "processing" | "error" | "warning";
 
 export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings: any[]) => void }) {
     const [state, setState] = useState<MonitorState>("healthy");
+    const [statusText, setStatusText] = useState("SYSTEM IDLE");
     const [points, setPoints] = useState<number[]>(new Array(40).fill(50));
     const [findings, setFindings] = useState<any[]>([]); // Store security findings
     const requestRef = useRef<number | null>(null);
@@ -24,6 +25,7 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
                 try {
                     const data = JSON.parse(event.data);
                     if (data.type === "pulse") {
+                        setStatusText(data.data.status_text || "SYSTEM IDLE");
                         // Check for errors in pulse data
                         if (data.data.compilation_errors > 0) {
                             setState("error");
@@ -95,8 +97,9 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <div className={`w-1.5 h-1.5 rounded-full ${state === 'warning' ? 'animate-ping' : 'animate-pulse'}`} style={{ backgroundColor: getColor() }} />
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-titanium-dim uppercase">
-                        {state === 'warning' ? 'SECURITY FLICKER' : 'Brain Telemetry'}
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-titanium-dim uppercase flex items-center gap-2">
+                        <span>{state === 'warning' ? 'SECURITY FLICKER' : 'Brain Telemetry'}</span>
+                        <span className="text-[8px] opacity-70 border-l border-white/10 pl-2">{statusText}</span>
                     </span>
                 </div>
                 <span className="text-[9px] font-mono text-titanium-dim opacity-50 uppercase">

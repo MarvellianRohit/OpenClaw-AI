@@ -14,6 +14,7 @@ interface FileNode {
 
 interface FileExplorerProps {
     onFileSelect: (path: string) => void;
+    notifications?: Record<string, { hasError: boolean; message: string }>;
 }
 
 const FileIcon = ({ name }: { name: string }) => {
@@ -41,11 +42,12 @@ const TestStatusBadge = ({ status }: { status: TestResult['status'] }) => {
     return null;
 };
 
-const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses }: {
+const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses, notifications }: {
     node: FileNode,
     onSelect: (path: string) => void,
     depth?: number,
-    testStatuses: Record<string, TestResult>
+    testStatuses: Record<string, TestResult>,
+    notifications?: Record<string, { hasError: boolean; message: string }>
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const isDir = node.type === "directory";
@@ -75,6 +77,15 @@ const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses }: {
                 </span>
 
                 {!isDir && testStatus && <TestStatusBadge status={testStatus.status} />}
+
+                {/* Phase BL: Peripheral Monitor Notification */}
+                {!isDir && notifications && notifications[node.path]?.hasError && (
+                    <motion.div
+                        animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-1.5 h-1.5 rounded-full bg-titanium ml-2 shadow-[0_0_8px_rgba(200,200,255,0.8)]"
+                    />
+                )}
             </div>
 
             <AnimatePresence>
@@ -92,6 +103,7 @@ const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses }: {
                                 onSelect={onSelect}
                                 depth={depth + 1}
                                 testStatuses={testStatuses}
+                                notifications={notifications}
                             />
                         ))}
                     </motion.div>
@@ -101,7 +113,7 @@ const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses }: {
     );
 };
 
-export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
+export default function FileExplorer({ onFileSelect, notifications }: FileExplorerProps) {
     const [tree, setTree] = useState<FileNode[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -154,6 +166,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
                         node={node}
                         onSelect={onFileSelect}
                         testStatuses={testStatuses}
+                        notifications={notifications}
                     />
                 ))}
             </div>

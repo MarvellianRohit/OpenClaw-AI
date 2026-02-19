@@ -1,0 +1,1 @@
+Error connecting to LLM: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('127.0.0.1', 8081), [Errno 61] Connect call failed ('::1', 8081, 0, 0)]

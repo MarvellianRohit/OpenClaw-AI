@@ -24,7 +24,9 @@ import PlanningPanel from "@/components/PlanningPanel";
 import AgentThoughts from "@/components/AgentThoughts";
 import InterventionDialogue from "@/components/InterventionDialogue";
 import SecurityReportModal from "@/components/SecurityReportModal";
+import CommandPalette from "@/components/CommandPalette";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
+import { useOpenClawStream } from "@/hooks/useOpenClawStream";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,12 +44,32 @@ export default function Home() {
   // ...
   // ...
   const [showOmniSearch, setShowOmniSearch] = useState(false);
+  const [showPalette, setShowPalette] = useState(false); // Phase BP
 
   // Phase Z & AA States
   const [showGraph, setShowGraph] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+
+  // Phase BJ: Lifted Chat State
+  const {
+    messages,
+    sendMessage,
+    isProcessing,
+    currentStream,
+    connectionStatus,
+    thoughtTrace,
+    thoughtStatus,
+    setMessages,
+    sendAction,
+    statusMessage,
+    socket
+  } = useOpenClawStream();
+
   const [summaryContent, setSummaryContent] = useState("");
   const [pendingMessage, setPendingMessage] = useState<string | null>(null);
+
+  // Phase BK: Auto-Patching
+  const [isPatching, setIsPatching] = useState(false);
 
   // Phase BF: Intervention Dialogue
   const [intervention, setIntervention] = useState<{
@@ -72,6 +94,30 @@ export default function Home() {
     newContent: "",
     onAccept: () => { }
   });
+
+  // Phase BL: File Notifications (Peripheral Monitor)
+  const [fileNotifications, setFileNotifications] = useState<Record<string, { hasError: boolean; message: string }>>({});
+
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleMessage = (event: MessageEvent) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === "file_update") {
+          setFileNotifications(prev => ({
+            ...prev,
+            [data.path]: { hasError: data.has_error, message: data.message }
+          }));
+        }
+      } catch (e) {
+        console.error("Failed to parse WebSocket message", e);
+      }
+    };
+
+    socket.addEventListener("message", handleMessage);
+    return () => socket.removeEventListener("message", handleMessage);
+  }, [socket]);
 
   const handleShowSummary = (content: string) => {
     setSummaryContent(content);
@@ -99,6 +145,11 @@ export default function Home() {
         e.preventDefault();
         setShowOmniSearch(prev => !prev);
       }
+      // Cmd+J: Command Palette (Phase BP)
+      if ((e.metaKey || e.ctrlKey) && e.key === "j") {
+        e.preventDefault();
+        setShowPalette(prev => !prev);
+      }
       // Cmd+B: Zen Mode
       if ((e.metaKey || e.ctrlKey) && e.key === "b") {
         e.preventDefault();
@@ -120,6 +171,23 @@ export default function Home() {
   const [activeView, setActiveView] = useState<"editor" | "thoughts">("editor"); // Phase BE
   const [editorContent, setEditorContent] = useState("// Select a file to view");
   const [terminalErrors, setTerminalErrors] = useState<string[]>([]);
+  const [contextMode, setContextMode] = useState<"default" | "c" | "python">("default");
+
+  // Determine Context Mode
+  useEffect(() => {
+    if (!activeFile) {
+      setContextMode("default");
+      return;
+    }
+    const ext = activeFile.split('.').pop()?.toLowerCase();
+    if (ext === 'c' || ext === 'h') {
+      setContextMode("c");
+    } else if (ext === 'py') {
+      setContextMode("python");
+    } else {
+      setContextMode("default");
+    }
+  }, [activeFile]);
 
   // Load Tabs from LocalStorage
   useEffect(() => {
@@ -155,11 +223,7 @@ export default function Home() {
   };
 
   const handleFileSelect = (path: string) => {
-    if (!openFiles.includes(path)) {
-      setOpenFiles(prev => [...prev, path]);
-    }
-    setActiveFile(path);
-    setViewMode("editor");
+    loadFile(path);
     setIsMobileMenuOpen(false);
   };
 
@@ -175,6 +239,62 @@ export default function Home() {
         // Optionally switch back to chat if no files open?
         // setViewMode("chat"); 
       }
+    }
+  };
+
+
+  // Phase BK: Load file content
+  const loadFile = async (path: string) => {
+    try {
+      const res = await fetch(`http://localhost:8000/file/read?path=${encodeURIComponent(path)}`, {
+        method: "POST"
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setEditorContent(data.content);
+        setActiveFile(path);
+        // Add to open files if not present
+        if (!openFiles.includes(path)) {
+          const newTabs = [...openFiles, path];
+          setOpenFiles(newTabs);
+          localStorage.setItem("openclaw_tabs", JSON.stringify(newTabs));
+        }
+        localStorage.setItem("openclaw_active_file", path);
+        setViewMode("editor");
+      }
+    } catch (e) {
+      console.error("Load failed", e);
+    }
+  };
+
+  // Phase BK: Auto-Patching Handler
+  const handleApplyFix = async (finding: any) => {
+    setIsPatching(true);
+    try {
+      const response = await fetch("http://localhost:8000/tools/patch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          finding,
+          filepath: activeFile || ""
+        })
+      });
+
+      if (!response.ok) throw new Error("Patch failed");
+
+      // Refresh file content
+      if (activeFile) {
+        loadFile(activeFile);
+      }
+
+      // Close modal after short delay
+      setTimeout(() => setShowSecurityReport(false), 1000);
+
+    } catch (e) {
+      console.error("Patch error:", e);
+      alert("Failed to apply patch. See console.");
+    } finally {
+      setIsPatching(false);
     }
   };
 
@@ -228,6 +348,7 @@ export default function Home() {
   // Actually handleFileSelect uses function state update for setOpenFiles, so it's safe?
   // But checking !openFiles.includes(path) depends on closure `openFiles`.
   // Yes, need dependency.
+
 
   const handleSaveFile = async (path: string, content: string) => {
     try {
@@ -299,6 +420,7 @@ export default function Home() {
                         setSecurityFindings(findings);
                         setShowSecurityReport(true);
                       }}
+                      fileNotifications={fileNotifications}
                     />
                   </motion.div>
                 )}
@@ -317,6 +439,15 @@ export default function Home() {
                     terminalLastErrors={terminalErrors}
                     pendingMessage={pendingMessage}
                     onMessageHandled={() => setPendingMessage(null)}
+                    messages={messages}
+                    sendMessage={sendMessage}
+                    isProcessing={isProcessing}
+                    currentStream={currentStream}
+                    connectionStatus={connectionStatus}
+                    setMessages={setMessages}
+                    sendAction={sendAction}
+                    statusMessage={statusMessage}
+                    socket={socket}
                   />
                 ) : (
                   <div className={clsx(
@@ -356,7 +487,7 @@ export default function Home() {
                           onSave={handleSaveFile}
                         />
                       ) : (
-                        <AgentThoughts />
+                        <AgentThoughts trace={thoughtTrace} status={thoughtStatus} />
                       )}
                     </div>
                   </div>
@@ -383,7 +514,7 @@ export default function Home() {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     className="overflow-hidden pointer-events-auto hidden lg:block"
                   >
-                    <RightPanel stats={stats} isConnected={isConnected} isOpen={true} />
+                    <RightPanel stats={stats} isConnected={isConnected} isOpen={true} contextMode={contextMode} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -471,11 +602,22 @@ export default function Home() {
               isOpen={showSecurityReport}
               onClose={() => setShowSecurityReport(false)}
               findings={securityFindings}
-              filepath={activeFile || "Unknown File"}
-              onApplyFix={(finding) => {
-                handleSend(`Fix security vulnerability: ${finding.title} on line ${finding.line}. ${finding.description}`);
-                setShowSecurityReport(false);
+              filepath={activeFile || "Unknown"}
+              onApplyFix={handleApplyFix}
+              isPatching={isPatching}
+            />
+
+            <CommandPalette
+              isOpen={showPalette}
+              onClose={() => setShowPalette(false)}
+              onSelectFile={handleFileSelect}
+              actions={{
+                toggleZen: () => setZenMode(p => !p),
+                toggleTerminal: () => setShowTerminal(p => !p),
+                checkLeaks: () => { }, // Trigger Leak Modal logic if we can expose it, or just send message
+                runBuild: () => handleSend("Build the project")
               }}
+              stats={stats}
             />
 
           </motion.div>

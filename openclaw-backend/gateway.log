@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 11, in <module>
+    import aiofiles  # Optimized I/O
+ModuleNotFoundError: No module named 'aiofiles'

@@ -25,9 +25,10 @@ interface SidebarProps {
     onOpenGraph?: () => void;
     activeFile: string | null; // Phase AK
     onOpenSecurityReport?: (findings: any[]) => void; // Phase BH
+    fileNotifications?: Record<string, { hasError: boolean; message: string }>; // Phase BL
 }
 
-export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph, activeFile, onOpenSecurityReport }: SidebarProps) {
+export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph, activeFile, onOpenSecurityReport, fileNotifications }: SidebarProps) {
     // If controlled props not provided, manage state internally (hybrid)
     const [internalOpen, setInternalOpen] = useState(true);
     const isCollapsed = isOpen !== undefined ? !isOpen : !internalOpen;

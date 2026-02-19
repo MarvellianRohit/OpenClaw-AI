@@ -170,6 +170,16 @@ interface ChatInterfaceProps {
     terminalLastErrors?: string[];
     pendingMessage?: string | null;
     onMessageHandled?: () => void;
+    // Lifted
+    messages: any[];
+    sendMessage: (msg: string, file?: string | null) => void;
+    isProcessing: boolean;
+    currentStream: string;
+    connectionStatus: string;
+    setMessages: any; // visual ref
+    sendAction: any;
+    statusMessage: string;
+    socket: any;
 }
 
 export default function ChatInterface({
@@ -178,9 +188,19 @@ export default function ChatInterface({
     activeFile = null,
     terminalLastErrors = [],
     pendingMessage,
-    onMessageHandled
+    onMessageHandled,
+    messages,
+    sendMessage,
+    isProcessing,
+    currentStream,
+    connectionStatus,
+    setMessages,
+    sendAction,
+    statusMessage,
+    socket
 }: ChatInterfaceProps) {
-    const { messages, setMessages, sendMessage, sendAction, simulateStream, isProcessing, currentStream, connectionStatus, statusMessage, socket } = useOpenClawStream();
+    // const { ... } = useOpenClawStream(); // REMOVED
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleMagicComment = async (msgId: string, code: string, lang: string) => {
         try {
