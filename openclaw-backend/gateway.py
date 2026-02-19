@@ -29,6 +29,8 @@ import observer as observer_module
 from deadlock_detector import DeadlockDetector
 import deadlock_detector as deadlock_module
 from agent_engine import get_agent_engine
+from memory_system import MemorySystem
+import memory_system as memory_module
 
 app = FastAPI()
 
@@ -132,6 +134,11 @@ async def startup_event():
     global agent_engine
     agent_engine = get_agent_engine(call_llm)
     print("🤖 Agent Engine Online.")
+
+    # Phase BD: Memory System
+    db_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "memory.db")
+    memory_module.memory_system = MemorySystem(db_path)
+    print("🧠 Memory System Initialized.")
 
 # ... existing ...
 
@@ -686,6 +693,15 @@ async def execute_agent_step(request: AgentExecuteRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# --- Memory System (Phase BD) ---
+@app.get("/tools/memories")
+async def get_all_memories():
+    try:
+        memories = memory_module.memory_system.get_memories()
+        return {"memories": memories}
+    except Exception as e:
+        return {"memories": [], "error": str(e)}
+
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -794,6 +810,12 @@ async def websocket_endpoint(websocket: WebSocket):
                         context_str += "\n\nRecall from Previous Successes (Memory):\n"
                         for hit in memory_hits:
                              context_str += f"```\n{hit['code']}\n```\n"
+
+                # 3. Human-Assistant Memory (Phase BD)
+                if memory_module.memory_system:
+                    memory_context = memory_module.memory_system.get_context_string()
+                    if memory_context:
+                        context_str += f"\n\n{memory_context}"
 
             except Exception as e:
                 print(f"Context error: {e}")

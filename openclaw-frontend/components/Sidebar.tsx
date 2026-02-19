@@ -6,6 +6,7 @@ import SystemVitals from "./SystemVitals";
 import FileExplorer from "./FileExplorer";
 import VersionHistory from "./VersionHistory";
 import MemoryVisualizer from "./MemoryVisualizer";
+import ExperienceLog from "./ExperienceLog"; // Phase BD
 import EKGMonitor from "./EKGMonitor";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import { motion, AnimatePresence } from "framer-motion";
@@ -190,7 +191,7 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                     ) : activeTab === "history" ? (
                         <VersionHistory activeFile={activeFile} />
                     ) : activeTab === "memory" ? (
-                        <MemoryVisualizer />
+                        <ExperienceLog />
                     ) : (
                         <div className="p-4 space-y-2 overflow-y-auto">
                             <button className="w-full flex items-center gap-3 p-3 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all text-left group">
