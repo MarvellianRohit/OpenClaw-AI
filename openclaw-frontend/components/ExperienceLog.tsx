@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BrainCircuit, Star, Clock, Trash2, Hexagon, Sparkles } from "lucide-react";
+import { BrainCircuit, Star, Clock, Trash2, Hexagon, Sparkles, ScrollText, History } from "lucide-react";
 
 interface MemoryShard {
     description: string;
-    category: "preference" | "decision";
+    category: "preference" | "decision" | "lore"; // Added lore
     timestamp: string;
 }
 
@@ -72,11 +72,13 @@ export default function ExperienceLog() {
                                 <div className="absolute inset-0 bg-cyan-500/5 blur-xl group-hover:bg-cyan-500/10 transition-colors rounded-2xl" />
                                 <div className="relative glass-panel p-4 rounded-2xl border border-white/5 group-hover:border-cyan-500/30 transition-all bg-obsidian-soft/40 overflow-hidden">
                                     <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-                                        {shard.category === "preference" ? <Star size={16} /> : <Hexagon size={16} />}
+                                        {shard.category === "preference" ? <Star size={16} /> :
+                                            shard.category === "lore" ? <History size={16} /> : <Hexagon size={16} />}
                                     </div>
                                     <div className="flex flex-col gap-2">
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded ${shard.category === "preference" ? "text-amber-400 bg-amber-400/10" : "text-cyan-400 bg-cyan-400/10"
+                                            <span className={`text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded ${shard.category === "preference" ? "text-amber-400 bg-amber-400/10" :
+                                                    shard.category === "lore" ? "text-purple-400 bg-purple-400/10" : "text-cyan-400 bg-cyan-400/10"
                                                 }`}>
                                                 {shard.category}
                                             </span>

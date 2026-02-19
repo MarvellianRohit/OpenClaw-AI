@@ -31,6 +31,8 @@ import deadlock_detector as deadlock_module
 from agent_engine import get_agent_engine
 from memory_system import MemorySystem
 import memory_system as memory_module
+from lore_engine import LoreEngine
+import lore_engine as lore_module
 
 app = FastAPI()
 
@@ -139,6 +141,11 @@ async def startup_event():
     db_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "memory.db")
     memory_module.memory_system = MemorySystem(db_path)
     print("🧠 Memory System Initialized.")
+
+    # Phase BG: Lore Engine
+    lore_db_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "lore_db")
+    lore_module.lore_engine = LoreEngine(lore_db_path)
+    print("📜 Lore Engine Online.")
 
 # ... existing ...
 
@@ -463,6 +470,13 @@ async def save_file_post(request: FileFixRequest):
         async with aiofiles.open(request.filepath, mode='w') as f:
             await f.write(request.content)
             
+        # Phase BG: Lore Extraction
+        if lore_module.lore_engine:
+            diff_summary = f"Updated {os.path.basename(request.filepath)} with user-requested changes."
+            asyncio.create_task(lore_module.lore_engine.extract_lore_from_diff(
+                request.filepath, diff_summary, call_llm
+            ))
+
         # Trigger Autonomous Testing (Phase AQ)
         if request.filepath.endswith((".py", ".c")):
             asyncio.create_task(auto_test_cycle(
@@ -816,6 +830,14 @@ async def websocket_endpoint(websocket: WebSocket):
                     memory_context = memory_module.memory_system.get_context_string()
                     if memory_context:
                         context_str += f"\n\n{memory_context}"
+                
+                # 4. Project Lore (Phase BG)
+                if lore_module.lore_engine:
+                    lore_hits = lore_module.lore_engine.search_lore(user_message)
+                    if lore_hits:
+                        context_str += "\n\nRelevant Project Lore (Architectural Decisions):\n"
+                        for hit in lore_hits:
+                            context_str += f"- {hit['description']}\n"
 
             except Exception as e:
                 print(f"Context error: {e}")
