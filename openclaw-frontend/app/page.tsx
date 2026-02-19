@@ -21,6 +21,7 @@ import InterventionToast from "@/components/InterventionToast";
 import DeadlockAlert from "@/components/DeadlockAlert";
 import MorningBriefModal from "@/components/MorningBriefModal";
 import PlanningPanel from "@/components/PlanningPanel";
+import AgentThoughts from "@/components/AgentThoughts";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -99,6 +100,7 @@ export default function Home() {
   const [activeFile, setActiveFile] = useState<string | null>(null);
   const [openFiles, setOpenFiles] = useState<string[]>([]);
   const [viewMode, setViewMode] = useState<"chat" | "editor">("chat");
+  const [activeView, setActiveView] = useState<"editor" | "thoughts">("editor"); // Phase BE
   const [editorContent, setEditorContent] = useState("// Select a file to view");
   const [terminalErrors, setTerminalErrors] = useState<string[]>([]);
 
@@ -300,18 +302,42 @@ export default function Home() {
                     "flex-1 flex flex-col h-full overflow-hidden transition-all duration-500",
                     zenMode ? "rounded-2xl border border-white/5 shadow-2xl overflow-hidden" : ""
                   )}>
+                    {/* Orchestrator Toggle */}
+                    <div className="h-14 border-b border-white/5 flex items-center justify-between px-6 bg-obsidian-soft/40 backdrop-blur-md shrink-0">
+                      <div className="flex items-center gap-4 bg-white/5 p-1 rounded-xl border border-white/10 mx-auto">
+                        <button
+                          onClick={() => setActiveView("editor")}
+                          className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all uppercase tracking-widest ${activeView === "editor" ? "bg-white text-obsidian shadow-lg" : "text-titanium-dim hover:text-white"}`}
+                        >
+                          Code Editor
+                        </button>
+                        <button
+                          onClick={() => setActiveView("thoughts")}
+                          className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all uppercase tracking-widest ${activeView === "thoughts" ? "bg-white text-obsidian shadow-lg" : "text-titanium-dim hover:text-white"}`}
+                        >
+                          Agent Thoughts
+                        </button>
+                      </div>
+                    </div>
+
                     <TabBar
                       files={openFiles}
                       activeFile={activeFile}
                       onSelect={handleFileSelect}
                       onClose={handleTabClose}
                     />
-                    <CodeEditor
-                      filePath={activeFile}
-                      content={editorContent}
-                      onChange={setEditorContent}
-                      onSave={handleSaveFile}
-                    />
+                    <div className="flex-1 overflow-hidden relative">
+                      {activeView === "editor" ? (
+                        <CodeEditor
+                          filePath={activeFile}
+                          content={editorContent}
+                          onChange={setEditorContent}
+                          onSave={handleSaveFile}
+                        />
+                      ) : (
+                        <AgentThoughts />
+                      )}
+                    </div>
                   </div>
                 )}
 
