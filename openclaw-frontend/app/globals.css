@@ -17,6 +17,19 @@
   --glass-border: rgba(255, 255, 255, 0.125);
   --glass-blur: 16px;
   --glass-saturate: 180%;
+
+  --transition-speed: 0.5s;
+}
+
+:root[data-zen="true"] {
+  --color-neon-cyan: #0077CC;
+  /* Deep Sea Blue */
+  --color-neon-cyan-dim: #0077CC80;
+  --glass-blur: 40px;
+}
+
+.zen-transition {
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
@@ -58,7 +71,7 @@
 
 /* Typography Gradient */
 .text-gradient-titanium {
-  background: linear-gradient(to right, #C0C0C0, #00E5FF);
+  background: linear-gradient(to right, var(--color-titanium), var(--color-neon-cyan));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -24,6 +24,7 @@ export default function Home() {
   const [showVitals, setShowVitals] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [showTerminal, setShowTerminal] = useState(false);
+  const [zenMode, setZenMode] = useState(false);
 
   // ...
   // ...
@@ -50,12 +51,31 @@ export default function Home() {
     setShowSummary(true);
   };
 
-  // Cmd+K Shortcut
+  // Sync Zen Mode to Body
+  useEffect(() => {
+    if (zenMode) {
+      document.documentElement.setAttribute("data-zen", "true");
+      // Hide other elements when entering zen
+      setShowVitals(false);
+      setShowTerminal(false);
+    } else {
+      document.documentElement.removeAttribute("data-zen");
+      setShowVitals(true);
+    }
+  }, [zenMode]);
+
+  // Keyboard Shortcuts
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      // Cmd+K: OmniSearch
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setShowOmniSearch(prev => !prev);
+      }
+      // Cmd+B: Zen Mode
+      if ((e.metaKey || e.ctrlKey) && e.key === "b") {
+        e.preventDefault();
+        setZenMode(prev => !prev);
       }
     };
     window.addEventListener("keydown", handleKey);
@@ -185,7 +205,10 @@ export default function Home() {
       {/* Reactive Background Grid */}
       <HardwareGrid gpuLoad={stats.gpu_load_percent} />
 
-      <div className="absolute inset-0 z-10 grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] pointer-events-none">
+      <div className={clsx(
+        "absolute inset-0 z-10 grid grid-cols-1 pointer-events-none transition-all duration-500",
+        zenMode ? "lg:grid-cols-1" : "lg:grid-cols-[auto_1fr_auto]"
+      )}>
         {/* Helper div to restore pointer events for children */}
 
         {/* Mobile Header */}
@@ -197,24 +220,37 @@ export default function Home() {
         </div>
 
         {/* Sidebar */}
-        <div className={clsx(
-          "fixed inset-0 z-40 lg:relative lg:inset-auto transition-transform duration-300 transform lg:transform-none lg:block pointer-events-auto",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        )}>
-          <Sidebar
-            className="h-full w-[260px] lg:w-auto"
-            stats={stats}
-            isConnected={isConnected}
-            onFileSelect={handleFileSelect}
-            onSwitchToChat={() => setViewMode("chat")}
-            onOpenSettings={() => setShowSettings(true)}
-            onOpenGraph={() => setShowGraph(true)}
-            activeFile={activeFile}
-          />
-        </div>
+        <AnimatePresence>
+          {!zenMode && (
+            <motion.div
+              initial={{ x: -300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className={clsx(
+                "fixed inset-0 z-40 lg:relative lg:inset-auto transition-transform duration-300 transform lg:transform-none pointer-events-auto",
+                isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+              )}
+            >
+              <Sidebar
+                className="h-full w-[260px] lg:w-auto"
+                stats={stats}
+                isConnected={isConnected}
+                onFileSelect={handleFileSelect}
+                onSwitchToChat={() => setViewMode("chat")}
+                onOpenSettings={() => setShowSettings(true)}
+                onOpenGraph={() => setShowGraph(true)}
+                activeFile={activeFile}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Main Content Area */}
-        <main className="flex-1 flex flex-col relative z-0 min-w-0 pointer-events-auto">
+        <main className={clsx(
+          "flex-1 flex flex-col relative z-0 min-w-0 pointer-events-auto transition-all duration-500",
+          zenMode ? "max-w-5xl mx-auto w-full px-8 py-12" : ""
+        )}>
           {viewMode === "chat" ? (
             <ChatInterface
               onShowSummary={handleShowSummary}
@@ -225,7 +261,10 @@ export default function Home() {
               onMessageHandled={() => setPendingMessage(null)}
             />
           ) : (
-            <div className="flex-1 flex flex-col h-full overflow-hidden">
+            <div className={clsx(
+              "flex-1 flex flex-col h-full overflow-hidden transition-all duration-500",
+              zenMode ? "rounded-2xl border border-white/5 shadow-2xl overflow-hidden" : ""
+            )}>
               <TabBar
                 files={openFiles}
                 activeFile={activeFile}
