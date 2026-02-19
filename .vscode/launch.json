@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/rohitchandra/Documents/OpenClaw AI",
+      "program": "/Users/rohitchandra/Documents/OpenClaw AI/build/Debug/outDebug"
+    }
+  ]
+}

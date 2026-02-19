@@ -28,6 +28,14 @@ class CompilerAgent:
             return
 
         try:
+            # Phase AR: Wrap C execution with leaks on macOS
+            if command.startswith("./"):
+                # Check if it's a binary we just compiled
+                binary_name = command.split()[0]
+                if os.path.isfile(binary_name) and os.access(binary_name, os.X_OK):
+                    # We wrap it with MallocStackLogging to get line numbers
+                    command = f"MallocStackLogging=1 leaks --atExit --quiet -- {command}"
+
             process = subprocess.Popen(
                 command, 
                 shell=True, 
@@ -39,6 +47,11 @@ class CompilerAgent:
             
             # Read stdout
             for line in process.stdout:
+                # Detect Memory Leaks in stdout (leaks --atExit prints results to stdout/stderr)
+                leak_match = self.parse_leak(line)
+                if leak_match:
+                    yield {"type": "memory_leak", "content": leak_match}
+                
                 yield {"type": "stdout", "content": line}
                 
             # Read stderr
@@ -46,8 +59,13 @@ class CompilerAgent:
                 # Detect error line
                 error_match = self.parse_error(line)
                 if error_match:
-                     yield {"type": "error_highlight", "line": error_match['line'], "message": error_match['message']}
+                    yield {"type": "error_highlight", "line": error_match['line'], "message": error_match['message']}
                 
+                # Check for leaks in stderr too
+                leak_match = self.parse_leak(line)
+                if leak_match:
+                    yield {"type": "memory_leak", "content": leak_match}
+
                 yield {"type": "stderr", "content": line}
 
             process.wait()
@@ -55,6 +73,25 @@ class CompilerAgent:
 
         except Exception as e:
             yield {"type": "error", "content": str(e)}
+
+    def parse_leak(self, line: str):
+        import re
+        # leaks tool pattern: Leak: 0x600000008000  size=16  zone=DefaultMallocZone_0x10d8a2000  line 5 in main.c
+        # Note: MallocStackLogging=1 adds this info to the leaks output
+        match = re.search(r"Leak: (0x[0-9a-f]+)  size=(\d+) .* line (\d+) in (.*)", line)
+        if match:
+            return {
+                "address": match.group(1),
+                "size": int(match.group(2)),
+                "line": int(match.group(3)),
+                "file": match.group(4)
+            }
+        
+        # Alternative pattern: 16 bytes leaked in 1 allocation
+        if "leaked in" in line and "allocation" in line:
+            return {"summary": line.strip()}
+            
+        return None
 
     def parse_error(self, line: str):
         import re

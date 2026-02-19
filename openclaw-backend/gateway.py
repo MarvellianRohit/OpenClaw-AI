@@ -668,6 +668,14 @@ async def run_safe_command(command: str, websocket: WebSocket):
             return
 
     try:
+        # Phase AR: Wrap C binary execution with leaks on macOS
+        original_command = command
+        if command.startswith("./"):
+            binary_name = command.split()[0]
+            if os.path.isfile(binary_name) and os.access(binary_name, os.X_OK):
+                # We wrap it with MallocStackLogging to get line numbers
+                command = f"MallocStackLogging=1 leaks --atExit --quiet -- {command}"
+
         # Use simple shell execution
         process = await asyncio.create_subprocess_shell(
             command,
@@ -676,6 +684,7 @@ async def run_safe_command(command: str, websocket: WebSocket):
         )
 
         async def stream_output(stream, label):
+            from compiler import compiler_agent
             while True:
                 line = await stream.readline()
                 if not line:
@@ -684,6 +693,16 @@ async def run_safe_command(command: str, websocket: WebSocket):
                     text = line.decode('utf-8')
                 except:
                     text = line.decode('latin-1')
+                
+                # Detect Leak
+                leak_info = compiler_agent.parse_leak(text)
+                if leak_info:
+                    # Send special JSON message for the UI Modal
+                    await websocket.send_text(json.dumps({
+                        "type": "memory_leak",
+                        "data": leak_info
+                    }))
+                
                 await websocket.send_text(text)
 
         await asyncio.gather(
