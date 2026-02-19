@@ -24,6 +24,8 @@ from test_engine import auto_test_cycle
 from voice_engine import voice_engine, handle_voice_command
 from context_manager import context_manager
 from heartbeat import HeartbeatService
+from observer import Observer, observer
+import observer as observer_module
 
 app = FastAPI()
 
@@ -114,6 +116,10 @@ async def startup_event():
 
     heartbeat = HeartbeatService(broadcast_system_event, trigger_proactive_suggestion)
     await heartbeat.start()
+
+    # Phase AZ: Observer Module
+    observer_module.observer = Observer(broadcast_system_event)
+    print("👁️ Observer Module Activated.")
 
 # ... existing ...
 
@@ -446,6 +452,11 @@ async def save_file_post(request: FileFixRequest):
                 call_llm, 
                 broadcast_test_result
             ))
+
+        # Trigger Observer (Phase AZ)
+        from observer import observer
+        if observer:
+            await observer.track_save(request.filepath)
 
         return {"status": "success", "message": f"Saved {os.path.basename(request.filepath)}"}
     except Exception as e:
@@ -859,6 +870,14 @@ async def run_safe_command(command: str, websocket: WebSocket):
         )
         
         await process.wait()
+        
+        # Phase AZ: Track execution result for Observer
+        from observer import observer
+        if observer:
+             # We assume if it's a compile/run, the command contains the file name or is relative
+             # This is a heuristic for detecting if the SAME code run keeps failing
+             observer.track_execution(command, "Exit Code: " + str(process.returncode))
+
         await websocket.send_text(f"\nProcess finished with exit code {process.returncode}")
 
     except Exception as e:
