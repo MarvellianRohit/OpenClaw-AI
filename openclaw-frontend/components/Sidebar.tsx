@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageSquare, Settings, FolderTree, Cpu, Activity, Database, ChevronLeft, ChevronRight, Plus, Network, History as HistoryIcon } from "lucide-react";
+import { MessageSquare, Settings, FolderTree, Cpu, Activity, Database, ChevronLeft, ChevronRight, Plus, Network, History as HistoryIcon, FileText, Loader2 } from "lucide-react";
 import SystemVitals from "./SystemVitals";
 import FileExplorer from "./FileExplorer";
 import VersionHistory from "./VersionHistory";
@@ -9,6 +9,7 @@ import MemoryVisualizer from "./MemoryVisualizer";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
+import { useNotification } from "./NotificationContext";
 
 interface SidebarProps {
     isOpen?: boolean;
@@ -28,6 +29,46 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
     const [internalOpen, setInternalOpen] = useState(true);
     const isCollapsed = isOpen !== undefined ? !isOpen : !internalOpen;
     const toggle = () => setIsOpen ? setIsOpen(!isOpen) : setInternalOpen(!internalOpen);
+
+    const { addNotification, removeNotification } = useNotification();
+    const [isGeneratingDocs, setIsGeneratingDocs] = useState(false);
+
+    const handleGenerateDocs = async () => {
+        setIsGeneratingDocs(true);
+        const notifyId = addNotification({
+            message: "Analyzing codebase & generating documentation...",
+            type: "info",
+            persistent: true
+        });
+
+        try {
+            const response = await fetch("http://localhost:8000/tools/autodoc", {
+                method: "POST"
+            });
+            const data = await response.json();
+
+            if (data.status === "success") {
+                removeNotification(notifyId);
+                addNotification({
+                    message: "README.md successfully generated!",
+                    type: "success",
+                    persistent: false
+                });
+                if (onFileSelect) onFileSelect(data.path);
+            } else {
+                throw new Error(data.error || "Generation failed");
+            }
+        } catch (error: any) {
+            removeNotification(notifyId);
+            addNotification({
+                message: `Documentation Error: ${error.message}`,
+                type: "error",
+                persistent: true
+            });
+        } finally {
+            setIsGeneratingDocs(false);
+        }
+    };
 
     const [activeTab, setActiveTab] = useState<"chat" | "files" | "history" | "memory">("chat");
     const [shimmer, setShimmer] = useState(false);
@@ -154,6 +195,19 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                             <button className="w-full flex items-center gap-3 p-3 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all text-left group">
                                 <Plus size={16} className="text-neon-cyan" />
                                 <span className="text-titanium font-medium text-xs">New Project</span>
+                            </button>
+
+                            <button
+                                onClick={handleGenerateDocs}
+                                disabled={isGeneratingDocs}
+                                className="w-full flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-left group disabled:opacity-50"
+                            >
+                                {isGeneratingDocs ? (
+                                    <Loader2 size={16} className="text-titanium animate-spin" />
+                                ) : (
+                                    <FileText size={16} className="text-titanium group-hover:text-neon-cyan transition-colors" />
+                                )}
+                                <span className="text-titanium font-medium text-xs">Generate Docs</span>
                             </button>
 
                             <div className="text-[10px] text-titanium-dim uppercase tracking-wider mt-4 mb-2">Recent</div>

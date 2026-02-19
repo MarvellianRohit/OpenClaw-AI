@@ -19,6 +19,7 @@ from lint_engine import lint_engine
 from graph_engine import project_graph
 from version_history import save_snapshot, list_snapshots, get_snapshot_content
 from memory_profiler import mock_memory_trace, trace_memory
+from auto_doc import generate_readme
 
 app = FastAPI()
 
@@ -349,6 +350,39 @@ async def search_files(q: str):
         return {"results": results}
     except Exception as e:
         return {"error": str(e), "results": []}
+
+async def call_llm(prompt: str, max_tokens: int = 2048):
+    """Internal helper to call the local LLM."""
+    try:
+        async with aiohttp.ClientSession() as session:
+            payload = {
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": max_tokens
+            }
+            async with session.post(INFERENCE_URL, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data['choices'][0]['message']['content']
+                else:
+                    return f"Error: LLM returned {response.status}"
+    except Exception as e:
+        return f"Error connecting to LLM: {str(e)}"
+
+@app.post("/tools/autodoc")
+async def autodoc():
+    """Generates a professional README.md for the current workspace."""
+    root_path = os.getcwd() # Workspace root
+    try:
+        readme_content = await generate_readme(root_path, call_llm)
+        
+        # Save the README
+        readme_path = os.path.join(root_path, "README.md")
+        async with aiofiles.open(readme_path, mode='w') as f:
+            await f.write(readme_content)
+            
+        return {"status": "success", "path": readme_path, "content": readme_content}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
