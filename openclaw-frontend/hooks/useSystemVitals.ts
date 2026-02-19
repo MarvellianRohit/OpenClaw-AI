@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNotification } from "@/components/NotificationContext";
 
 export interface SystemStats {
     cpu_percent: number;
@@ -9,6 +10,7 @@ export interface SystemStats {
 }
 
 export function useSystemVitals() {
+    const { addNotification, removeNotification } = useNotification();
     const [stats, setStats] = useState<SystemStats>({
         cpu_percent: 0,
         memory_percent: 0,
@@ -26,10 +28,19 @@ export function useSystemVitals() {
             const ws = new WebSocket("ws://localhost:8000/ws/vitals");
             wsRef.current = ws;
 
-            ws.onopen = () => setIsConnected(true);
+            ws.onopen = () => {
+                setIsConnected(true);
+                removeNotification("vitals-error");
+            };
 
             ws.onclose = () => {
                 setIsConnected(false);
+                addNotification({
+                    id: "vitals-error",
+                    message: "Hardware telemetry lost. Stats may be stale.",
+                    type: "warning",
+                    persistent: true
+                });
                 reconnectTimeout = setTimeout(connect, 3000);
             };
 

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useNotification } from "@/components/NotificationContext";
 
 const RECONNECT_INTERVAL = 3000;
 
@@ -12,6 +13,7 @@ export interface Message {
 type ConnectionStatus = "connecting" | "open" | "closed" | "error";
 
 export function useOpenClawStream() {
+    const { addNotification, removeNotification } = useNotification();
     const [messages, setMessages] = useState<Message[]>([]);
     const [currentStream, setCurrentStream] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
@@ -37,6 +39,7 @@ export function useOpenClawStream() {
             setStatus("open");
             setStatusMessage("Ready");
             console.log("✅ WebSocket Connected");
+            removeNotification("chat-error");
         };
 
         ws.onmessage = (event) => {
@@ -79,6 +82,16 @@ export function useOpenClawStream() {
         ws.onclose = () => {
             setStatus("closed");
             console.log("❌ WebSocket Disconnected");
+
+            addNotification({
+                id: "chat-error",
+                message: "Chat connection lost. M3 Max Backend may be offline.",
+                type: "error",
+                persistent: true,
+                actionLabel: "RETRY NOW",
+                onAction: connect
+            } as any);
+
             reconnectTimeoutRef.current = setTimeout(connect, RECONNECT_INTERVAL);
         };
 
@@ -86,6 +99,12 @@ export function useOpenClawStream() {
             console.error("⚠️ WebSocket Error:", error);
             setStatus("error");
             setStatusMessage("Connection Error");
+
+            addNotification({
+                message: "Critical WebSocket error detected in Chat Stream.",
+                type: "error",
+                persistent: false
+            });
         };
     }, []);
 
