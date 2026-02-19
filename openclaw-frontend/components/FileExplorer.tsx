@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAutonomousTesting, TestResult } from "@/hooks/useAutonomousTesting";
+import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface FileNode {
     name: string;
@@ -24,9 +26,30 @@ const FileIcon = ({ name }: { name: string }) => {
     return <span className="text-titanium-dim">📄</span>;
 };
 
-const FileTreeItem = ({ node, onSelect, depth = 0 }: { node: FileNode, onSelect: (path: string) => void, depth?: number }) => {
+const TestStatusBadge = ({ status }: { status: TestResult['status'] }) => {
+    if (status === 'running') return <Loader2 size={10} className="text-neon-cyan animate-spin ml-1" />;
+    if (status === 'pass') return <CheckCircle2 size={10} className="text-titanium-green ml-1 shadow-[0_0_5px_rgba(46,213,115,0.4)]" />;
+    if (status === 'fail') return (
+        <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="text-neon-red ml-1 shadow-[0_0_8px_rgba(255,107,129,0.5)]"
+        >
+            <AlertCircle size={10} />
+        </motion.div>
+    );
+    return null;
+};
+
+const FileTreeItem = ({ node, onSelect, depth = 0, testStatuses }: {
+    node: FileNode,
+    onSelect: (path: string) => void,
+    depth?: number,
+    testStatuses: Record<string, TestResult>
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const isDir = node.type === "directory";
+    const testStatus = testStatuses[node.path];
 
     return (
         <div style={{ paddingLeft: `${depth * 12}px` }}>
@@ -50,6 +73,8 @@ const FileTreeItem = ({ node, onSelect, depth = 0 }: { node: FileNode, onSelect:
                 <span className={`text-[11px] font-mono truncate ${isDir ? 'text-titanium font-bold' : 'text-titanium-light'}`}>
                     {node.name}
                 </span>
+
+                {!isDir && testStatus && <TestStatusBadge status={testStatus.status} />}
             </div>
 
             <AnimatePresence>
@@ -61,7 +86,13 @@ const FileTreeItem = ({ node, onSelect, depth = 0 }: { node: FileNode, onSelect:
                         className="overflow-hidden"
                     >
                         {node.children.map((child, idx) => (
-                            <FileTreeItem key={`${child.path}-${idx}`} node={child} onSelect={onSelect} depth={depth + 1} />
+                            <FileTreeItem
+                                key={`${child.path}-${idx}`}
+                                node={child}
+                                onSelect={onSelect}
+                                depth={depth + 1}
+                                testStatuses={testStatuses}
+                            />
                         ))}
                     </motion.div>
                 )}
@@ -74,6 +105,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
     const [tree, setTree] = useState<FileNode[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const { testStatuses } = useAutonomousTesting();
 
     // Use a simpler mock structure if fetch fails or use effect to fetch
     useEffect(() => {
@@ -117,7 +149,12 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
             </div>
             <div className="px-2">
                 {tree.map((node, idx) => (
-                    <FileTreeItem key={`${node.path}-${idx}`} node={node} onSelect={onFileSelect} />
+                    <FileTreeItem
+                        key={`${node.path}-${idx}`}
+                        node={node}
+                        onSelect={onFileSelect}
+                        testStatuses={testStatuses}
+                    />
                 ))}
             </div>
         </div>

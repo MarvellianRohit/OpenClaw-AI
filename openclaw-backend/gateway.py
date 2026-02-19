@@ -20,6 +20,7 @@ from graph_engine import project_graph
 from version_history import save_snapshot, list_snapshots, get_snapshot_content
 from memory_profiler import mock_memory_trace, trace_memory
 from auto_doc import generate_readme
+from test_engine import auto_test_cycle
 
 app = FastAPI()
 
@@ -175,6 +176,34 @@ async def vitals_endpoint(websocket: WebSocket):
     except Exception:
         pass
 
+# --- Autonomous Testing (Phase AQ) ---
+connected_test_clients = set()
+
+@app.websocket("/ws/tests")
+async def tests_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    connected_test_clients.add(websocket)
+    try:
+        while True:
+            await websocket.receive_text() # Hold open
+    except Exception:
+        pass
+    finally:
+        connected_test_clients.remove(websocket)
+
+async def broadcast_test_result(file_path: str, result: Dict[str, Any]):
+    """Broadcasts test results to all connected test clients."""
+    message = json.dumps({
+        "type": "test_result",
+        "file_path": file_path,
+        "result": result
+    })
+    for client in connected_test_clients:
+        try:
+            await client.send_text(message)
+        except:
+            pass
+
 @app.websocket("/ws/run")
 async def run_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -260,6 +289,16 @@ async def save_file_post(request: FileFixRequest):
         # Atomic write pattern could be better, but simple write for now
         async with aiofiles.open(request.filepath, mode='w') as f:
             await f.write(request.content)
+            
+        # Trigger Autonomous Testing (Phase AQ)
+        if request.filepath.endswith((".py", ".c")):
+            asyncio.create_task(auto_test_cycle(
+                request.filepath, 
+                request.content, 
+                call_llm, 
+                broadcast_test_result
+            ))
+
         return {"status": "success", "message": f"Saved {os.path.basename(request.filepath)}"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
