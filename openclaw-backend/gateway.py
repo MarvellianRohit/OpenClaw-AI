@@ -26,6 +26,8 @@ from context_manager import context_manager
 from heartbeat import HeartbeatService
 from observer import Observer, observer
 import observer as observer_module
+from deadlock_detector import DeadlockDetector
+import deadlock_detector as deadlock_module
 
 app = FastAPI()
 
@@ -120,6 +122,10 @@ async def startup_event():
     # Phase AZ: Observer Module
     observer_module.observer = Observer(broadcast_system_event)
     print("👁️ Observer Module Activated.")
+
+    # Phase BA: Deadlock Detector
+    deadlock_module.detector = DeadlockDetector(broadcast_system_event, call_llm)
+    await deadlock_module.detector.start()
 
 # ... existing ...
 
@@ -842,6 +848,11 @@ async def run_safe_command(command: str, websocket: WebSocket):
             stderr=asyncio.subprocess.PIPE
         )
 
+        # Phase BA: Register process with Deadlock Detector
+        from deadlock_detector import detector
+        if detector:
+            detector.register_process(process.pid, command)
+
         async def stream_output(stream, label):
             from compiler import compiler_agent
             while True:
@@ -877,6 +888,11 @@ async def run_safe_command(command: str, websocket: WebSocket):
              # We assume if it's a compile/run, the command contains the file name or is relative
              # This is a heuristic for detecting if the SAME code run keeps failing
              observer.track_execution(command, "Exit Code: " + str(process.returncode))
+
+        # Phase BA: Unregister from Deadlock Detector
+        from deadlock_detector import detector
+        if detector:
+            detector.unregister_process(process.pid)
 
         await websocket.send_text(f"\nProcess finished with exit code {process.returncode}")
 
