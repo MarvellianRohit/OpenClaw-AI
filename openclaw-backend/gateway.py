@@ -21,6 +21,7 @@ from version_history import save_snapshot, list_snapshots, get_snapshot_content
 from memory_profiler import mock_memory_trace, trace_memory
 from auto_doc import generate_readme
 from test_engine import auto_test_cycle
+from voice_engine import voice_engine, handle_voice_command
 
 app = FastAPI()
 
@@ -62,6 +63,12 @@ async def startup_event():
                     print(f"⚠️ Warmup Warning: {response.status}")
     except Exception as e:
         print(f"❌ Warmup Failed: {e}. Is inference_server running?")
+    
+    # Phase AT: Start Voice Engine in Background
+    try:
+        asyncio.create_task(voice_engine.listen_loop(broadcast_voice_state, execute_voice_command_actions))
+    except Exception as e:
+        print(f"🎙️ Voice Engine Failed to start: {e}")
 
 # ... existing ...
 
@@ -175,6 +182,36 @@ async def vitals_endpoint(websocket: WebSocket):
             await asyncio.sleep(1.5)
     except Exception:
         pass
+
+# --- Local Whisper (Phase AT) ---
+connected_voice_clients = set()
+
+@app.websocket("/ws/voice")
+async def voice_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    connected_voice_clients.add(websocket)
+    try:
+        while True:
+            await websocket.receive_text()
+    except Exception:
+        pass
+    finally:
+        connected_voice_clients.remove(websocket)
+
+async def broadcast_voice_state(data: Dict[str, Any]):
+    message = json.dumps(data)
+    for client in connected_voice_clients:
+        try:
+            await client.send_text(message)
+        except:
+            pass
+
+async def execute_voice_command_actions(command: str):
+    """Executes actions based on voice command."""
+    # We can broadcast to chat or trigger internal events
+    # For demo, let's just broadcast to a general action channel or chat
+    # We will implement handle_voice_command logic here or call it
+    await handle_voice_command(command, broadcast_voice_state)
 
 # --- Autonomous Testing (Phase AQ) ---
 connected_test_clients = set()

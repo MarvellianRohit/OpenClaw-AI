@@ -13,6 +13,7 @@ import SmartCommitModal from "@/components/SmartCommitModal";
 import DependencyGraphModal from "@/components/DependencyGraphModal";
 import DiffModal from "@/components/DiffModal";
 import TabBar from "@/components/TabBar";
+import VoiceWaveform from "@/components/VoiceWaveform";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -173,11 +174,26 @@ export default function Home() {
       };
       window.addEventListener('open-diff', diffHandler);
 
+      // Phase AT: Voice Command Listeners
+      const zenHandler = () => setZenMode(prev => !prev);
+      const termHandler = () => setShowTerminal(prev => !prev);
+      const buildHandler = () => handleSend("Build the project");
+      const bugHandler = () => handleSend("Find the bug in the current file");
+
+      window.addEventListener('toggle-zen', zenHandler);
+      window.addEventListener('toggle-terminal', termHandler);
+      window.addEventListener('run-build', buildHandler);
+      window.addEventListener('find-bug', bugHandler);
+
       return () => {
         window.removeEventListener('open-file', handler);
         window.removeEventListener('send-message', msgHandler);
         window.removeEventListener('open-graph', graphHandler);
         window.removeEventListener('open-diff', diffHandler);
+        window.removeEventListener('toggle-zen', zenHandler);
+        window.removeEventListener('toggle-terminal', termHandler);
+        window.removeEventListener('run-build', buildHandler);
+        window.removeEventListener('find-bug', bugHandler);
       };
     }
   }, [openFiles]); // Re-bind when openFiles changes to ensure closure is fresh? Or use functional state update in handleFileSelect.
@@ -366,6 +382,8 @@ export default function Home() {
       >
         <div className="font-mono text-xs font-bold px-2 pointer-events-none">&gt;_</div>
       </motion.button>
+
+      <VoiceWaveform />
 
     </div>
   );

@@ -13,3 +13,7 @@ chromadb
 torch
 numpy
 scipy
+faster-whisper
+sounddevice
+pyaudio
+keyboard
