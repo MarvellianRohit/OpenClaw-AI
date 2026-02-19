@@ -290,7 +290,7 @@ export default function ChatInterface({
             }
         }
 
-        sendMessage(finalMessage);
+        sendMessage(finalMessage, activeFile);
         setInputText("");
     };
 

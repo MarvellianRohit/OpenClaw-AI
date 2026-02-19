@@ -116,7 +116,7 @@ export function useOpenClawStream() {
         };
     }, [connect]);
 
-    const sendMessage = useCallback((content: string) => {
+    const sendMessage = useCallback((content: string, activeFile?: string | null) => {
         if (!content.trim() || !wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
 
         const userMsg: Message = {
@@ -132,7 +132,10 @@ export function useOpenClawStream() {
         streamRef.current = "";
         setCurrentStream("");
 
-        wsRef.current.send(JSON.stringify({ message: content }));
+        wsRef.current.send(JSON.stringify({
+            message: content,
+            active_file: activeFile
+        }));
     }, []);
 
     const sendAction = useCallback((action: any) => {

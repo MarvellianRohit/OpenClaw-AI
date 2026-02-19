@@ -438,10 +438,39 @@ async def websocket_endpoint(websocket: WebSocket):
                 continue
 
             user_message = message_data.get("message") or message_data.get("content") or ""
+            active_file = message_data.get("active_file")
 
-            
             if not user_message:
                 continue
+
+            # --- Slash Command Handling (Phase AO) ---
+            if user_message.startswith("/"):
+                command = user_message.split(" ")[0].lower()
+                
+                if command == "/explain" and active_file:
+                    try:
+                        async with aiofiles.open(active_file, mode='r') as f:
+                            content = await f.read()
+                        user_message = f"Summarize and explain the current file ({os.path.basename(active_file)}):\n\n```\n{content}\n```"
+                    except:
+                        user_message = "Summarize the open file. (Error reading file context)"
+                
+                elif command == "/test" and active_file:
+                    # Try to get the function at the top of the file or current context
+                    # In a real app, we'd use the user's actual cursor line if sent.
+                    # For now, let's grab the file content and ask for tests.
+                    try:
+                        async with aiofiles.open(active_file, mode='r') as f:
+                            content = await f.read()
+                        user_message = f"Generate comprehensive unit tests for the functions in this file ({os.path.basename(active_file)}):\n\n```\n{content}\n```"
+                    except:
+                        user_message = "Generate unit tests for the current file."
+
+                elif command == "/optimize":
+                    user_message = (
+                        "Suggest M3 Max-specific performance tweaks and optimizations for this project. "
+                        "Focus on Metal acceleration, vectorization (SIMD), and memory management."
+                    )
                 
             # Context Injection
             context_str = ""
