@@ -40,14 +40,40 @@ class HardwareMonitor:
                 # For this assignment, we'll try to get static core count if dynamic is hard.
                 # BUT prompt asked for "gpu_active_cores". 
                 # Let's try to run a lightweight check or mock if unavailable.
+                # GPU Load
                 gpu_cores = self._get_gpu_telemetry()
+
+                # Thermal Pressure (macOS)
+                thermal = 0
+                try:
+                    thermal_raw = subprocess.check_output(["sysctl", "-n", "kern.thermal.pressure"]).decode().strip()
+                    thermal = int(thermal_raw)
+                except:
+                    pass
+
+                # Swap Usage (macOS)
+                swap_used = 0
+                try:
+                    swap_raw = subprocess.check_output(["sysctl", "-n", "vm.swapusage"]).decode().strip()
+                    # Output: total = 3072.00M  used = 1530.75M  free = 1541.25M  (encrypted)
+                    used_match = re.search(r"used\s*=\s*([\d\.]+)([MKG])", swap_raw)
+                    if used_match:
+                        val = float(used_match.group(1))
+                        unit = used_match.group(2)
+                        if unit == 'G': val *= 1024
+                        elif unit == 'K': val /= 1024
+                        swap_used = round(val, 1)
+                except:
+                    pass
 
                 with self._lock:
                     self._latest_stats = {
                         "cpu_percent": cpu,
                         "ram_gb_used": round(used_gb, 1),
                         "ram_percent": round(ram_percent, 1),
-                        "gpu_active_cores": gpu_cores
+                        "gpu_active_cores": gpu_cores,
+                        "thermal_pressure": thermal,
+                        "swap_used_mb": swap_used
                     }
                 
             except Exception as e:

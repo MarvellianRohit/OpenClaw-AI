@@ -7,6 +7,8 @@ export interface SystemStats {
     memory_used_gb: string;
     gpu_active_cores: number; // Simulated
     gpu_load_percent: number; // calculated locally
+    thermal_pressure: number;
+    swap_used_mb: number;
 }
 
 export function useSystemVitals() {
@@ -16,7 +18,9 @@ export function useSystemVitals() {
         memory_percent: 0,
         memory_used_gb: "0.00",
         gpu_active_cores: 0,
-        gpu_load_percent: 0
+        gpu_load_percent: 0,
+        thermal_pressure: 0,
+        swap_used_mb: 0
     });
     const [isConnected, setIsConnected] = useState(false);
     const wsRef = useRef<WebSocket | null>(null);

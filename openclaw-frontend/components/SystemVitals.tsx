@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import PerformanceMonitor from "./PerformanceMonitor";
 import { useState } from "react";
+import { Flame } from "lucide-react";
 
 interface SystemVitalsProps {
     stats: SystemStats | null;
@@ -72,8 +73,6 @@ const RadialGauge = ({ label, value, max, color, suffix = "" }: { label: string,
 };
 
 export default function SystemVitals({ stats, isConnected }: SystemVitalsProps) {
-    const RAM_CEILING = 118;
-
     if (!stats) return (
         <div className="p-4 rounded-xl animate-pulse bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/10 shadow-lg">
             <div className="flex justify-between items-center mb-4">
@@ -89,6 +88,13 @@ export default function SystemVitals({ stats, isConnected }: SystemVitalsProps) 
         </div>
     );
 
+    const getThermalColor = (pressure: number) => {
+        if (pressure === 0) return "text-neon-cyan";
+        if (pressure === 1) return "text-orange-400";
+        if (pressure === 2) return "text-orange-600";
+        return "text-red-500";
+    };
+
     return (
         <div className="p-5 rounded-xl space-y-6 font-mono text-xs shadow-2xl relative overflow-hidden backdrop-blur-md transition-all duration-300 hover:shadow-neon/10 hover:border-white/20"
             style={{
@@ -98,7 +104,16 @@ export default function SystemVitals({ stats, isConnected }: SystemVitalsProps) 
 
             {/* Header */}
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                <h3 className="text-titanium uppercase tracking-widest text-[10px] font-bold">Titanium Vitals</h3>
+                <div className="flex items-center gap-2">
+                    <h3 className="text-titanium uppercase tracking-widest text-[10px] font-bold">Titanium Vitals</h3>
+                    <motion.div
+                        animate={stats.thermal_pressure > 0 ? { scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] } : {}}
+                        transition={{ duration: 1, repeat: Infinity }}
+                        className={getThermalColor(stats.thermal_pressure)}
+                    >
+                        <Flame size={12} fill="currentColor" />
+                    </motion.div>
+                </div>
                 <div className="flex items-center gap-2">
                     <span className="text-[9px] text-titanium-dim">{isConnected ? "ONLINE" : "OFFLINE"}</span>
                     <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-neon-cyan shadow-[0_0_8px_rgba(0,255,255,0.6)]' : 'bg-red-500'}`} />
@@ -136,11 +151,11 @@ export default function SystemVitals({ stats, isConnected }: SystemVitalsProps) 
                         transition={{ duration: 0.5 }}
                     />
                 </div>
-                {/* Hover Tooltip for RAM */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none mb-1">
-                    <div className="bg-black border border-white/20 px-2 py-1 rounded text-[9px] text-white whitespace-nowrap shadow-xl">
-                        {stats.memory_percent.toFixed(1)}% Used
-                    </div>
+                <div className="flex justify-between mt-1 text-[8px] tracking-tighter uppercase whitespace-nowrap">
+                    <span className="text-titanium-dim">Swap Usage</span>
+                    <span className={stats.swap_used_mb > 0 ? "text-orange-400 font-bold" : "text-titanium-dim"}>
+                        {stats.swap_used_mb} MB
+                    </span>
                 </div>
             </div>
 
