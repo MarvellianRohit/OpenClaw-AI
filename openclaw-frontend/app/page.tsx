@@ -22,6 +22,7 @@ import DeadlockAlert from "@/components/DeadlockAlert";
 import MorningBriefModal from "@/components/MorningBriefModal";
 import PlanningPanel from "@/components/PlanningPanel";
 import AgentThoughts from "@/components/AgentThoughts";
+import InterventionDialogue from "@/components/InterventionDialogue";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -46,6 +47,17 @@ export default function Home() {
   const [showSummary, setShowSummary] = useState(false);
   const [summaryContent, setSummaryContent] = useState("");
   const [pendingMessage, setPendingMessage] = useState<string | null>(null);
+
+  // Phase BF: Intervention Dialogue
+  const [intervention, setIntervention] = useState<{
+    isOpen: boolean;
+    message: string;
+    onApply: () => void;
+  }>({
+    isOpen: false,
+    message: "",
+    onApply: () => { }
+  });
 
   // Phase AK: Version History Diff
   const [showDiffModal, setShowDiffModal] = useState(false);
@@ -435,6 +447,16 @@ export default function Home() {
             <DeadlockAlert />
             <MorningBriefModal />
             <PlanningPanel />
+            <InterventionDialogue
+              isOpen={intervention.isOpen}
+              onClose={() => setIntervention(prev => ({ ...prev, isOpen: false }))}
+              onExplain={() => handleSend("Explain the current execution bottleneck")}
+              onApplyFix={() => {
+                intervention.onApply();
+                setIntervention(prev => ({ ...prev, isOpen: false }));
+              }}
+              message={intervention.message}
+            />
 
           </motion.div>
         )}
