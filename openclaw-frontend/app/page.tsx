@@ -14,6 +14,7 @@ import DependencyGraphModal from "@/components/DependencyGraphModal";
 import DiffModal from "@/components/DiffModal";
 import TabBar from "@/components/TabBar";
 import VoiceWaveform from "@/components/VoiceWaveform";
+import ContextToast from "@/components/ContextToast";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -384,6 +385,7 @@ export default function Home() {
       </motion.button>
 
       <VoiceWaveform />
+      <ContextToast />
 
     </div>
   );

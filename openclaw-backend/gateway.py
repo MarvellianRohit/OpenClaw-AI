@@ -22,6 +22,7 @@ from memory_profiler import mock_memory_trace, trace_memory
 from auto_doc import generate_readme
 from test_engine import auto_test_cycle
 from voice_engine import voice_engine, handle_voice_command
+from context_manager import context_manager
 
 app = FastAPI()
 
@@ -69,6 +70,21 @@ async def startup_event():
         asyncio.create_task(voice_engine.listen_loop(broadcast_voice_state, execute_voice_command_actions))
     except Exception as e:
         print(f"🎙️ Voice Engine Failed to start: {e}")
+
+    # Phase AU: Dynamic Context Scaling Monitor
+    async def memory_monitor():
+        while True:
+            changed, new_ctx = context_manager.check_memory_and_scale()
+            if changed:
+                # We reuse the vitals websocket or general status broadcast
+                await broadcast_system_event({
+                    "type": "context_scale",
+                    "high_capacity": context_manager.high_capacity_active,
+                    "tokens": new_ctx
+                })
+            await asyncio.sleep(5)  # Check every 5 seconds
+
+    asyncio.create_task(memory_monitor())
 
 # ... existing ...
 
@@ -212,6 +228,15 @@ async def execute_voice_command_actions(command: str):
     # For demo, let's just broadcast to a general action channel or chat
     # We will implement handle_voice_command logic here or call it
     await handle_voice_command(command, broadcast_voice_state)
+
+# --- System Events (Phase AU) ---
+# We can reuse the vitals or terminal socket, but let's have a dedicated system broadcast
+async def broadcast_system_event(data: Dict[str, Any]):
+    """Broadcasts a system event (like context scaling) to all active terminal and chat clients."""
+    # For simplicity, we broadcast this to the voice clients or terminal clients
+    # In a full design, there might be a dedicated 'system' websocket
+    # Let's broadcast to voice clients for now as they are listening for state
+    await broadcast_voice_state(data)
 
 # --- Autonomous Testing (Phase AQ) ---
 connected_test_clients = set()
