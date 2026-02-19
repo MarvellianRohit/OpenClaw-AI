@@ -104,6 +104,63 @@ class LintRequest(BaseModel):
 async def lint_code(request: LintRequest):
     return await lint_engine.lint_code(request.code, request.language)
 
+@app.get("/status")
+async def get_system_status():
+    """Returns a consolidated summary of vitals and project state for the CLI."""
+    stats = monitor.get_stats()
+    return {
+        "vitals": stats,
+        "project": {
+            "functions_indexed": len(project_graph.graph['functions']),
+            "active_files": len(project_graph.graph.get('files', [])),
+            "high_capacity_mode": context_manager.high_capacity_active,
+            "context_tokens": context_manager.current_context
+        }
+    }
+
+class FixRequest(BaseModel):
+    filepath: str
+
+@app.post("/tools/fix")
+async def fix_file_cli(request: FixRequest):
+    """Analyzes a file and applies a fix automatically for the CLI."""
+    try:
+        if not os.path.exists(request.filepath):
+            raise HTTPException(status_code=404, detail="File not found")
+            
+        async with aiofiles.open(request.filepath, mode='r') as f:
+            content = await f.read()
+            
+        # Simplified prompt for CLI fix
+        prompt = f"Analyze and fix any bugs in this file. Return ONLY the corrected code.\n\nFile: {request.filepath}\nContent:\n{content}"
+        
+        async with aiohttp.ClientSession() as session:
+            payload = {
+                "messages": [
+                    {"role": "system", "content": "You are OpenClaw AI. Fix the provided code. Return ONLY code."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.2
+            }
+            async with session.post(INFERENCE_URL, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    # Expecting data['choices'][0]['message']['content'] from a typical OpenAI-like API
+                    fixed_code = data['choices'][0]['message']['content'].strip()
+                    
+                    # Remove markdown code blocks if AI included them
+                    if fixed_code.startswith("```"):
+                        fixed_code = "\n".join(fixed_code.split("\n")[1:-1])
+                    
+                    async with aiofiles.open(request.filepath, mode='w') as f:
+                        await f.write(fixed_code)
+                        
+                    return {"status": "success", "file": request.filepath}
+                else:
+                    raise HTTPException(status_code=response.status, detail="AI Inference failed")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 class StructureRequest(BaseModel):
     code: str
     filepath: str
