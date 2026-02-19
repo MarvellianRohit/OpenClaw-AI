@@ -23,6 +23,7 @@ from auto_doc import generate_readme
 from test_engine import auto_test_cycle
 from voice_engine import voice_engine, handle_voice_command
 from context_manager import context_manager
+from heartbeat import HeartbeatService
 
 app = FastAPI()
 
@@ -85,6 +86,34 @@ async def startup_event():
             await asyncio.sleep(5)  # Check every 5 seconds
 
     asyncio.create_task(memory_monitor())
+
+    # Phase AX: Heartbeat Service
+    async def trigger_proactive_suggestion(suggestion_msg: str):
+        """Generates an AI suggestion based on heartbeat trigger and broadcasts it."""
+        try:
+            # We fetch a quick AI fix or strategy for the detected issue
+            async with aiohttp.ClientSession() as session:
+                payload = {
+                    "messages": [
+                        {"role": "system", "content": "You are OpenClaw Proactive AI. Provide a concise 1-sentence fix for the issue."},
+                        {"role": "user", "content": suggestion_msg}
+                    ],
+                    "max_tokens": 100
+                }
+                async with session.post(INFERENCE_URL, json=payload) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        ai_suggestion = data['choices'][0]['message']['content'].strip()
+                        await broadcast_system_event({
+                            "type": "proactive_suggestion",
+                            "severity": "info",
+                            "text": ai_suggestion
+                        })
+        except Exception as e:
+            print(f"⚠️ Proactive Suggestion Failed: {e}")
+
+    heartbeat = HeartbeatService(broadcast_system_event, trigger_proactive_suggestion)
+    await heartbeat.start()
 
 # ... existing ...
 

@@ -16,6 +16,7 @@ import TabBar from "@/components/TabBar";
 import VoiceWaveform from "@/components/VoiceWaveform";
 import ContextToast from "@/components/ContextToast";
 import BootSequence from "@/components/BootSequence";
+import HeartbeatPulse from "@/components/HeartbeatPulse";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -399,10 +400,12 @@ export default function Home() {
 
             <VoiceWaveform />
             <ContextToast />
+            <HeartbeatPulse />
 
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
+
 }
