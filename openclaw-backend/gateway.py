@@ -232,6 +232,43 @@ async def fix_file_cli(request: FixRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+class CompletionRequest(BaseModel):
+    code: str
+    language: str
+    cursor_line: int # 0-indexed for backend logic if needed, but usually just context suffices
+    
+@app.post("/tools/completion")
+async def get_completion(request: CompletionRequest):
+    """Low-latency code completion for Ghost Text."""
+    try:
+        # Construct a prompt optimized for completion
+        prompt = (
+            f"Complete the following {request.language} code. "
+            "Return ONLY the completion code that follows the cursor. "
+            "Do not repeat the input. Do not wrap in markdown.\n\n"
+            f"{request.code}"
+        )
+
+        async with aiohttp.ClientSession() as session:
+            payload = {
+                "messages": [
+                    {"role": "system", "content": "You are a code completion engine. Output ONLY code."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.1, # Low temp for deterministic completion
+                "max_tokens": 64,   # Short generation for speed
+                "stop": ["\n\n", "```"] # Stop at block ends
+            }
+            async with session.post(INFERENCE_URL, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    completion = data['choices'][0]['message']['content']
+                    return {"completion": completion}
+                return {"completion": ""}
+    except Exception as e:
+        print(f"Completion Error: {e}")
+        return {"completion": ""}
+
 class StructureRequest(BaseModel):
     code: str
     filepath: str

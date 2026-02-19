@@ -23,6 +23,11 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
     const [toolbarState, setToolbarState] = useState<{ visible: boolean; x: number; y: number; selectedText: string }>({
         visible: false, x: 0, y: 0, selectedText: ""
     });
+    // Phase BI: Ghost Text
+    const [prediction, setPrediction] = useState("");
+    const [isPredicting, setIsPredicting] = useState(false);
+    const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
     const monaco = useMonaco();
     const editorRef = useRef<any>(null);
 
@@ -228,7 +233,17 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
                 className={structure?.class || null}
             />
 
-            <div className="flex-1 relative">
+            <div className="flex-1 relative" onKeyDown={(e) => {
+                if (prediction && e.key === 'Tab') {
+                    e.preventDefault();
+                    editorRef.current.trigger('keyboard', 'type', { text: prediction });
+                    setPrediction("");
+                }
+                if (prediction && e.key === 'Escape') {
+                    e.preventDefault();
+                    setPrediction("");
+                }
+            }}>
                 <Editor
                     height="100%"
                     language={filePath.endsWith(".py") ? "python" : filePath.endsWith(".tsx") ? "typescript" : "c"}
@@ -236,8 +251,38 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
                     value={content}
                     onMount={handleEditorDidMount}
                     onChange={(val: string | undefined) => {
-                        onChange(val || "");
-                        setIsDirty((val || "") !== originalContent);
+                        const value = val || "";
+                        onChange(value);
+                        setIsDirty(value !== originalContent);
+
+                        // Phase BI: Ghost Text Logic
+                        setPrediction(""); // Clear on type
+                        if (debounceRef.current) clearTimeout(debounceRef.current);
+
+                        debounceRef.current = setTimeout(async () => {
+                            if (!editorRef.current) return;
+                            const model = editorRef.current.getModel();
+                            const position = editorRef.current.getPosition();
+                            if (!model || !position) return;
+
+                            // Heuristic: Only predict if at end of line
+                            if (position.column < model.getLineContent(position.lineNumber).length + 1) return;
+
+                            setIsPredicting(true);
+                            try {
+                                const res = await fetch("http://localhost:8000/tools/completion", {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({
+                                        code: value,
+                                        language: filePath?.endsWith(".py") ? "python" : "c",
+                                        cursor_line: position.lineNumber
+                                    })
+                                });
+                                const data = await res.json();
+                                if (data.completion) setPrediction(data.completion);
+                            } catch (e) { } finally { setIsPredicting(false); }
+                        }, 500);
                     }}
                     options={{
                         fontFamily: "JetBrains Mono, Menlo, monospace",
@@ -247,6 +292,25 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
                         padding: { top: 16 },
                     }}
                 />
+
+                {/* Ghost Text Overlay */}
+                <AnimatePresence>
+                    {prediction && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute z-10 pointer-events-none font-mono text-[13px]"
+                            style={{
+                                top: (cursorLine * 19) + 4 - (editorRef.current?.getScrollTop() || 0), // Tuned for JetBrains Mono 13px
+                                left: 60 + (editorRef.current?.getModel()?.getLineContent(cursorLine).length || 0) * 7.8 // Tuned char width
+                            }}
+                        >
+                            <span className="text-white/40">{prediction}</span>
+                            <span className="ml-2 text-[10px] text-neon-cyan bg-neon-cyan/10 px-1 rounded">TAB</span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
 
 
