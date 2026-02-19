@@ -18,6 +18,8 @@ import ContextToast from "@/components/ContextToast";
 import BootSequence from "@/components/BootSequence";
 import HeartbeatPulse from "@/components/HeartbeatPulse";
 import InterventionToast from "@/components/InterventionToast";
+import DeadlockAlert from "@/components/DeadlockAlert";
+import MorningBriefModal from "@/components/MorningBriefModal";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -403,6 +405,8 @@ export default function Home() {
             <ContextToast />
             <HeartbeatPulse />
             <InterventionToast />
+            <DeadlockAlert />
+            <MorningBriefModal />
 
           </motion.div>
         )}

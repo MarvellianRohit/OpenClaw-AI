@@ -588,6 +588,49 @@ async def autodoc():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/tools/morning-brief")
+async def get_morning_brief():
+    """Generates a personalized session summary for the day's first launch."""
+    try:
+        # 1. Get Recent Git Activity
+        import subprocess
+        git_log = "No recent git activity."
+        try:
+            git_log = subprocess.check_output(
+                ["git", "log", "-n", "3", "--pretty=format:%h: %s"], 
+                stderr=subprocess.STDOUT
+            ).decode()
+        except:
+            pass
+
+        # 2. Get Task Status
+        task_status = "No task.md found."
+        task_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "brain", "7fc12b23-5d14-4d41-90fd-2b8b3bb7d0a8", "task.md")
+        if os.path.exists(task_path):
+            async with aiofiles.open(task_path, mode='r') as f:
+                content = await f.read()
+                # Just grab the last few completed items or the current active plan
+                lines = content.splitlines()
+                recent_tasks = [l for l in lines if "[x]" in l][-5:]
+                pending_tasks = [l for l in lines if "[ ]" in l or "[/]" in l][:3]
+                task_status = f"Recently Completed:\n" + "\n".join(recent_tasks) + "\n\nPending:\n" + "\n".join(pending_tasks)
+
+        # 3. Generate Briefing with LLM
+        prompt = (
+            "You are OpenClaw. Generate a concise, friendly 'Morning Briefing' for a senior engineer. "
+            "Use the following context to summarize yesterday's wins and today's starting focus.\n\n"
+            f"Recent Git Commits:\n{git_log}\n\n"
+            f"Task Status:\n{task_status}\n\n"
+            "Style: Human-like, empathetic, professional yet warm. Keep it under 150 words. "
+            "Start with 'Good morning.' or 'Welcome back.'"
+        )
+        
+        briefing = await call_llm(prompt, max_tokens=512)
+        return {"briefing": briefing}
+
+    except Exception as e:
+        return {"briefing": f"Could not generate briefing: {str(e)}"}
+
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
