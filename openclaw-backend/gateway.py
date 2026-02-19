@@ -28,6 +28,7 @@ from observer import Observer, observer
 import observer as observer_module
 from deadlock_detector import DeadlockDetector
 import deadlock_detector as deadlock_module
+from agent_engine import get_agent_engine
 
 app = FastAPI()
 
@@ -126,6 +127,11 @@ async def startup_event():
     # Phase BA: Deadlock Detector
     deadlock_module.detector = DeadlockDetector(broadcast_system_event, call_llm)
     await deadlock_module.detector.start()
+
+    # Phase BC: Agent Engine
+    global agent_engine
+    agent_engine = get_agent_engine(call_llm)
+    print("🤖 Agent Engine Online.")
 
 # ... existing ...
 
@@ -630,6 +636,55 @@ async def get_morning_brief():
 
     except Exception as e:
         return {"briefing": f"Could not generate briefing: {str(e)}"}
+
+# --- Agentic Planning (Phase BC) ---
+class AgentPlanRequest(BaseModel):
+    goal: str
+
+class AgentExecuteRequest(BaseModel):
+    step_id: int
+    tool: str
+    parameters: Dict[str, Any]
+
+@app.post("/agent/plan")
+async def create_agent_plan(request: AgentPlanRequest):
+    try:
+        plan = await agent_engine.generate_plan(request.goal)
+        return {"status": "success", "plan": plan}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/agent/execute")
+async def execute_agent_step(request: AgentExecuteRequest):
+    """Executes a single tool call after user approval."""
+    try:
+        tool = request.tool
+        params = request.parameters
+        
+        result = "Tool not found"
+        
+        if tool == "read_file":
+            async with aiofiles.open(params["path"], mode='r') as f:
+                result = await f.read()
+        elif tool == "write_file":
+            async with aiofiles.open(params["path"], mode='w') as f:
+                await f.write(params["content"])
+                result = f"Successfully wrote to {params['path']}"
+        elif tool == "list_directory":
+            import os
+            result = str(os.listdir(params["path"]))
+        elif tool == "execute_shell":
+            process = await asyncio.create_subprocess_shell(
+                params["command"],
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE
+            )
+            stdout, stderr = await process.communicate()
+            result = (stdout.decode() + "\n" + stderr.decode()).strip()
+            
+        return {"status": "success", "result": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):

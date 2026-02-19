@@ -20,6 +20,7 @@ import HeartbeatPulse from "@/components/HeartbeatPulse";
 import InterventionToast from "@/components/InterventionToast";
 import DeadlockAlert from "@/components/DeadlockAlert";
 import MorningBriefModal from "@/components/MorningBriefModal";
+import PlanningPanel from "@/components/PlanningPanel";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -407,6 +408,7 @@ export default function Home() {
             <InterventionToast />
             <DeadlockAlert />
             <MorningBriefModal />
+            <PlanningPanel />
 
           </motion.div>
         )}
