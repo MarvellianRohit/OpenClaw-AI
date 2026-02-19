@@ -6,6 +6,7 @@ import SystemVitals from "./SystemVitals";
 import FileExplorer from "./FileExplorer";
 import VersionHistory from "./VersionHistory";
 import MemoryVisualizer from "./MemoryVisualizer";
+import EKGMonitor from "./EKGMonitor";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
@@ -221,6 +222,13 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                     )
                 )}
             </div>
+
+            {/* Phase AY: EKG Monitor */}
+            {!isCollapsed && (
+                <div className="px-4 py-3 shrink-0">
+                    <EKGMonitor />
+                </div>
+            )}
 
             {/* Footer / Vitals */}
             <div className={`shrink-0 border-t border-white/5 ${isCollapsed ? 'p-2' : 'p-0'}`}>
