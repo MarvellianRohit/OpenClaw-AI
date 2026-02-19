@@ -46,7 +46,7 @@ class HardwareMonitor:
                 # Thermal Pressure (macOS)
                 thermal = 0
                 try:
-                    thermal_raw = subprocess.check_output(["sysctl", "-n", "kern.thermal.pressure"]).decode().strip()
+                    thermal_raw = subprocess.check_output(["sysctl", "-n", "kern.thermal.pressure"], stderr=subprocess.DEVNULL).decode().strip()
                     thermal = int(thermal_raw)
                 except:
                     pass
@@ -54,7 +54,8 @@ class HardwareMonitor:
                 # Swap Usage (macOS)
                 swap_used = 0
                 try:
-                    swap_raw = subprocess.check_output(["sysctl", "-n", "vm.swapusage"]).decode().strip()
+                    swap_raw = subprocess.check_output(["sysctl", "-n", "vm.swapusage"], stderr=subprocess.DEVNULL).decode().strip()
+                    # Output: total = 3072.00M  used = 1530.75M  free = 1541.25M  (encrypted)
                     # Output: total = 3072.00M  used = 1530.75M  free = 1541.25M  (encrypted)
                     used_match = re.search(r"used\s*=\s*([\d\.]+)([MKG])", swap_raw)
                     if used_match:

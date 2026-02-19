@@ -12,6 +12,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import AudioRecorder from "./AudioRecorder";
 import DiffModal from "./DiffModal";
+import PlanningRoadmap from "./PlanningRoadmap";
 
 // Copy Button Component
 const CopyButton = ({ text }: { text: string }) => {
@@ -245,7 +246,9 @@ export default function ChatInterface({
         new: "",
     });
 
-    // Listen for summary
+    const [roadmapSteps, setRoadmapSteps] = useState<any[]>([]);
+
+    // Listen for summary and roadmap events
     useEffect(() => {
         if (!socket) return;
 
@@ -254,6 +257,34 @@ export default function ChatInterface({
                 const data = JSON.parse(event.data);
                 if (data.type === "summary" && data.content) {
                     onShowSummary?.(data.content);
+                }
+                if (data.type === "roadmap_step") {
+                    setRoadmapSteps(prev => {
+                        // Check if step exists
+                        const existingIdx = prev.findIndex(s => s.label === data.step);
+                        const newStep = {
+                            id: Date.now().toString(),
+                            label: data.step,
+                            status: data.status,
+                            logs: data.logs
+                        };
+
+                        // If "Verification" complete, likely done. 
+                        // If "Simulating", mark previous "Analyzing" as complete.
+                        const updated = [...prev];
+                        if (existingIdx >= 0) {
+                            updated[existingIdx] = { ...updated[existingIdx], ...newStep };
+                        } else {
+                            // Mark all others as complete if this is a new "active" step
+                            if (data.status === 'active') {
+                                updated.forEach(s => { if (s.status === 'active') s.status = 'complete'; });
+                            }
+                            updated.push(newStep);
+                        }
+                        return updated;
+                    });
+                    // Auto-scroll
+                    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
                 }
             } catch (e) {
                 // ignore
@@ -457,6 +488,9 @@ export default function ChatInterface({
                         )}
                     </motion.div>
                 ))}
+                <div className="max-w-4xl mx-auto px-4">
+                    <PlanningRoadmap isVisible={roadmapSteps.length > 0} steps={roadmapSteps} />
+                </div>
                 <div ref={bottomRef} className="h-4" />
             </div>
 

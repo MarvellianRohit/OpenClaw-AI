@@ -20,7 +20,7 @@ from doc_engine import doc_agent, DocumentationAgent
 from sandbox import sandbox  # Security Check
 from lint_engine import lint_engine
 from graph_engine import project_graph
-from version_history import save_snapshot, list_snapshots, get_snapshot_content
+from version_history import save_snapshot, list_snapshots, get_snapshot_content, find_deleted_code
 from memory_profiler import mock_memory_trace, trace_memory
 from test_engine import test_agent, TestAgent
 from voice_engine import voice_engine, handle_voice_command
@@ -45,6 +45,7 @@ from reasoning_engine import ReasoningEngine
 import reasoning_engine as reasoning_module
 from peripheral_monitor import PeripheralMonitor
 from episodic_memory import episodic_memory
+from sandbox_agent import sandbox_agent, SandboxAgent
 
 app = FastAPI()
 active_connections: List[WebSocket] = []
@@ -167,6 +168,11 @@ async def startup_event():
     agent_engine = get_agent_engine(call_llm)
     print("🤖 Agent Engine Online.")
 
+    # Phase BS: Sandbox Agent
+    import sandbox_agent as sb_module
+    sb_module.sandbox_agent = SandboxAgent(call_llm)
+    print("📦 Sandbox Agent Online (Docker-Ready).")
+
     # Phase BD: Memory System
     db_path = os.path.join(os.getcwd(), "..", ".gemini", "antigravity", "memory.db")
     memory_module.memory_system = MemorySystem(db_path)
@@ -248,12 +254,26 @@ async def get_system_status():
         }
     }
 
+class RetrieveDeletedRequest(BaseModel):
+    filepath: str
+    query: str
+
+@app.post("/tools/retrieve_deleted")
+async def retrieve_deleted_code_endpoint(request: RetrieveDeletedRequest):
+    """Retrieves deleted code blocks from shadow history matching the query."""
+    try:
+        results = find_deleted_code(request.filepath, request.query)
+        return {"status": "success", "results": results[:5]} # Top 5 recent matches
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 class FixRequest(BaseModel):
     filepath: str
+    use_sandbox: bool = False
 
 @app.post("/tools/fix")
 async def fix_file_cli(request: FixRequest):
-    """Analyzes a file and applies a fix automatically for the CLI."""
+    """Analyzes a file and applies a fix, optionally using the Background Sandbox."""
     try:
         if not os.path.exists(request.filepath):
             raise HTTPException(status_code=404, detail="File not found")
@@ -261,33 +281,48 @@ async def fix_file_cli(request: FixRequest):
         async with aiofiles.open(request.filepath, mode='r') as f:
             content = await f.read()
             
-        # Simplified prompt for CLI fix
+        # Simplified prompt
         prompt = f"Analyze and fix any bugs in this file. Return ONLY the corrected code.\n\nFile: {request.filepath}\nContent:\n{content}"
         
-        async with aiohttp.ClientSession() as session:
-            payload = {
-                "messages": [
-                    {"role": "system", "content": "You are OpenClaw AI. Fix the provided code. Return ONLY code."},
-                    {"role": "user", "content": prompt}
-                ],
-                "temperature": 0.2
-            }
-            async with session.post(INFERENCE_URL, json=payload) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    # Expecting data['choices'][0]['message']['content'] from a typical OpenAI-like API
-                    fixed_code = data['choices'][0]['message']['content'].strip()
-                    
-                    # Remove markdown code blocks if AI included them
-                    if fixed_code.startswith("```"):
-                        fixed_code = "\n".join(fixed_code.split("\n")[1:-1])
-                    
-                    async with aiofiles.open(request.filepath, mode='w') as f:
-                        await f.write(fixed_code)
-                        
-                    return {"status": "success", "file": request.filepath}
+        # 1. Get Initial Fix
+        fixed_code = await call_llm(prompt) # Using internal helper or direct call logic
+        # Clean markdown
+        if fixed_code.strip().startswith("```"):
+            lines = fixed_code.strip().split('\n')
+            if lines[0].startswith("```"): lines = lines[1:]
+            if lines[-1].startswith("```"): lines = lines[:-1]
+            fixed_code = "\n".join(lines)
+
+        # 2. Sandbox Verification (Phase BS)
+        if request.use_sandbox:
+            from sandbox_agent import sandbox_agent
+            if sandbox_agent:
+                ext = request.filepath.split('.')[-1]
+                language = "python" if ext == "py" else "c"
+                
+                # We need a test for verification. 
+                # For now, we'll ask the Agent to generate a quick self-test if none exists.
+                # Or just compile-check.
+                print(f"📦 Sandboxing fix for {request.filepath}...")
+                
+                # Simple compilation check loop
+                result = await sandbox_agent.smart_fix(fixed_code, language, test_code=None, broadcast_fn=broadcast_system_event)
+                
+                if result["status"] == "success":
+                    fixed_code = result["code"]
+                    print(f"✅ Sandbox Verification Passed (Attempts: {result['attempts']})")
                 else:
-                    raise HTTPException(status_code=response.status, detail="AI Inference failed")
+                    print(f"❌ Sandbox Verification Failed: {result['error']}")
+                    # We might choose to NOT save, or save with a warning.
+                    # For "Self-Correcting", we should return error if it failed after corrections.
+                    return {"status": "error", "message": "Sandbox verification failed after retries.", "debug": result}
+
+        # 3. Save
+        async with aiofiles.open(request.filepath, mode='w') as f:
+            await f.write(fixed_code)
+            
+        return {"status": "success", "file": request.filepath}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -601,6 +636,17 @@ async def save_file_post(request: FileFixRequest):
         
     try:
         LAST_ACTIVITY_TIME = time.time()
+        
+        # Phase BV: Git-Awareness (Shadow History)
+        # Snapshot the OLD content before overwriting
+        if os.path.exists(request.filepath):
+            try:
+                async with aiofiles.open(request.filepath, mode='r') as f:
+                    current_content = await f.read()
+                save_snapshot(request.filepath, current_content)
+            except Exception as e:
+                print(f"⚠️ Snapshot Error: {e}")
+
         # Atomic write pattern could be better, but simple write for now
         async with aiofiles.open(request.filepath, mode='w') as f:
             await f.write(request.content)
@@ -1323,6 +1369,7 @@ async def apply_patch(request: PatchRequest):
     execution_result = await reasoning_module.reasoning_engine.execute_plan(plan_result["plan"])
 
     return {"status": "patched", "details": execution_result}
+
 
 if __name__ == "__main__":
     uvicorn.run("gateway:app", host="0.0.0.0", port=8002)

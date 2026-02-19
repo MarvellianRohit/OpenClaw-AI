@@ -3,7 +3,7 @@ import shutil
 import time
 from typing import List, Dict, Any
 
-SNAPSHOT_DIR = os.path.join(os.getcwd(), "snapshots")
+SNAPSHOT_DIR = os.path.join(os.getcwd(), ".claw_history")
 
 def save_snapshot(filepath: str, content: str):
     """Saves a timestamped snapshot of the given file content."""
@@ -60,3 +60,67 @@ def get_snapshot_content(filepath: str, timestamp: int) -> str:
     
     with open(snapshot_path, "r") as f:
         return f.read()
+
+import difflib
+
+def find_deleted_code(filepath: str, query: str = "") -> List[Dict[str, Any]]:
+    """
+    Analyzes snapshots to find code blocks that were deleted.
+    Returns a list of deletion events matching the query.
+    """
+    snapshots = list_snapshots(filepath)
+    print(f"DEBUG: Found {len(snapshots)} snapshots for {filepath}", flush=True)
+    if len(snapshots) < 2:
+        return []
+
+    # Sort: Oldest to Newest for diffing
+    snapshots.sort(key=lambda x: x["timestamp"])
+    
+    deleted_blocks = []
+    
+    for i in range(len(snapshots) - 1):
+        prev = snapshots[i]
+        curr = snapshots[i+1]
+        
+        prev_content = get_snapshot_content(filepath, prev["timestamp"]).splitlines()
+        curr_content = get_snapshot_content(filepath, curr["timestamp"]).splitlines()
+        
+        print(f"DEBUG: Diffing {prev['timestamp']} vs {curr['timestamp']}", flush=True)
+        diff = difflib.ndiff(prev_content, curr_content)
+        
+        current_block = []
+        in_deletion = False
+        
+        for line in diff:
+            # print(f"DEBUG LINE: {line.strip()}")
+            if line.startswith("- "):
+                clean_line = line[2:]
+                current_block.append(clean_line)
+                in_deletion = True
+            elif line.startswith("  ") or line.startswith("+ "):
+                if in_deletion:
+                    # Block finished
+                    block_text = "\n".join(current_block)
+                    print(f"DEBUG: Found deleted block: {block_text}", flush=True)
+                    if query.lower() in block_text.lower():
+                        print(f"DEBUG: MATCHED query '{query}'", flush=True)
+                        deleted_blocks.append({
+                            "timestamp": curr["timestamp"], # When it was removed (roughly)
+                            "content": block_text,
+                            "lines": len(current_block)
+                        })
+                    current_block = []
+                    in_deletion = False
+                    
+        # Catch end of file deletion
+        if in_deletion:
+             block_text = "\n".join(current_block)
+             if query.lower() in block_text.lower():
+                deleted_blocks.append({
+                    "timestamp": curr["timestamp"],
+                    "content": block_text,
+                    "lines": len(current_block)
+                })
+
+    # Return most recent deletions first
+    return sorted(deleted_blocks, key=lambda x: x["timestamp"], reverse=True)

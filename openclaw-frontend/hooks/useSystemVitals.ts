@@ -9,6 +9,8 @@ export interface SystemStats {
     gpu_load_percent: number; // calculated locally
     thermal_pressure: number;
     swap_used_mb: number;
+    quality_score?: number; // Phase BU
+    avg_complexity?: number;
 }
 
 export function useSystemVitals() {
@@ -58,7 +60,9 @@ export function useSystemVitals() {
 
                     setStats({
                         ...data,
-                        gpu_load_percent: load
+                        gpu_load_percent: load,
+                        quality_score: data.quality_score,
+                        avg_complexity: data.avg_complexity
                     });
                 } catch (e) {
                     console.error("Vitals Parse Error", e);

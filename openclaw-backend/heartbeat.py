@@ -45,6 +45,11 @@ class HeartbeatService:
                     await self.trigger_suggestion_fn(
                         f"Found {len(pulse_data['high_priority_todos'])} high-priority TODOs. Would you like me to implement them?"
                     )
+                elif pulse_data.get("quality_score", 100) < 70 and pulse_data.get("refactor_candidates"):
+                     candidate = pulse_data["refactor_candidates"][0]
+                     await self.trigger_suggestion_fn(
+                        f"Proactive Audit: Function `{candidate['function']}` is getting complex (CC: {candidate['complexity']}). Shall we refactor it?"
+                     )
 
             except Exception as e:
                 print(f"❌ Heartbeat Error: {e}")
@@ -58,26 +63,37 @@ class HeartbeatService:
         # Scan for TODOs
         todos = await self.scan_for_todos()
         
-        # Check Compilation Health (for files in current session/root)
+        # Phase BU: Complexity Audit (Run less frequently, e.g., every 10 ticks = 5 mins)
+        # For simplicity, we run it every time but auditor can cache internally or we use a counter
+        # Let's run it every scan (30s) but auditor is fast enough or use a counter.
+        # Ideally, QualityAuditor should handle caching. 
+        # But let's add it here.
+        from quality_agent import quality_auditor
+        quality_metrics = await quality_auditor.scan_codebase()
+
+        # Check Compilation Health
         errors = 0
-        # For demo purposes, we scan a few key files or the whole project for syntax errors
-        # In a real scenario, this might run a 'make' or 'npm run build' check
         
         # Determine Status Text
         if errors > 0:
             status_text = "DIAGNOSING ERRORS"
         elif len(todos) > 0:
             status_text = "ANALYZING TASKS"
+        elif quality_metrics["score"] < 60:
+             status_text = "REFACTOR REQUIRED"
         else:
             status_text = "SYSTEM IDLE"
 
         return {
-            "timestamp": os.getpid(), # Simplified
+            "timestamp": os.getpid(),
             "thermals": vitals.get("temperature_c", 0),
             "cpu_load": vitals.get("cpu_usage_percent", 0),
             "compilation_errors": errors, 
-            "high_priority_todos": todos[:5], # Top 5
-            "status_text": status_text
+            "high_priority_todos": todos[:5],
+            "status_text": status_text,
+            "quality_score": quality_metrics["score"],
+            "avg_complexity": quality_metrics["avg_complexity"],
+            "refactor_candidates": quality_metrics["candidates"]
         }
 
     async def scan_for_todos(self) -> List[Dict[str, Any]]:
