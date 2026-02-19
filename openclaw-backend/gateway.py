@@ -17,6 +17,7 @@ from doc_engine import generate_docs
 from sandbox import sandbox  # Security Check
 from lint_engine import lint_engine
 from graph_engine import project_graph
+from version_history import save_snapshot, list_snapshots, get_snapshot_content
 
 app = FastAPI()
 
@@ -97,6 +98,16 @@ async def create_docs(request: DescRequest):
         return {"code": documented_code}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# --- Version History Endpoints ---
+@app.get("/history/list")
+async def get_history(path: str):
+    return list_snapshots(path)
+
+@app.get("/history/read")
+async def read_history(path: str, timestamp: int):
+    content = get_snapshot_content(path, timestamp)
+    return {"content": content}
 
 # File System Helpers
 IGNORE_DIRS = {".git", "__pycache__", "node_modules", ".next", ".gemini", "venv", "env", "dist", "build"}
@@ -500,6 +511,14 @@ async def websocket_endpoint(websocket: WebSocket):
                                 if all_passed and memory_db:
                                     for lang, code in code_blocks:
                                         memory_db.add(code, lang, tags=["compiled_success"])
+                                        # Phase AK: Save Snapshot on successful build
+                                        # We need to know which file this code belongs to.
+                                        # Compiler loop often has this in the prompt or context.
+                                        # For now, if we detect a // file: marker, use it.
+                                        file_match = re.search(r"//\s*file:\s*(.+)", code)
+                                        if file_match:
+                                            target_path = file_match.group(1).strip()
+                                            save_snapshot(target_path, code)
                             
                             if compile_error and attempt < MAX_RETRIES:
                                 print(f"Verification Failed: {compile_error}")

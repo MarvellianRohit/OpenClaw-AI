@@ -46,23 +46,23 @@ export default function DiffModal({ isOpen, onClose, originalContent, newContent
                         </div>
 
                         {/* Diff View (Side by Side) */}
-                        <div className="flex-1 grid grid-cols-2 divide-x divide-glass-border min-h-0 bg-[#0d1117]">
+                        <div className="flex-1 grid grid-cols-2 divide-x divide-glass-border min-h-0 bg-[#050505]">
                             {/* Original */}
                             <div className="flex flex-col min-h-0">
-                                <div className="p-2 text-xs font-mono text-center bg-red-500/10 text-red-400 border-b border-glass-border">
-                                    ORIGINAL
+                                <div className="p-2 text-[10px] font-mono font-bold text-center bg-[#FF3131]/20 text-[#FF3131] border-b border-[#FF3131]/20 uppercase tracking-widest">
+                                    Obsidian-Red / Removed
                                 </div>
-                                <div className="flex-1 overflow-auto p-4 font-mono text-sm text-gray-400 whitespace-pre">
+                                <div className="flex-1 overflow-auto p-4 font-mono text-sm text-[#FF3131]/60 whitespace-pre selection:bg-[#FF3131]/30">
                                     {originalContent || "(New File)"}
                                 </div>
                             </div>
 
                             {/* New */}
                             <div className="flex flex-col min-h-0">
-                                <div className="p-2 text-xs font-mono text-center bg-green-500/10 text-green-400 border-b border-glass-border">
-                                    PROPOSED
+                                <div className="p-2 text-[10px] font-mono font-bold text-center bg-[#B5FF00]/20 text-[#B5FF00] border-b border-[#B5FF00]/20 uppercase tracking-widest">
+                                    Titanium-Green / Added
                                 </div>
-                                <div className="flex-1 overflow-auto p-4 font-mono text-sm text-gray-100 whitespace-pre">
+                                <div className="flex-1 overflow-auto p-4 font-mono text-sm text-[#B5FF00] whitespace-pre selection:bg-[#B5FF00]/30">
                                     {newContent}
                                 </div>
                             </div>

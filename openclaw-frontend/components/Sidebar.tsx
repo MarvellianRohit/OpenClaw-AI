@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { MessageSquare, Settings, FolderTree, Cpu, Activity, Database, ChevronLeft, ChevronRight, Plus, Network } from "lucide-react";
+import { MessageSquare, Settings, FolderTree, Cpu, Activity, Database, ChevronLeft, ChevronRight, Plus, Network, History as HistoryIcon } from "lucide-react";
 import SystemVitals from "./SystemVitals";
 import FileExplorer from "./FileExplorer";
+import VersionHistory from "./VersionHistory";
 import { SystemStats } from "@/hooks/useSystemVitals";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
@@ -18,15 +19,16 @@ interface SidebarProps {
     onSwitchToChat?: () => void;
     onOpenSettings?: () => void; // New Prop
     onOpenGraph?: () => void;
+    activeFile: string | null; // Phase AK
 }
 
-export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph }: SidebarProps) {
+export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, className, onFileSelect, onSwitchToChat, onOpenSettings, onOpenGraph, activeFile }: SidebarProps) {
     // If controlled props not provided, manage state internally (hybrid)
     const [internalOpen, setInternalOpen] = useState(true);
     const isCollapsed = isOpen !== undefined ? !isOpen : !internalOpen;
     const toggle = () => setIsOpen ? setIsOpen(!isOpen) : setInternalOpen(!internalOpen);
 
-    const [activeTab, setActiveTab] = useState<"chat" | "files">("chat");
+    const [activeTab, setActiveTab] = useState<"chat" | "files" | "history">("chat");
     const [shimmer, setShimmer] = useState(false);
 
     const triggerShimmer = () => {
@@ -87,21 +89,30 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                             setActiveTab("chat");
                             onSwitchToChat?.();
                         }}
-                        className={`flex-1 py-3 text-xs font-mono flex items-center justify-center gap-2 transition-colors relative
+                        className={`flex-1 py-3 text-[10px] font-mono flex items-center justify-center gap-1.5 transition-colors relative
                             ${activeTab === "chat" ? "text-white" : "text-titanium-dim hover:text-white"}`}
                     >
-                        <MessageSquare size={14} />
+                        <MessageSquare size={12} />
                         CHAT
                         {activeTab === "chat" && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon-cyan" />}
                     </button>
                     <button
                         onClick={() => setActiveTab("files")}
-                        className={`flex-1 py-3 text-xs font-mono flex items-center justify-center gap-2 transition-colors relative
+                        className={`flex-1 py-3 text-[10px] font-mono flex items-center justify-center gap-1.5 transition-colors relative
                             ${activeTab === "files" ? "text-white" : "text-titanium-dim hover:text-white"}`}
                     >
-                        <FolderTree size={14} />
+                        <FolderTree size={12} />
                         FILES
                         {activeTab === "files" && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon-cyan" />}
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("history")}
+                        className={`flex-1 py-3 text-[10px] font-mono flex items-center justify-center gap-1.5 transition-colors relative
+                            ${activeTab === "history" ? "text-white" : "text-titanium-dim hover:text-white"}`}
+                    >
+                        <HistoryIcon size={12} />
+                        HISTORY
+                        {activeTab === "history" && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon-cyan" />}
                     </button>
                 </div>
             )}
@@ -113,7 +124,8 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                     <div className="flex flex-col items-center py-4 space-y-4">
                         <button className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan"><Plus size={20} /></button>
                         <button className="p-2 hover:bg-white/5 rounded-lg text-titanium-dim" onClick={onSwitchToChat}><MessageSquare size={20} /></button>
-                        <button className="p-2 hover:bg-white/5 rounded-lg text-titanium-dim"><FolderTree size={20} /></button>
+                        <button className="p-2 hover:bg-white/5 rounded-lg text-titanium-dim" onClick={() => setActiveTab("files")}><FolderTree size={20} /></button>
+                        <button className="p-2 hover:bg-white/5 rounded-lg text-titanium-dim" onClick={() => setActiveTab("history")}><HistoryIcon size={20} /></button>
                         <button className="p-2 hover:bg-white/5 rounded-lg text-titanium-dim hover:text-neon-cyan" onClick={onOpenSettings}><Settings size={20} /></button>
                     </div>
                 ) : (
@@ -123,6 +135,8 @@ export default function Sidebar({ isOpen, setIsOpen, stats, isConnected, classNa
                             onFileSelect?.(path);
                             navigator.clipboard.writeText(path);
                         }} />
+                    ) : activeTab === "history" ? (
+                        <VersionHistory activeFile={activeFile} />
                     ) : (
                         <div className="p-4 space-y-2 overflow-y-auto">
                             <button className="w-full flex items-center gap-3 p-3 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all text-left group">

@@ -11,6 +11,7 @@ import OmniSearch from "@/components/OmniSearch";
 import HardwareGrid from "@/components/HardwareGrid";
 import SmartCommitModal from "@/components/SmartCommitModal";
 import DependencyGraphModal from "@/components/DependencyGraphModal";
+import DiffModal from "@/components/DiffModal";
 import TabBar from "@/components/TabBar";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
@@ -34,6 +35,15 @@ export default function Home() {
   const [showSummary, setShowSummary] = useState(false);
   const [summaryContent, setSummaryContent] = useState("");
   const [pendingMessage, setPendingMessage] = useState<string | null>(null);
+
+  // Phase AK: Version History Diff
+  const [showDiffModal, setShowDiffModal] = useState(false);
+  const [diffData, setDiffData] = useState({
+    fileName: "",
+    originalContent: "",
+    newContent: "",
+    onAccept: () => { }
+  });
 
   const handleShowSummary = (content: string) => {
     setSummaryContent(content);
@@ -137,10 +147,17 @@ export default function Home() {
       const graphHandler = () => setShowGraph(true);
       window.addEventListener('open-graph', graphHandler);
 
+      const diffHandler = (e: any) => {
+        setDiffData(e.detail);
+        setShowDiffModal(true);
+      };
+      window.addEventListener('open-diff', diffHandler);
+
       return () => {
         window.removeEventListener('open-file', handler);
         window.removeEventListener('send-message', msgHandler);
         window.removeEventListener('open-graph', graphHandler);
+        window.removeEventListener('open-diff', diffHandler);
       };
     }
   }, [openFiles]); // Re-bind when openFiles changes to ensure closure is fresh? Or use functional state update in handleFileSelect.
@@ -192,6 +209,7 @@ export default function Home() {
             onSwitchToChat={() => setViewMode("chat")}
             onOpenSettings={() => setShowSettings(true)}
             onOpenGraph={() => setShowGraph(true)}
+            activeFile={activeFile}
           />
         </div>
 
@@ -286,6 +304,18 @@ export default function Home() {
       <DependencyGraphModal
         isOpen={showGraph}
         onClose={() => setShowGraph(false)}
+      />
+
+      <DiffModal
+        isOpen={showDiffModal}
+        onClose={() => setShowDiffModal(false)}
+        fileName={diffData.fileName}
+        originalContent={diffData.originalContent}
+        newContent={diffData.newContent}
+        onAccept={() => {
+          diffData.onAccept();
+          setShowDiffModal(false);
+        }}
       />
 
       {/* Terminal Toggle FAB (Desktop) */}
