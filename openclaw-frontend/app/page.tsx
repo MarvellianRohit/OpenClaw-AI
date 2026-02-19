@@ -15,6 +15,7 @@ import DiffModal from "@/components/DiffModal";
 import TabBar from "@/components/TabBar";
 import VoiceWaveform from "@/components/VoiceWaveform";
 import ContextToast from "@/components/ContextToast";
+import BootSequence from "@/components/BootSequence";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { Menu, X, Activity } from "lucide-react";
 import { clsx } from "clsx";
@@ -27,6 +28,7 @@ export default function Home() {
   const [showSettings, setShowSettings] = useState(false);
   const [showTerminal, setShowTerminal] = useState(false);
   const [zenMode, setZenMode] = useState(false);
+  const [isBooted, setIsBooted] = useState(false);
 
   // ...
   // ...
@@ -218,175 +220,189 @@ export default function Home() {
 
   return (
     <div className="h-screen w-screen bg-obsidian text-titanium overflow-hidden relative">
-
-      {/* Reactive Background Grid */}
-      <HardwareGrid gpuLoad={stats.gpu_load_percent} />
-
-      <div className={clsx(
-        "absolute inset-0 z-10 grid grid-cols-1 pointer-events-none transition-all duration-500",
-        zenMode ? "lg:grid-cols-1" : "lg:grid-cols-[auto_1fr_auto]"
-      )}>
-        {/* Helper div to restore pointer events for children */}
-
-        {/* Mobile Header */}
-        <div className="lg:hidden flex items-center justify-between p-4 border-b border-glass-border glass-panel z-50 pointer-events-auto bg-obsidian/80 backdrop-blur-md">
-          <span className="font-mono text-gradient-titanium font-bold text-xl">OPENCLAW AI</span>
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-titanium">
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-
-        {/* Sidebar */}
-        <AnimatePresence>
-          {!zenMode && (
-            <motion.div
-              initial={{ x: -300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className={clsx(
-                "fixed inset-0 z-40 lg:relative lg:inset-auto transition-transform duration-300 transform lg:transform-none pointer-events-auto",
-                isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-              )}
-            >
-              <Sidebar
-                className="h-full w-[260px] lg:w-auto"
-                stats={stats}
-                isConnected={isConnected}
-                onFileSelect={handleFileSelect}
-                onSwitchToChat={() => setViewMode("chat")}
-                onOpenSettings={() => setShowSettings(true)}
-                onOpenGraph={() => setShowGraph(true)}
-                activeFile={activeFile}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Main Content Area */}
-        <main className={clsx(
-          "flex-1 flex flex-col relative z-0 min-w-0 pointer-events-auto transition-all duration-500",
-          zenMode ? "max-w-5xl mx-auto w-full px-8 py-12" : ""
-        )}>
-          {viewMode === "chat" ? (
-            <ChatInterface
-              onShowSummary={handleShowSummary}
-              activeCode={editorContent}
-              activeFile={activeFile}
-              terminalLastErrors={terminalErrors}
-              pendingMessage={pendingMessage}
-              onMessageHandled={() => setPendingMessage(null)}
-            />
-          ) : (
-            <div className={clsx(
-              "flex-1 flex flex-col h-full overflow-hidden transition-all duration-500",
-              zenMode ? "rounded-2xl border border-white/5 shadow-2xl overflow-hidden" : ""
-            )}>
-              <TabBar
-                files={openFiles}
-                activeFile={activeFile}
-                onSelect={handleFileSelect}
-                onClose={handleTabClose}
-              />
-              <CodeEditor
-                filePath={activeFile}
-                content={editorContent}
-                onChange={setEditorContent}
-                onSave={handleSaveFile}
-              />
-            </div>
-          )}
-
-          {/* FAB to Toggle Vitals (Mobile Only) */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute bottom-6 right-6 z-50 p-4 rounded-full bg-neon-cyan text-obsidian shadow-[0_0_20px_rgba(0,243,255,0.4)] hover:shadow-[0_0_30px_rgba(0,243,255,0.6)] transition-shadow lg:hidden"
-            onClick={() => setShowVitals(!showVitals)}
+      <AnimatePresence mode="wait">
+        {!isBooted ? (
+          <BootSequence key="boot" onComplete={() => setIsBooted(true)} />
+        ) : (
+          <motion.div
+            key="dashboard"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="h-full w-full relative"
           >
-            <Activity size={24} />
-          </motion.button>
-        </main>
+            {/* Reactive Background Grid */}
+            <HardwareGrid gpuLoad={stats.gpu_load_percent} />
 
-        {/* Right Panel (Vitals) */}
-        <AnimatePresence mode="wait">
-          {showVitals && (
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: 320, opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="overflow-hidden pointer-events-auto hidden lg:block"
+            <div className={clsx(
+              "absolute inset-0 z-10 grid grid-cols-1 pointer-events-none transition-all duration-500",
+              zenMode ? "lg:grid-cols-1" : "lg:grid-cols-[auto_1fr_auto]"
+            )}>
+              {/* ... (Existing grid children) ... */}
+              {/* Helper div to restore pointer events for children */}
+
+              {/* Mobile Header */}
+              <div className="lg:hidden flex items-center justify-between p-4 border-b border-glass-border glass-panel z-50 pointer-events-auto bg-obsidian/80 backdrop-blur-md">
+                <span className="font-mono text-gradient-titanium font-bold text-xl">OPENCLAW AI</span>
+                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-titanium">
+                  {isMobileMenuOpen ? <X /> : <Menu />}
+                </button>
+              </div>
+
+              {/* Sidebar */}
+              <AnimatePresence>
+                {!zenMode && (
+                  <motion.div
+                    initial={{ x: -300, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -300, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className={clsx(
+                      "fixed inset-0 z-40 lg:relative lg:inset-auto transition-transform duration-300 transform lg:transform-none pointer-events-auto",
+                      isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                    )}
+                  >
+                    <Sidebar
+                      className="h-full w-[260px] lg:w-auto"
+                      stats={stats}
+                      isConnected={isConnected}
+                      onFileSelect={handleFileSelect}
+                      onSwitchToChat={() => setViewMode("chat")}
+                      onOpenSettings={() => setShowSettings(true)}
+                      onOpenGraph={() => setShowGraph(true)}
+                      activeFile={activeFile}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Main Content Area */}
+              <main className={clsx(
+                "flex-1 flex flex-col relative z-0 min-w-0 pointer-events-auto transition-all duration-500",
+                zenMode ? "max-w-5xl mx-auto w-full px-8 py-12" : ""
+              )}>
+                {viewMode === "chat" ? (
+                  <ChatInterface
+                    onShowSummary={handleShowSummary}
+                    activeCode={editorContent}
+                    activeFile={activeFile}
+                    terminalLastErrors={terminalErrors}
+                    pendingMessage={pendingMessage}
+                    onMessageHandled={() => setPendingMessage(null)}
+                  />
+                ) : (
+                  <div className={clsx(
+                    "flex-1 flex flex-col h-full overflow-hidden transition-all duration-500",
+                    zenMode ? "rounded-2xl border border-white/5 shadow-2xl overflow-hidden" : ""
+                  )}>
+                    <TabBar
+                      files={openFiles}
+                      activeFile={activeFile}
+                      onSelect={handleFileSelect}
+                      onClose={handleTabClose}
+                    />
+                    <CodeEditor
+                      filePath={activeFile}
+                      content={editorContent}
+                      onChange={setEditorContent}
+                      onSave={handleSaveFile}
+                    />
+                  </div>
+                )}
+
+                {/* FAB to Toggle Vitals (Mobile Only) */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute bottom-6 right-6 z-50 p-4 rounded-full bg-neon-cyan text-obsidian shadow-[0_0_20px_rgba(0,243,255,0.4)] hover:shadow-[0_0_30px_rgba(0,243,255,0.6)] transition-shadow lg:hidden"
+                  onClick={() => setShowVitals(!showVitals)}
+                >
+                  <Activity size={24} />
+                </motion.button>
+              </main>
+
+              {/* Right Panel (Vitals) */}
+              <AnimatePresence mode="wait">
+                {showVitals && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 320, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="overflow-hidden pointer-events-auto hidden lg:block"
+                  >
+                    <RightPanel stats={stats} isConnected={isConnected} isOpen={true} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Desktop FAB */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-glass-bg border border-neon-cyan/50 text-neon-cyan shadow-lg backdrop-blur-md pointer-events-auto block lg:hidden"
+              onClick={() => setShowVitals(!showVitals)}
+              title="Toggle System Vitals"
             >
-              <RightPanel stats={stats} isConnected={isConnected} isOpen={true} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+              <Activity size={20} />
+            </motion.button>
 
-      {/* Desktop FAB */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-glass-bg border border-neon-cyan/50 text-neon-cyan shadow-lg backdrop-blur-md pointer-events-auto block lg:hidden"
-        onClick={() => setShowVitals(!showVitals)}
-        title="Toggle System Vitals"
-      >
-        <Activity size={20} />
-      </motion.button>
+            <PerformanceModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
-      <PerformanceModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+            <Terminal
+              isOpen={showTerminal}
+              onClose={() => setShowTerminal(false)}
+              onLineReceived={handleTerminalOutput}
+            />
 
-      <Terminal
-        isOpen={showTerminal}
-        onClose={() => setShowTerminal(false)}
-        onLineReceived={handleTerminalOutput}
-      />
+            <OmniSearch
+              isOpen={showOmniSearch}
+              onClose={() => setShowOmniSearch(false)}
+              onSelectFile={(path, line) => {
+                handleFileSelect(path);
+              }}
+            />
 
-      <OmniSearch
-        isOpen={showOmniSearch}
-        onClose={() => setShowOmniSearch(false)}
-        onSelectFile={(path, line) => {
-          handleFileSelect(path);
-        }}
-      />
+            <SmartCommitModal
+              isOpen={showSummary}
+              onClose={() => setShowSummary(false)}
+              summary={summaryContent}
+            />
 
-      <SmartCommitModal
-        isOpen={showSummary}
-        onClose={() => setShowSummary(false)}
-        summary={summaryContent}
-      />
+            <DependencyGraphModal
+              isOpen={showGraph}
+              onClose={() => setShowGraph(false)}
+            />
 
-      <DependencyGraphModal
-        isOpen={showGraph}
-        onClose={() => setShowGraph(false)}
-      />
+            <DiffModal
+              isOpen={showDiffModal}
+              onClose={() => setShowDiffModal(false)}
+              fileName={diffData.fileName}
+              originalContent={diffData.originalContent}
+              newContent={diffData.newContent}
+              onAccept={() => {
+                diffData.onAccept();
+                setShowDiffModal(false);
+              }}
+            />
 
-      <DiffModal
-        isOpen={showDiffModal}
-        onClose={() => setShowDiffModal(false)}
-        fileName={diffData.fileName}
-        originalContent={diffData.originalContent}
-        newContent={diffData.newContent}
-        onAccept={() => {
-          diffData.onAccept();
-          setShowDiffModal(false);
-        }}
-      />
+            {/* Terminal Toggle FAB (Desktop) */}
+            <motion.button
+              className="fixed bottom-8 left-8 z-50 p-3 rounded-full bg-black/80 border border-neon-cyan/50 text-neon-cyan shadow-lg backdrop-blur-md hidden lg:block hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-shadow"
+              onClick={() => setShowTerminal(!showTerminal)}
+              title="Toggle Terminal"
+              whileHover={{ scale: 1.1 }}
+            >
+              <div className="font-mono text-xs font-bold px-2 pointer-events-none">&gt;_</div>
+            </motion.button>
 
-      {/* Terminal Toggle FAB (Desktop) */}
-      <motion.button
-        className="fixed bottom-8 left-8 z-50 p-3 rounded-full bg-black/80 border border-neon-cyan/50 text-neon-cyan shadow-lg backdrop-blur-md hidden lg:block hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-shadow"
-        onClick={() => setShowTerminal(!showTerminal)}
-        title="Toggle Terminal"
-        whileHover={{ scale: 1.1 }}
-      >
-        <div className="font-mono text-xs font-bold px-2 pointer-events-none">&gt;_</div>
-      </motion.button>
+            <VoiceWaveform />
+            <ContextToast />
 
-      <VoiceWaveform />
-      <ContextToast />
-
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
