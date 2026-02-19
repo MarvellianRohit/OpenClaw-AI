@@ -83,6 +83,12 @@ OpenClaw AI is now a highly integrated, performance-optimized, and aesthetically
 6. **One-Click Setup** (Metal-optimized environment config).
 7. **Clean Version Control** (Flattened repo, optimized `.gitignore`).
 8. **Version History Timeline** (Titanium-Green & Obsidian-Red Diffing).
+9. **Real-time Memory Visualizer** (lldb-powered heat map).
+
+## Memory Visualizer (Phase AL)
+- **Engine**: Intercepts `malloc` and `free` using a custom `lldb` python wrapper.
+- **Visuals**: A glowing 12x12 grid representing memory blocks with "Cyan-Glow" for allocations.
+- **Stats**: Live allocation counters and heap density monitoring.
 
 ## Version History (Phase AK)
 - **Engine**: Automated snapshots on every successful LLM-driven build.

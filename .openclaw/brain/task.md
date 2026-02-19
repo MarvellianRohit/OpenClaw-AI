@@ -215,3 +215,10 @@
     - [x] Frontend: Add "History" tab to `Sidebar.tsx`.
     - [x] Frontend: Update `DiffModal.tsx` with Titanium-Green/Obsidian-Red theme.
 
+- [x] **Phase AL: Memory Visualizer Panel**
+    - [x] Backend: Create `memory_profiler.py` using `lldb` to track allocations.
+    - [x] Backend: Add `/ws/memory` endpoint to stream events.
+    - [x] Frontend: Create `MemoryVisualizer.tsx` Grid component.
+    - [x] Frontend: Implement Cyan-Glow to Dark-Grey transition logic.
+    - [x] Frontend: Integrate with Sidebar or Floating Modal.
+

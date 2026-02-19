@@ -175,10 +175,22 @@ Implement a timeline-based version tracking system with high-contrast diffing.
 - Displays snapshots for the currently active file.
 - Interaction: Clicking a snapshot opens the `DiffModal`.
 
-#### [MODIFY] Sidebar.tsx
-- Add a third tab "History" alongside Chat and Files.
+### Phase AL: Memory Visualizer Panel
+Real-time C memory allocation tracking and visualization.
 
-#### [MODIFY] DiffModal.tsx
-- Update colors:
-  - Additions: Titanium-Green (`#B5FF00` or similar neon-green on dark background).
-  - Removals: Obsidian-Red (`#FF3131` or deep red).
+#### [NEW] memory_profiler.py (Backend)
+- Uses `lldb` python scripts to intercept `malloc(size_t)` and `free(void*)`.
+- Captures: `timestamp`, `type` (alloc/free), `address`, `size`.
+- Streams events via WebSocket to the frontend.
+
+#### [MODIFY] gateway.py
+- Add `/ws/memory` endpoint.
+- Provide a trigger to start profiling a specific C binary.
+
+#### [NEW] MemoryVisualizer.tsx (Frontend)
+- **Grid Layout**: Represents a high-level view of the heap.
+- **Visuals**:
+  - `Cyan Glow`: Active allocation.
+  - `Pulse`: Triggered on new `malloc`.
+  - `Fade to Dark Grey`: Triggered on `free`.
+- **Aesthetic**: Industrial dark theme, high contrast.
