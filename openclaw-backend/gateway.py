@@ -1461,6 +1461,26 @@ async def voice_socket(websocket: WebSocket):
     except WebSocketDisconnect:
         print("🎙️ Voice Dictation Disconnected")
 
+@app.websocket("/ws/heartbeat")
+async def heartbeat_socket(websocket: WebSocket):
+    await websocket.accept()
+    import psutil
+    try:
+        while True:
+            # Emit mock/system stats for Neural Flow UI
+            cpu = psutil.cpu_percent(interval=None)
+            await websocket.send_json({
+                "type": "pulse",
+                "data": {
+                    "cpu_percent": cpu,
+                    "thermals": 65, # Mock value for M3 Max
+                    "compilation_errors": 0
+                }
+            })
+            await asyncio.sleep(1)
+    except WebSocketDisconnect:
+        pass
+
 
 @app.get("/agent/trace")
 async def get_agent_trace():
