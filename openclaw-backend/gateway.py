@@ -28,6 +28,7 @@ from context_manager import context_manager
 from heartbeat import HeartbeatService
 from observer import Observer, observer
 import observer as observer_module
+from rag_system import rag_system
 from deadlock_detector import DeadlockDetector
 
 class FileFixRequest(BaseModel):
@@ -1467,6 +1468,26 @@ async def get_agent_trace():
     if reasoning_module.reasoning_engine:
         return reasoning_module.reasoning_engine.get_latest_trace()
     return {}
+
+@app.post("/ingest")
+async def ingest_document(file: UploadFile = File(...)):
+    """Ingests a markdown, txt, or pdf document into the local RAG DB."""
+    try:
+        os.makedirs("temp_uploads", exist_ok=True)
+        file_path = f"temp_uploads/{file.filename}"
+        
+        async with aiofiles.open(file_path, 'wb') as out_file:
+            content = await file.read()
+            await out_file.write(content)
+            
+        chunks = rag_system.ingest_file(file_path, file.filename)
+        os.remove(file_path)
+        
+        return {"status": "success", "filename": file.filename, "chunks_indexed": chunks}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 class PatchRequest(BaseModel):
     finding: Dict[str, Any]

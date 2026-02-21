@@ -11,7 +11,8 @@ import {
     Layout,
     Activity,
     MoveRight,
-    Sliders
+    Sliders,
+    Book
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
@@ -27,6 +28,7 @@ interface CommandPaletteProps {
         runBuild: () => void;
         toggleVariableMap: () => void;
         togglePromptLab: () => void;
+        toggleDocumentationHub: () => void;
     };
     stats: any;
 }
@@ -39,6 +41,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectFile, actions,
 
     // Hardcoded Actions for Natural Language Matching
     const staticActions = [
+        { id: "docs_hub", label: "Open Documentation Hub", keywords: ["docs", "rag", "ingest", "pdf", "manual"], icon: Book, action: actions.toggleDocumentationHub },
         { id: "prompt_lab", label: "Open Prompt Laboratory", keywords: ["prompt", "tune", "sliders", "personality", "lab"], icon: Sliders, action: actions.togglePromptLab },
         { id: "var_map", label: "Open Live Variable Map", keywords: ["variable", "map", "trace", "graph", "live"], icon: Activity, action: actions.toggleVariableMap },
         { id: "zen", label: "Toggle Zen Mode", keywords: ["zen", "focus", "hide"], icon: Layout, action: actions.toggleZen },

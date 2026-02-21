@@ -2,6 +2,7 @@ import json
 import os
 import asyncio
 from typing import List, Dict, Any, Optional
+from rag_system import rag_system
 
 class ReasoningEngine:
     def __init__(self, call_llm_fn):
@@ -10,6 +11,18 @@ class ReasoningEngine:
 
     async def generate_plan(self, user_query: str, context: str) -> Dict[str, Any]:
         """Generates a Chain-of-Thought plan for a complex query."""
+        
+        # Phase BZ: Local RAG Retrieval
+        try:
+            rag_results = rag_system.search(user_query, n_results=3)
+            if rag_results:
+                rag_context = "\n\n[RAG Document Context]:\n"
+                for i, hit in enumerate(rag_results):
+                    filename = hit['metadata'].get('filename', 'Unknown')
+                    rag_context += f"--- Excerpt from {filename} ---\n{hit['content']}\n"
+                context += rag_context
+        except Exception as e:
+            print(f"RAG Search Error: {e}")
         
         prompt = (
             f"You are the Reasoning Engine for OpenClaw (M3 Max optimized).\n"

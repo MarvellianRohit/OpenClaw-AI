@@ -27,6 +27,7 @@ import SecurityReportModal from "@/components/SecurityReportModal";
 import CommandPalette from "@/components/CommandPalette";
 import VariableMapPanel from "@/components/VariableMapPanel";
 import PromptLaboratory from "@/components/PromptLaboratory";
+import DocumentationHub from "@/components/DocumentationHub";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { useOpenClawStream } from "@/hooks/useOpenClawStream";
 import { Menu, X, Activity } from "lucide-react";
@@ -49,6 +50,7 @@ export default function Home() {
   const [showPalette, setShowPalette] = useState(false); // Phase BP
   const [isVariableMapOpen, setIsVariableMapOpen] = useState(false); // Phase BW
   const [isPromptLabOpen, setIsPromptLabOpen] = useState(false); // Phase BX
+  const [showDocsHub, setShowDocsHub] = useState(false); // Phase BZ
 
   // Phase Z & AA States
   const [showGraph, setShowGraph] = useState(false);
@@ -621,7 +623,8 @@ export default function Home() {
                 checkLeaks: () => { }, // Trigger Leak Modal logic if we can expose it, or just send message
                 runBuild: () => handleSend("Build the project"),
                 toggleVariableMap: () => setIsVariableMapOpen(p => !p),
-                togglePromptLab: () => setIsPromptLabOpen(p => !p)
+                togglePromptLab: () => setIsPromptLabOpen(p => !p),
+                toggleDocumentationHub: () => setShowDocsHub(p => !p)
               }}
               stats={stats}
             />
@@ -635,6 +638,9 @@ export default function Home() {
             {isPromptLabOpen && (
               <PromptLaboratory isOpen={isPromptLabOpen} onClose={() => setIsPromptLabOpen(false)} />
             )}
+
+            {/* Phase BZ: Documentation Hub */}
+            <DocumentationHub isOpen={showDocsHub} onClose={() => setShowDocsHub(false)} />
 
 
           </motion.div>
