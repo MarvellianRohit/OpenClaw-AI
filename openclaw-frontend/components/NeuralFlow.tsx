@@ -12,7 +12,7 @@ export default function NeuralFlow() {
 
     useEffect(() => {
         const connect = () => {
-            const ws = new WebSocket("ws://localhost:8002/ws/heartbeat");
+            const ws = new WebSocket("ws://localhost:8000/ws/heartbeat");
 
             ws.onmessage = (event) => {
                 try {

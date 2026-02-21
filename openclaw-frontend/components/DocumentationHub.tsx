@@ -37,7 +37,7 @@ export default function DocumentationHub({ isOpen, onClose }: DocumentationHubPr
                     const formData = new FormData();
                     formData.append('file', file);
 
-                    const res = await fetch('http://localhost:8002/ingest', {
+                    const res = await fetch('http://localhost:8000/ingest', {
                         method: 'POST',
                         body: formData
                     });
@@ -106,8 +106,8 @@ export default function DocumentationHub({ isOpen, onClose }: DocumentationHubPr
                                 onDragLeave={handleDragLeave}
                                 onDrop={handleDrop}
                                 className={`relative w-full h-48 border-2 border-dashed rounded-xl flex flex-col items-center justify-center transition-all ${isDragging
-                                        ? 'border-purple-500 bg-purple-500/10'
-                                        : 'border-[#333] hover:border-purple-500/50 bg-[#111]'
+                                    ? 'border-purple-500 bg-purple-500/10'
+                                    : 'border-[#333] hover:border-purple-500/50 bg-[#111]'
                                     }`}
                             >
                                 <UploadCloud className={`w-12 h-12 mb-4 transition-colors ${isDragging ? 'text-purple-400' : 'text-[#444]'}`} />

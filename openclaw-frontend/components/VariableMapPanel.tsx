@@ -86,7 +86,7 @@ export default function VariableMapPanel({ onClose }: { onClose: () => void }) {
         setUpdatedNodes(new Set());
         setCurrentLine(null);
 
-        const ws = new WebSocket("ws://localhost:8002/ws/variable_map");
+        const ws = new WebSocket("ws://localhost:8000/ws/variable_map");
         wsRef.current = ws;
 
         ws.onopen = () => {

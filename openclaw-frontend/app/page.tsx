@@ -16,7 +16,6 @@ import TabBar from "@/components/TabBar";
 import VoiceWaveform from "@/components/VoiceWaveform";
 import ContextToast from "@/components/ContextToast";
 import BootSequence from "@/components/BootSequence";
-import NeuralFlow from "@/components/NeuralFlow";
 import InterventionToast from "@/components/InterventionToast";
 import DeadlockAlert from "@/components/DeadlockAlert";
 import MorningBriefModal from "@/components/MorningBriefModal";
@@ -588,7 +587,6 @@ export default function Home() {
 
             <VoiceWaveform />
             <ContextToast />
-            <NeuralFlow />
             <InterventionToast />
             <DeadlockAlert />
             <MorningBriefModal />

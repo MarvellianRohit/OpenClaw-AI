@@ -22,7 +22,7 @@ export default function PromptLaboratory({ isOpen, onClose }: PromptLaboratoryPr
         const saveConfig = async () => {
             setIsSaving(true);
             try {
-                await fetch('http://localhost:8002/config/prompt', {
+                await fetch('http://localhost:8000/config/prompt', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ creativity, rigor, conciseness, proactivity })

@@ -8,10 +8,10 @@ export type MonitorState = "healthy" | "processing" | "error" | "warning";
 export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings: any[]) => void }) {
     const [state, setState] = useState<MonitorState>("healthy");
     const [statusText, setStatusText] = useState("SYSTEM IDLE");
-    const [points, setPoints] = useState<number[]>(new Array(40).fill(50));
     const [findings, setFindings] = useState<any[]>([]); // Store security findings
+    const [isPulsing, setIsPulsing] = useState(false);
+    const [tokenSpeed, setTokenSpeed] = useState(1);
     const requestRef = useRef<number | null>(null);
-    const pulseRef = useRef(0);
 
     interface EKGMonitorProps {
         onOpenReport?: (findings: any[]) => void;
@@ -26,6 +26,11 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
                     const data = JSON.parse(event.data);
                     if (data.type === "pulse") {
                         setStatusText(data.data.status_text || "SYSTEM IDLE");
+                        setIsPulsing(true);
+                        const speed = Math.min(3, Math.max(0.5, (data.data.cpu_percent || 10) / 10));
+                        setTokenSpeed(speed);
+                        setTimeout(() => setIsPulsing(false), 500 / speed);
+
                         // Check for errors in pulse data
                         if (data.data.compilation_errors > 0) {
                             setState("error");
@@ -45,33 +50,6 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
         };
 
         connect();
-
-        // EKG Animation Logic
-        const animate = () => {
-            pulseRef.current += 0.15;
-
-            setPoints((prev) => {
-                let newVal = 50;
-                const x = pulseRef.current % 10;
-
-                // EKG Pattern Logic
-                if (x > 1 && x < 1.5) newVal = 20; // P-wave (simplified)
-                else if (x > 2 && x < 2.2) newVal = 80; // Q-dip
-                else if (x > 2.2 && x < 2.6) newVal = 10; // R-peak
-                else if (x > 2.6 && x < 2.8) newVal = 90; // S-dip
-                else if (x > 3.5 && x < 4.5) newVal = 40; // T-wave
-
-                // Add random jitter based on state
-                const jitter = state === "processing" ? (Math.random() - 0.5) * 10 : (Math.random() - 0.5) * 3;
-
-                const next = [...prev.slice(1), newVal + jitter];
-                return next;
-            });
-            requestRef.current = requestAnimationFrame(animate);
-        };
-
-        requestRef.current = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(requestRef.current!);
     }, [state]);
 
     const getColor = () => {
@@ -83,7 +61,6 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
         }
     };
 
-    const path = points.map((p, i) => `${i * 5},${p}`).join(" L");
 
     return (
         <div
@@ -117,27 +94,54 @@ export default function EKGMonitor({ onOpenReport }: { onOpenReport?: (findings:
                     </defs>
                     <rect width="200" height="100" fill="url(#grid)" />
 
-                    {/* Glowing Waveform */}
-                    <motion.path
-                        d={`M 0,50 L ${path}`}
-                        fill="none"
-                        stroke={getColor()}
-                        strokeWidth="1.5"
+                    {/* Neural Flow Core Nerve */}
+                    <path
+                        d="M -10,50 Q 50,-10 100,50 T 210,50"
+                        fill="transparent"
+                        stroke="rgba(168, 85, 247, 0.2)"
+                        strokeWidth="3"
                         strokeLinecap="round"
-                        strokeLinejoin="round"
-                        initial={false}
-                        animate={{ stroke: getColor() }}
-                        className="filter drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"
+                        style={{ filter: "drop-shadow(0 0 4px rgba(168, 85, 247, 0.4))" }}
+                    />
+                    {/* Firing Spark Pulse */}
+                    <motion.path
+                        d="M -10,50 Q 50,-10 100,50 T 210,50"
+                        fill="transparent"
+                        stroke="#A855F7"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={isPulsing ? {
+                            pathLength: [0, 1, 1],
+                            opacity: [0, 1, 0],
+                            pathOffset: [0, 0, 1]
+                        } : { pathLength: 0, opacity: 0 }}
+                        transition={{
+                            duration: 1.5 / tokenSpeed,
+                            ease: "easeInOut"
+                        }}
+                        style={{ filter: "drop-shadow(0 0 12px rgba(168, 85, 247, 0.9)) blur(1px)" }}
                     />
 
-                    {/* Scanning Line */}
-                    <motion.line
-                        x1="0" y1="0" x2="0" y2="100"
-                        stroke={getColor()}
-                        strokeWidth="0.5"
-                        strokeOpacity="0.3"
-                        animate={{ x: [0, 200] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    {/* Cyan Accent Track */}
+                    <motion.path
+                        d="M -10,50 Q 50,-10 100,50 T 210,50"
+                        fill="transparent"
+                        stroke="#00F3FF"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={isPulsing ? {
+                            pathLength: [0, 0.5, 1],
+                            opacity: [0, 0.8, 0],
+                            pathOffset: [0, 0.5, 1]
+                        } : { pathLength: 0, opacity: 0 }}
+                        transition={{
+                            duration: 1 / tokenSpeed,
+                            ease: "easeOut",
+                            delay: 0.1
+                        }}
+                        style={{ filter: "drop-shadow(0 0 8px rgba(0, 243, 255, 0.8))" }}
                     />
                 </svg>
             </div>

@@ -20,7 +20,7 @@ export default function VoiceRecorder({ onCodeGenerated }: VoiceRecorderProps) {
     useEffect(() => {
         // Connect WebSocket
         const connectWs = () => {
-            const socket = new WebSocket('ws://localhost:8002/ws/voice');
+            const socket = new WebSocket('ws://localhost:8000/ws/voice');
             socket.binaryType = 'arraybuffer';
 
             socket.onopen = () => console.log('🎙️ Voice WS Connected');
