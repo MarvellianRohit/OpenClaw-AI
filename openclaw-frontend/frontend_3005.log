@@ -7,61 +7,28 @@
 - Network:       http://192.168.31.42:3005
 
 ✓ Starting...
-✓ Ready in 359ms
-⨯ ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/app/globals.css:1:1: Cannot apply unknown utility class `brushed-metal`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/@tailwindcss/postcss/dist/index.js:10:6913)]
-    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-
-
- GET / 500 in 1246ms (compile: 1186ms, render: 61ms)
-⨯ ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/app/globals.css:1:1: Cannot apply unknown utility class `brushed-metal`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/@tailwindcss/postcss/dist/index.js:10:6913)]
-    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-
-
- GET / 500 in 9ms (compile: 3ms, render: 6ms)
- GET / 200 in 342ms (compile: 81ms, render: 262ms)
- GET /icon-192.png 404 in 74ms (compile: 44ms, render: 30ms)
- GET / 200 in 22ms (compile: 1852µs, render: 20ms)
- GET /icon-192.png 404 in 18ms (compile: 1715µs, render: 16ms)
-✓ Compiled in 19ms
-✓ Compiled in 12ms
-✓ Compiled in 38ms
-✓ Compiled in 12ms
-✓ Compiled in 11ms
- GET / 200 in 208ms (compile: 20ms, render: 188ms)
- GET /icon-192.png 404 in 18ms (compile: 3ms, render: 15ms)
-✓ Compiled in 11ms
- GET / 200 in 28ms (compile: 17ms, render: 10ms)
-✓ Compiled in 95ms
-✓ Compiled in 10ms
-✓ Compiled in 13ms
-✓ Compiled in 12ms
-✓ Compiled in 10ms
-✓ Compiled in 33ms
-✓ Compiled in 31ms
-[?25h
+✓ Ready in 339ms
+ GET /?refresh=1 200 in 456ms (compile: 150ms, render: 306ms)
+ GET / 200 in 461ms (compile: 179ms, render: 282ms)
+ GET /icon-192.png 404 in 67ms (compile: 25ms, render: 42ms)
+ GET /icon-192.png 404 in 17ms (compile: 1993µs, render: 15ms)
+ GET /?refresh=2 200 in 68ms (compile: 5ms, render: 63ms)
+ GET /icon-192.png 404 in 20ms (compile: 1974µs, render: 18ms)
+ GET /?refresh=2 200 in 24ms (compile: 2ms, render: 22ms)
+ GET /icon-192.png 404 in 23ms (compile: 5ms, render: 18ms)
+ GET /?refresh=2 200 in 35ms (compile: 5ms, render: 31ms)
+ GET /icon-192.png 404 in 23ms (compile: 2ms, render: 21ms)
+ GET / 200 in 22ms (compile: 3ms, render: 20ms)
+ GET /icon-192.png 404 in 20ms (compile: 3ms, render: 17ms)
+ GET / 200 in 22ms (compile: 3ms, render: 19ms)
+ GET /icon-192.png 404 in 21ms (compile: 1685µs, render: 19ms)
+ GET / 200 in 21ms (compile: 3ms, render: 18ms)
+ GET /icon-192.png 404 in 21ms (compile: 2ms, render: 18ms)
+ GET / 200 in 23ms (compile: 3ms, render: 21ms)
+ GET /icon-192.png 404 in 19ms (compile: 2ms, render: 17ms)
+ GET / 200 in 22ms (compile: 2ms, render: 20ms)
+ GET /icon-192.png 404 in 19ms (compile: 3ms, render: 16ms)
+ GET / 200 in 24ms (compile: 2ms, render: 22ms)
+ GET /icon-192.png 404 in 26ms (compile: 3ms, render: 24ms)
+ GET / 200 in 41ms (compile: 12ms, render: 30ms)
+ GET /apple-touch-icon-precomposed.png 404 in 67ms (compile: 5ms, render: 63ms)

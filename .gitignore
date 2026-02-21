@@ -21,3 +21,5 @@ openclaw-backend/temp_code/
 # OS files
 .DS_Store
 *.swp
+openclaw-env-39/
+*.log

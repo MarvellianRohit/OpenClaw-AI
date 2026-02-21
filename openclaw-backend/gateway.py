@@ -31,9 +31,18 @@ import observer as observer_module
 from rag_system import rag_system
 from deadlock_detector import DeadlockDetector
 
+import whisper # Add whisper import here for typing if needed, but it's lazy loaded.
+
 class FileFixRequest(BaseModel):
     filepath: str
     content: str = ""
+    
+class VoiceToCodeRequest(BaseModel):
+    instruction: str
+    current_code: str
+    cursor_line: int
+    filepath: str
+
 import deadlock_detector as deadlock_module
 from agent_engine import get_agent_engine
 from memory_system import MemorySystem
@@ -456,7 +465,7 @@ from indexer import get_indexer
 indexer = get_indexer()
 # indexer.build_index() # Optional: Rebuild on startup if needed, or rely on persisted index
 
-INFERENCE_URL = "http://localhost:8081/v1/chat/completions" # Local Inference
+INFERENCE_URL = "http://localhost:11434/v1/chat/completions" # Local Ollama Proxy
 
 # --- Hardware Vitals ---
 from monitor import monitor
@@ -617,6 +626,23 @@ async def transcribe_audio(file: UploadFile = File(...)):
         return {"text": text}
     except Exception as e:
         print(f"Transcription Error: {e}")
+        return {"error": str(e)}
+
+@app.post("/voice-to-code")
+async def process_voice_to_code(request: VoiceToCodeRequest):
+    if not reasoning_engine:
+        raise HTTPException(status_code=500, detail="Reasoning Engine not initialized")
+    
+    try:
+        snippet = await reasoning_engine.generate_voice_code_insertion(
+            instruction=request.instruction,
+            current_code=request.current_code,
+            cursor_line=request.cursor_line,
+            file_path=request.filepath
+        )
+        return {"snippet": snippet}
+    except Exception as e:
+        print(f"Voice to Code Error: {e}")
         return {"error": str(e)}
 
 # --- Secure File API (Phase R) ---
@@ -810,21 +836,25 @@ async def search_files(q: str):
         return {"error": str(e), "results": []}
 
 async def call_llm(prompt: str, max_tokens: int = 2048):
-    """Internal helper to call the local LLM."""
-    try:
-        async with aiohttp.ClientSession() as session:
+    """Internal helper to call the local LLM (via Ollama)."""
+    import requests as _requests
+    def _sync_call():
+        try:
             payload = {
+                "model": "llama3.1:70b-instruct-q8_0",
                 "messages": [{"role": "user", "content": prompt}],
                 "max_tokens": max_tokens
             }
-            async with session.post(INFERENCE_URL, json=payload) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    return data['choices'][0]['message']['content']
-                else:
-                    return f"Error: LLM returned {response.status}"
-    except Exception as e:
-        return f"Error connecting to LLM: {str(e)}"
+            resp = _requests.post(INFERENCE_URL, json=payload, timeout=120)
+            if resp.status_code == 200:
+                return resp.json()['choices'][0]['message']['content']
+            else:
+                return f"Error: LLM returned {resp.status_code}: {resp.text[:200]}"
+        except Exception as e:
+            return f"Error connecting to LLM: {type(e).__name__}: {e}"
+
+    return await asyncio.to_thread(_sync_call)
+
 
 @app.post("/tools/autodoc")
 async def autodoc():

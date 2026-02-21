@@ -6,7 +6,7 @@ import { Save, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import StructureMap from "./StructureMap";
 import RefactorToolbar from "./RefactorToolbar";
-import VoiceRecorder from "./VoiceRecorder";
+import VoiceToCodeMicrophone from "./VoiceToCodeMicrophone";
 
 interface CodeEditorProps {
     filePath: string | null;
@@ -317,7 +317,10 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
 
                 {/* Floating Bottom Right Actions */}
                 <div className="absolute bottom-6 right-6 flex flex-col items-end gap-4 z-50">
-                    <VoiceRecorder
+                    <VoiceToCodeMicrophone
+                        currentCode={content}
+                        cursorLine={cursorLine}
+                        filePath={filePath}
                         onCodeGenerated={(generatedCode: string) => {
                             if (!editorRef.current || !monaco) return;
                             const editor = editorRef.current;

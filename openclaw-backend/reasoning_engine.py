@@ -85,5 +85,36 @@ class ReasoningEngine:
     def get_latest_trace(self):
         return self.latest_trace
 
+    async def generate_voice_code_insertion(self, instruction: str, current_code: str, cursor_line: int, file_path: str = "Unknown") -> str:
+        """Translates voice instruction into a syntactically correct code snippet for insertion."""
+        # Extract a window around the cursor for context
+        lines = current_code.split('\n')
+        start = max(0, cursor_line - 20)
+        end = min(len(lines), cursor_line + 20)
+        context_window = '\n'.join(lines[start:end])
+
+        prompt = (
+            f"You are the OpenClaw AI Pair Programmer. The user is editing the file '{file_path}'.\n"
+            f"Active Cursor Line: {cursor_line}\n"
+            f"Code Context:\n```\n{context_window}\n```\n\n"
+            f"User's Spoken Instruction: \"{instruction}\"\n\n"
+            "Generate ONLY the raw code snippet to be inserted at the cursor position based on the instruction.\n"
+            "Do NOT wrap the output in markdown code blocks like ```python. Return strictly the raw text to insert.\n"
+            "Do NOT explain your reasoning."
+        )
+
+        try:
+            # Low temperature for deterministic code generation
+            snippet = await self.call_llm_fn(prompt, temperature=0.1, max_tokens=512)
+            # Cleanup any accidental markdown
+            if snippet.startswith("```"):
+                snippet = '\n'.join(snippet.split('\n')[1:])
+            if snippet.endswith("```"):
+                snippet = '\n'.join(snippet.split('\n')[:-1])
+            return snippet.strip("\n`")
+        except Exception as e:
+            print(f"Voice-to-Code Error: {e}")
+            return f"// Synthesis Error: {e}"
+
 # Global instance managed by gateway.py
 reasoning_engine: Optional[ReasoningEngine] = None

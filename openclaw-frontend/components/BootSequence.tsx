@@ -16,7 +16,24 @@ export default function BootSequence({ onComplete }: { onComplete: () => void })
         gpu: 'loading',
         workspace: 'loading',
     });
+    const [shards, setShards] = useState<{ id: number; initial: any; animate: any }[]>([]);
     const [bootStep, setBootStep] = useState(0);
+
+    useEffect(() => {
+        // Generate shards only on mount to prevent hydration mismatch
+        const generatedShards = [...Array(12)].map((_, i) => ({
+            id: i,
+            initial: {
+                x: (Math.random() - 0.5) * 1000,
+                y: (Math.random() - 0.5) * 1000,
+                rotation: Math.random() * 360,
+                opacity: 0,
+                scale: 0.5
+            },
+            animate: { x: 0, y: 0, rotation: 0, opacity: 1, scale: 1 }
+        }));
+        setShards(generatedShards);
+    }, []);
 
     useEffect(() => {
         const runChecks = async () => {
@@ -68,18 +85,7 @@ export default function BootSequence({ onComplete }: { onComplete: () => void })
         runChecks();
     }, [onComplete]);
 
-    // Shard components for logo assembly
-    const shards = [...Array(12)].map((_, i) => ({
-        id: i,
-        initial: {
-            x: (Math.random() - 0.5) * 1000,
-            y: (Math.random() - 0.5) * 1000,
-            rotation: Math.random() * 360,
-            opacity: 0,
-            scale: 0.5
-        },
-        animate: { x: 0, y: 0, rotation: 0, opacity: 1, scale: 1 }
-    }));
+
 
     return (
         <div className="fixed inset-0 z-[100] bg-obsidian flex flex-col items-center justify-center overflow-hidden">
