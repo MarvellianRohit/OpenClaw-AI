@@ -26,6 +26,7 @@ import InterventionDialogue from "@/components/InterventionDialogue";
 import SecurityReportModal from "@/components/SecurityReportModal";
 import CommandPalette from "@/components/CommandPalette";
 import VariableMapPanel from "@/components/VariableMapPanel";
+import PromptLaboratory from "@/components/PromptLaboratory";
 import { useSystemVitals } from "@/hooks/useSystemVitals";
 import { useOpenClawStream } from "@/hooks/useOpenClawStream";
 import { Menu, X, Activity } from "lucide-react";
@@ -47,6 +48,7 @@ export default function Home() {
   const [showOmniSearch, setShowOmniSearch] = useState(false);
   const [showPalette, setShowPalette] = useState(false); // Phase BP
   const [isVariableMapOpen, setIsVariableMapOpen] = useState(false); // Phase BW
+  const [isPromptLabOpen, setIsPromptLabOpen] = useState(false); // Phase BX
 
   // Phase Z & AA States
   const [showGraph, setShowGraph] = useState(false);
@@ -618,7 +620,8 @@ export default function Home() {
                 toggleTerminal: () => setShowTerminal(p => !p),
                 checkLeaks: () => { }, // Trigger Leak Modal logic if we can expose it, or just send message
                 runBuild: () => handleSend("Build the project"),
-                toggleVariableMap: () => setIsVariableMapOpen(p => !p)
+                toggleVariableMap: () => setIsVariableMapOpen(p => !p),
+                togglePromptLab: () => setIsPromptLabOpen(p => !p)
               }}
               stats={stats}
             />
@@ -626,6 +629,11 @@ export default function Home() {
             {/* Phase BW: Live Variable Map */}
             {isVariableMapOpen && (
               <VariableMapPanel onClose={() => setIsVariableMapOpen(false)} />
+            )}
+
+            {/* Phase BX: Prompt Laboratory */}
+            {isPromptLabOpen && (
+              <PromptLaboratory isOpen={isPromptLabOpen} onClose={() => setIsPromptLabOpen(false)} />
             )}
 
 

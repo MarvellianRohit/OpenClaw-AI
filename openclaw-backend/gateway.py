@@ -56,6 +56,14 @@ GLOBAL_PROJECT_CONTEXT = ""
 peripheral_mon = None
 PENDING_GREETING = None
 
+# Phase BX: Prompt Laboratory Configuration
+PROMPT_TUNING = {
+    "creativity": 50,
+    "rigor": 50,
+    "conciseness": 50,
+    "proactivity": 50
+}
+
 # Build Graph on Startup (Async)
 @app.on_event("startup")
 async def startup_event():
@@ -732,6 +740,23 @@ async def update_config(config: ConfigRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# --- Prompt Laboratory (Phase BX) ---
+class PromptTuningRequest(BaseModel):
+    creativity: int
+    rigor: int
+    conciseness: int
+    proactivity: int
+
+@app.post("/config/prompt")
+async def update_prompt_config(req: PromptTuningRequest):
+    global PROMPT_TUNING
+    PROMPT_TUNING["creativity"] = req.creativity
+    PROMPT_TUNING["rigor"] = req.rigor
+    PROMPT_TUNING["conciseness"] = req.conciseness
+    PROMPT_TUNING["proactivity"] = req.proactivity
+    print(f"🧪 Prompt Lab Updated: {PROMPT_TUNING}")
+    return {"status": "success", "config": PROMPT_TUNING}
+
 # --- Chat Endpoint ---
 # --- Omni-Search (Phase Y) ---
 @app.get("/search")
@@ -1084,6 +1109,30 @@ async def websocket_endpoint(websocket: WebSocket):
                 "You are a high-performance AI assistant optimized for M3 Max.\n"
                 "If writing code, ensure it is correct, efficient, and fits the Titanium/Industrial design.\n"
             )
+            
+            # Phase BX: Inject Prompt Laboratory Tuning
+            tuning_msg = "\n[PERSONALITY TUNING INSTRUCTIONS]\n"
+            if PROMPT_TUNING["creativity"] > 70:
+                tuning_msg += "- Be highly creative, brainstorm outside the box, and suggest unconventional solutions.\n"
+            elif PROMPT_TUNING["creativity"] < 30:
+                tuning_msg += "- Be extremely literal, orthodox, and stick strictly to established best practices.\n"
+
+            if PROMPT_TUNING["rigor"] > 70:
+                tuning_msg += "- Enforce maximum technical rigor. Explain Big-O complexity, edge cases, and type safety constraints deeply.\n"
+            elif PROMPT_TUNING["rigor"] < 30:
+                tuning_msg += "- Keep technical explanations light and accessible. Focus on the 'happy path' over edge cases.\n"
+
+            if PROMPT_TUNING["conciseness"] > 70:
+                tuning_msg += "- Be EXTREMELY concise. Zero fluff. Skip pleasantries. Use bullet points and output code immediately.\n"
+            elif PROMPT_TUNING["conciseness"] < 30:
+                tuning_msg += "- Be highly conversational, warm, and elaborate fully on every step like a friendly mentor.\n"
+
+            if PROMPT_TUNING["proactivity"] > 70:
+                tuning_msg += "- Be highly proactive. Anticipate the user's next 3 questions and provide solutions for them before asked.\n"
+            elif PROMPT_TUNING["proactivity"] < 30:
+                tuning_msg += "- Answer ONLY the question asked. Do not assume any future steps.\n"
+                
+            base_system_msg += tuning_msg
             
             system_message_content = base_system_msg
             if context_str:
