@@ -6,6 +6,7 @@ import { Save, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import StructureMap from "./StructureMap";
 import RefactorToolbar from "./RefactorToolbar";
+import VoiceRecorder from "./VoiceRecorder";
 
 interface CodeEditorProps {
     filePath: string | null;
@@ -314,21 +315,40 @@ export default function CodeEditor({ filePath, content, onChange, onSave }: Code
 
 
 
-                {/* Glowing Save Button */}
-                <AnimatePresence>
-                    {isDirty && (
-                        <motion.button
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 20 }}
-                            onClick={handleSave}
-                            className="absolute bottom-6 right-6 px-4 py-2 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan rounded-lg shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-all flex items-center gap-2 font-mono text-xs font-bold z-50"
-                        >
-                            <Save size={16} />
-                            SAVE CHANGES
-                        </motion.button>
-                    )}
-                </AnimatePresence>
+                {/* Floating Bottom Right Actions */}
+                <div className="absolute bottom-6 right-6 flex flex-col items-end gap-4 z-50">
+                    <VoiceRecorder
+                        onCodeGenerated={(generatedCode: string) => {
+                            if (!editorRef.current || !monaco) return;
+                            const editor = editorRef.current;
+                            const position = editor.getPosition();
+                            if (!position) return;
+
+                            editor.executeEdits("voice-dictation", [{
+                                range: new monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column),
+                                text: generatedCode + '\n',
+                                forceMoveMarkers: true
+                            }]);
+                            editor.focus();
+                        }}
+                    />
+
+                    {/* Glowing Save Button */}
+                    <AnimatePresence>
+                        {isDirty && (
+                            <motion.button
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                onClick={handleSave}
+                                className="px-4 py-2 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan rounded-lg shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-all flex items-center gap-2 font-mono text-xs font-bold pointer-events-auto"
+                            >
+                                <Save size={16} />
+                                SAVE CHANGES
+                            </motion.button>
+                        )}
+                    </AnimatePresence>
+                </div>
 
                 {loading && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-titanium animate-pulse z-50">

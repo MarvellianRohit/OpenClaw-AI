@@ -1395,6 +1395,72 @@ async def variable_map_socket(websocket: WebSocket):
             tracer_task.cancel()
         print(f"📍 Variable Map Disconnected: {e}")
 
+# --- Voice to Code Dictation (Phase BY) ---
+import speech_recognition as sr
+
+@app.websocket("/ws/voice")
+async def voice_socket(websocket: WebSocket):
+    await websocket.accept()
+    print("🎙️ Voice Dictation Connected")
+    
+    recognizer = sr.Recognizer()
+    audio_buffer = bytearray()
+    
+    try:
+        while True:
+            message = await websocket.receive()
+            if message.get("bytes"):
+                audio_buffer.extend(message["bytes"])
+            elif message.get("text"):
+                req = json.loads(message["text"])
+                if req.get("command") == "process":
+                    if len(audio_buffer) == 0:
+                        await websocket.send_json({"error": "No audio data received"})
+                        continue
+                    
+                    try:
+                        # Assumes frontend sends 16kHz, 16-bit mono PCM Int16Array
+                        audio_data = sr.AudioData(bytes(audio_buffer), 16000, 2)
+                        print(f"Processing {len(audio_buffer)} bytes of audio data")
+                        text = recognizer.recognize_google(audio_data)
+                        print(f"🎙️ Transcription: {text}")
+                        
+                        system_prompt = "You are OpenClaw Voice-to-Code. The user will dictate code intent. Output ONLY syntactically valid code matching their spoken request. Do not include markdown codeblocks, docstrings, or explanations—just the raw exact code. If they say 'create a function that returns hello world', output: `def hello_world():\n    return 'hello world'` (without backticks)."
+                        
+                        payload = {
+                            "messages": [
+                                {"role": "system", "content": system_prompt},
+                                {"role": "user", "content": text}
+                            ],
+                            "stream": False,
+                            "max_tokens": 1024
+                        }
+                        
+                        async with aiohttp.ClientSession() as session:
+                            async with session.post(INFERENCE_URL, json=payload) as response:
+                                if response.status == 200:
+                                    resp_json = await response.json()
+                                    raw_code = resp_json['choices'][0]['message']['content']
+                                    # Strip backticks if the LLM leaked them
+                                    clean_code = raw_code.replace("```python", "").replace("```c", "").replace("```", "").strip()
+                                    await websocket.send_json({"transcript": text, "code": clean_code})
+                                else:
+                                    await websocket.send_json({"error": f"LLM Inference failed: {response.status}"})
+                                    
+                    except sr.UnknownValueError:
+                        await websocket.send_json({"error": "Could not understand audio."})
+                    except sr.RequestError as e:
+                        await websocket.send_json({"error": f"Transcription API error: {e}"})
+                    except Exception as e:
+                        await websocket.send_json({"error": str(e)})
+                    finally:
+                        audio_buffer = bytearray() # Reset for next recording
+                elif req.get("command") == "clear":
+                    audio_buffer = bytearray()
+    except WebSocketDisconnect:
+        print("🎙️ Voice Dictation Disconnected")
+
+
 @app.get("/agent/trace")
 async def get_agent_trace():
     """Returns the latest thought trace for visualization."""
