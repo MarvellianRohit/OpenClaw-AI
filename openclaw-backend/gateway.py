@@ -1045,6 +1045,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 
             # Context Injection
             context_str = ""
+            citations = []
             try:
                 # 1. Codebase Search
                 relevant_chunks = indexer.search(user_message, top_k=2)
@@ -1078,8 +1079,31 @@ async def websocket_endpoint(websocket: WebSocket):
                         for hit in lore_hits:
                             context_str += f"- {hit['description']}\n"
 
+                # 5. RAG Document Search (Phase CB)
+                rag_hits = rag_system.search(user_message, n_results=3)
+                if rag_hits:
+                    context_str += "\n\n[RAG Document Context]:\n"
+                    for hit in rag_hits:
+                        filename = hit['metadata'].get('filename', 'Unknown')
+                        chunk_idx = hit['metadata'].get('chunk_index', 0)
+                        distance = hit.get('distance', 0)
+                        
+                        # Only include relevant hits
+                        if distance is not None and distance < 1.0: # Chroma distances are small if similar
+                            context_str += f"--- Excerpt from {filename} (Chunk {chunk_idx}) ---\n{hit['content']}\n"
+                            citations.append({
+                                "filename": filename,
+                                "chunk_index": chunk_idx,
+                                "content": hit['content'][:200] + "...", # Snippet for the badge hover
+                                "distance": distance
+                            })
+
             except Exception as e:
                 print(f"Context error: {e}")
+
+            # Send Citations Payload to UI (Phase CB)
+            if citations:
+                await websocket.send_text(json.dumps({"type": "citations", "data": citations}))
 
             # Phase BJ: Reasoning Engine Trigger
             # Only trigger for complex queries

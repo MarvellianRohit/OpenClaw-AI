@@ -1,0 +1,67 @@
+
+> openclaw-frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3005
+- Network:       http://192.168.31.42:3005
+
+✓ Starting...
+✓ Ready in 359ms
+⨯ ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/app/globals.css:1:1: Cannot apply unknown utility class `brushed-metal`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/@tailwindcss/postcss/dist/index.js:10:6913)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+ GET / 500 in 1246ms (compile: 1186ms, render: 61ms)
+⨯ ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/app/globals.css:1:1: Cannot apply unknown utility class `brushed-metal`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/@tailwindcss/postcss/dist/index.js:10:6913)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+ GET / 500 in 9ms (compile: 3ms, render: 6ms)
+ GET / 200 in 342ms (compile: 81ms, render: 262ms)
+ GET /icon-192.png 404 in 74ms (compile: 44ms, render: 30ms)
+ GET / 200 in 22ms (compile: 1852µs, render: 20ms)
+ GET /icon-192.png 404 in 18ms (compile: 1715µs, render: 16ms)
+✓ Compiled in 19ms
+✓ Compiled in 12ms
+✓ Compiled in 38ms
+✓ Compiled in 12ms
+✓ Compiled in 11ms
+ GET / 200 in 208ms (compile: 20ms, render: 188ms)
+ GET /icon-192.png 404 in 18ms (compile: 3ms, render: 15ms)
+✓ Compiled in 11ms
+ GET / 200 in 28ms (compile: 17ms, render: 10ms)
+✓ Compiled in 95ms
+✓ Compiled in 10ms
+✓ Compiled in 13ms
+✓ Compiled in 12ms
+✓ Compiled in 10ms
+✓ Compiled in 33ms
+✓ Compiled in 31ms
+[?25h

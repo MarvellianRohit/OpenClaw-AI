@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Bot, User, Copy, Check, Wand2, Network } from "lucide-react";
 import FluidInput from "./FluidInput";
 import { clsx } from "clsx";
@@ -49,6 +49,46 @@ const FileLink = ({ path, onOpen }: { path: string, onOpen: (p: string) => void 
         📄 {path}
     </span>
 );
+
+const CitationBadge = ({ citation }: { citation: any }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <div
+            className="group relative cursor-pointer"
+            onClick={() => setIsExpanded(!isExpanded)}
+        >
+            <div className={clsx(
+                "flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono border transition-all duration-300",
+                isExpanded
+                    ? "bg-neon-cyan/20 border-neon-cyan/50 text-white shadow-[0_0_10px_rgba(6,182,212,0.3)]"
+                    : "bg-white/5 border-white/10 text-titanium-dim hover:bg-white/10 hover:text-titanium"
+            )}>
+                <span className="opacity-60">[{(citation.distance || 0).toFixed(2)}]</span>
+                <span>{citation.filename}</span>
+            </div>
+
+            <AnimatePresence>
+                {isExpanded && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 5 }}
+                        className="absolute top-full left-0 mt-2 p-3 bg-obsidian-soft border border-white/10 rounded-xl shadow-2xl z-50 w-80 text-xs font-sans text-titanium leading-relaxed"
+                    >
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="font-mono text-[9px] text-neon-cyan uppercase">Raw Context Snippet</span>
+                            <span className="font-mono text-[9px] text-titanium-dim">Chunk #{citation.chunk_index}</span>
+                        </div>
+                        <div className="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 pr-2">
+                            {citation.content}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const TypewriterMarkdown = ({
     content,
@@ -181,6 +221,7 @@ interface ChatInterfaceProps {
     sendAction: any;
     statusMessage: string;
     socket: any;
+    currentCitations?: any[];
 }
 
 export default function ChatInterface({
@@ -198,7 +239,8 @@ export default function ChatInterface({
     setMessages,
     sendAction,
     statusMessage,
-    socket
+    socket,
+    currentCitations
 }: ChatInterfaceProps) {
     // const { ... } = useOpenClawStream(); // REMOVED
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -404,7 +446,8 @@ export default function ChatInterface({
             id: "streaming-response",
             role: "assistant",
             content: currentStream,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            citations: currentCitations
         });
     }
 
@@ -459,25 +502,36 @@ export default function ChatInterface({
                         // Updating ChatInterface to accept props is cleaner.
 
                         // ...
-                        <div className={clsx(
-                            "p-5 rounded-2xl max-w-[85%] border overflow-hidden backdrop-blur-md shadow-sm transition-all",
-                            msg.role === "assistant"
-                                ? "bg-white/5 border-white/10 text-titanium/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
-                                : "bg-neon-cyan/5 border-neon-cyan/20 text-white shadow-[inset_0_0_10px_rgba(6,182,212,0.05)]"
-                        )}>
-                            {msg.role === "assistant" ? (
-                                <TypewriterMarkdown
-                                    content={msg.content}
-                                    isStreaming={msg.id === "streaming-response"}
-                                    onApplyFix={handleApplyFix}
-                                    onMagicComment={(code, lang) => handleMagicComment(msg.id, code, lang)}
-                                    onOpenFile={(path) => {
-                                        // Dispatch event for Page to catch
-                                        window.dispatchEvent(new CustomEvent('open-file', { detail: path }));
-                                    }}
-                                />
-                            ) : (
-                                <div className="text-sm leading-relaxed font-sans whitespace-pre-wrap">{msg.content}</div>
+                        <div className="flex flex-col gap-2 relative">
+                            <div className={clsx(
+                                "p-5 rounded-2xl max-w-[85%] border overflow-hidden backdrop-blur-md shadow-sm transition-all",
+                                msg.role === "assistant"
+                                    ? "bg-white/5 border-white/10 text-titanium/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
+                                    : "bg-neon-cyan/5 border-neon-cyan/20 text-white shadow-[inset_0_0_10px_rgba(6,182,212,0.05)] ml-auto"
+                            )}>
+                                {msg.role === "assistant" ? (
+                                    <TypewriterMarkdown
+                                        content={msg.content}
+                                        isStreaming={msg.id === "streaming-response"}
+                                        onApplyFix={handleApplyFix}
+                                        onMagicComment={(code, lang) => handleMagicComment(msg.id, code, lang)}
+                                        onOpenFile={(path) => {
+                                            // Dispatch event for Page to catch
+                                            window.dispatchEvent(new CustomEvent('open-file', { detail: path }));
+                                        }}
+                                    />
+                                ) : (
+                                    <div className="text-sm leading-relaxed font-sans whitespace-pre-wrap">{msg.content}</div>
+                                )}
+                            </div>
+
+                            {/* Render Citations if attached to message */}
+                            {msg.role === "assistant" && msg.citations && msg.citations.length > 0 && (
+                                <div className="flex flex-wrap gap-2 mt-1">
+                                    {msg.citations.map((c: any, idx: number) => (
+                                        <CitationBadge key={idx} citation={c} />
+                                    ))}
+                                </div>
                             )}
                         </div>
 

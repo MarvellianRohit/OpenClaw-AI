@@ -1,0 +1,61 @@
+Connected to Voice WS as Mock Emitter
+Emitted Heartbeat (Load: 77.63%)
+Emitted Heartbeat (Load: 64.98%)
+Emitted Heartbeat (Load: 57.13%)
+Emitted Heartbeat (Load: 17.99%)
+Emitted Heartbeat (Load: 33.20%)
+Emitted Heartbeat (Load: 77.48%)
+Emitted Heartbeat (Load: 40.58%)
+Emitted Heartbeat (Load: 41.65%)
+Emitted Heartbeat (Load: 20.20%)
+Emitted Heartbeat (Load: 73.01%)
+Emitted Heartbeat (Load: 14.47%)
+Emitted Heartbeat (Load: 57.32%)
+Emitted Heartbeat (Load: 60.07%)
+Emitted Heartbeat (Load: 35.79%)
+Emitted Heartbeat (Load: 50.52%)
+Emitted Heartbeat (Load: 49.03%)
+Emitted Heartbeat (Load: 29.96%)
+Emitted Heartbeat (Load: 29.83%)
+Emitted Heartbeat (Load: 32.96%)
+Emitted Heartbeat (Load: 30.27%)
+Emitted Heartbeat (Load: 77.19%)
+Emitted Heartbeat (Load: 24.23%)
+Emitted Heartbeat (Load: 46.64%)
+Emitted Heartbeat (Load: 40.36%)
+Emitted Heartbeat (Load: 16.32%)
+Emitted Heartbeat (Load: 18.96%)
+Emitted Heartbeat (Load: 55.89%)
+Emitted Heartbeat (Load: 60.89%)
+Emitted Heartbeat (Load: 27.75%)
+Emitted Heartbeat (Load: 29.18%)
+Emitted Heartbeat (Load: 78.09%)
+Emitted Heartbeat (Load: 33.73%)
+Emitted Heartbeat (Load: 64.17%)
+Emitted Heartbeat (Load: 26.07%)
+Emitted Heartbeat (Load: 78.42%)
+Emitted Heartbeat (Load: 48.03%)
+Emitted Heartbeat (Load: 74.83%)
+Emitted Heartbeat (Load: 78.13%)
+Emitted Heartbeat (Load: 20.72%)
+Emitted Heartbeat (Load: 65.08%)
+asyncio.exceptions.TimeoutError: timed out while closing connection
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/mock_heartbeat.py", line 33, in <module>
+    asyncio.run(emit_heartbeat())
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/mock_heartbeat.py", line 26, in emit_heartbeat
+    await websocket.send(json.dumps(data))
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 476, in send
+    async with self.send_context():
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
+    return await self.gen.__anext__()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedError: sent 1011 (internal error) keepalive ping timeout; no close frame received

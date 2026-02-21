@@ -1,0 +1,3263 @@
+/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py:69: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [85485]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+🎙️ Initializing Local Whisper (tiny)...
+Loading embedding model: all-MiniLM-L6-v2...
+Index loaded from code_index.pkl (36 chunks)
+Loading embedding model: all-MiniLM-L6-v2...
+Index loaded from code_index.pkl (36 chunks)
+🕸️ Building Knowledge Graph...
+Error parsing /Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/joblib/test/test_func_inspect_special_encoding.py: 'utf-8' codec can't decode byte 0xa4 in position 64: invalid start byte
+🔥 Warming up KV Cache...
+💓 Heartbeat Service Started.
+👁️ Observer Module Activated.
+🛡️ Deadlock Detector Active.
+🤖 Agent Engine Online.
+📦 Sandbox Agent Online (Docker-Ready).
+🧠 Memory System Initialized.
+📜 Lore Engine Online.
+💓 System Heartbeat Active.
+🧠 Reasoning Engine Online.
+👀 Peripheral Monitor watching: .
+👀 Peripheral Monitor Started.
+🎙️ Claw is listening for your command...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58706 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🧠 Memory Context Found: At 2 PM, we struggled with a memory leak in the li...
+⚠️ LLM Failed, using memory fallback.
+🧠 Generated Memory Greeting: Welcome back. I recall we last worked on: "At 2 PM, we struggled with a memory leak in the linked list; we fixed it by properly free-ing the head node.". Ready to pick up where we left off?
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58708 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58710 - "WebSocket /ws/heartbeat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58712 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58714 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58716 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58718 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58720 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58722 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58724 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58726 - "WebSocket /ws/heartbeat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58728 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+📨 Sending Pending Memory Greeting...
+INFO:     127.0.0.1:58702 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:58732 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58734 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58736 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58738 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58740 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58742 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58744 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58746 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58748 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58750 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58752 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58754 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58756 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58758 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58760 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58762 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58764 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58766 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58768 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58772 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58774 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58776 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58778 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58787 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58790 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58792 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58798 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58804 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58806 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58809 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58812 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58816 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58818 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58820 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58822 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58824 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58826 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58828 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58830 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58834 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58836 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58838 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58840 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58842 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58844 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58846 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58848 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58850 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58852 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58855 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58857 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58859 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     connection closed
+INFO:     127.0.0.1:58861 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58863 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58865 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58867 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58869 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58871 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58873 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58875 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58877 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58879 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58884 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58886 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58888 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58890 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58893 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58897 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58899 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58902 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58904 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58906 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58908 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58910 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58912 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58914 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58916 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58918 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58920 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58922 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58924 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58926 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58928 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58930 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58932 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58934 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     127.0.0.1:58937 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58939 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58941 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58943 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58945 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58947 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58949 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58951 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58953 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58955 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58957 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58959 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58961 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58964 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+🔍 Starting Complexity Audit...
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     connection closed
+INFO:     127.0.0.1:58966 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58968 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:58970 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58972 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58976 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58978 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58981 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58985 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58993 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58995 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58998 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59000 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59002 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59004 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59007 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59009 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59011 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59013 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59015 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59017 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59019 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59021 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59023 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59025 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59027 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59029 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59031 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59033 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59035 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     127.0.0.1:59037 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59039 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59041 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59043 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59045 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59047 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59049 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59051 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59053 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59055 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59057 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59059 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59061 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59063 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59065 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     127.0.0.1:59067 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     127.0.0.1:59069 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59072 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59076 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59078 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     connection closed
+INFO:     127.0.0.1:59083 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59085 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59087 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59089 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59091 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59093 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59095 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59097 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59099 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59101 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59103 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59105 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59107 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59111 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 329, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 620, in send
+    await self.ensure_open()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 86, in send
+    await self._send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 342, in asgi_send
+    raise ClientDisconnected from exc
+uvicorn.protocols.utils.ClientDisconnected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1472, in heartbeat_socket
+    await websocket.send_json({
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 176, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 89, in send
+    raise WebSocketDisconnect(code=1006)
+starlette.websockets.WebSocketDisconnect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 77, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 147, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 144, in app
+    await func(session)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 509, in app
+    await dependant.call(**solved_result.values)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1481, in heartbeat_socket
+    except WebSocketDisconnect:
+NameError: name 'WebSocketDisconnect' is not defined
+INFO:     127.0.0.1:59119 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 329, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 620, in send
+    await self.ensure_open()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 86, in send
+    await self._send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 342, in asgi_send
+    raise ClientDisconnected from exc
+uvicorn.protocols.utils.ClientDisconnected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1472, in heartbeat_socket
+    await websocket.send_json({
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 176, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 89, in send
+    raise WebSocketDisconnect(code=1006)
+starlette.websockets.WebSocketDisconnect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 77, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 147, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 144, in app
+    await func(session)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 509, in app
+    await dependant.call(**solved_result.values)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1481, in heartbeat_socket
+    except WebSocketDisconnect:
+NameError: name 'WebSocketDisconnect' is not defined
+INFO:     127.0.0.1:59121 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:59123 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59123 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59123 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59123 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59123 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59123 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59125 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59125 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59125 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59125 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59125 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59125 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59127 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59129 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59131 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59133 - "WebSocket /ws/heartbeat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59135 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59137 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59139 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59141 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59143 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59145 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59147 - "WebSocket /ws/heartbeat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59149 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59151 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59125 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59187 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59197 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59199 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59201 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59203 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59205 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59211 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59213 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:59217 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59219 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59222 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59224 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59228 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59230 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59234 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59236 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59238 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59240 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59243 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59245 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59247 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59249 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59251 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59253 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59258 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59261 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59265 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59270 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59273 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59275 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59277 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59279 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59281 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59286 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59288 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59290 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59292 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59294 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59296 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59298 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59301 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59303 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59305 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59307 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59310 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59313 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     connection closed
+INFO:     127.0.0.1:59319 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59326 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59328 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59330 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59334 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59336 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59338 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59341 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59343 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59348 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59350 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59352 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59354 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59357 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59359 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59361 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59363 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59365 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59367 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59370 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59374 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59379 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59381 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59383 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59385 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59387 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59389 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59392 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59394 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59398 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59400 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59402 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59405 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59407 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59409 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59411 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59413 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     connection closed
+INFO:     127.0.0.1:59415 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59417 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59420 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59424 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59429 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59431 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59433 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59435 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59437 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59439 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59441 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59444 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59446 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59448 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59452 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59456 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59458 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59461 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59463 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59465 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59467 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59469 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59472 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59479 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59484 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59488 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59490 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59492 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59494 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59497 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59499 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59501 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59503 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59505 - "WebSocket /ws/chat" [accepted]
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59509 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59511 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59513 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+INFO:     connection closed
+INFO:     127.0.0.1:59515 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59518 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59520 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59522 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59524 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59528 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59530 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59537 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59539 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59541 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59532 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59534 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59543 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59534 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59545 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59547 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59549 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59551 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59553 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59555 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59557 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59559 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59566 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59534 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:59571 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59573 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59575 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59577 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59579 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59581 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59584 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59586 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59591 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59595 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59597 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59599 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59601 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59604 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59606 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (<CloseCode.NO_STATUS_RCVD: 1005>, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59608 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59613 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59615 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59617 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59610 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59622 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59608 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59625 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59627 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59629 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59631 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59633 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59635 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59637 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59640 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59642 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59608 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59698 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59700 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 329, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 620, in send
+    await self.ensure_open()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 86, in send
+    await self._send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 342, in asgi_send
+    raise ClientDisconnected from exc
+uvicorn.protocols.utils.ClientDisconnected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1472, in heartbeat_socket
+    else:
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 176, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 89, in send
+    raise WebSocketDisconnect(code=1006)
+starlette.websockets.WebSocketDisconnect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 77, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 147, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 144, in app
+    await func(session)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 509, in app
+    await dependant.call(**solved_result.values)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1481, in heartbeat_socket
+    finally:
+NameError: name 'WebSocketDisconnect' is not defined
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 329, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 620, in send
+    await self.ensure_open()
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/websockets/legacy/protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 86, in send
+    await self._send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 342, in asgi_send
+    raise ClientDisconnected from exc
+uvicorn.protocols.utils.ClientDisconnected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1472, in heartbeat_socket
+    else:
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 176, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/websockets.py", line 89, in send
+    raise WebSocketDisconnect(code=1006)
+starlette.websockets.WebSocketDisconnect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/protocols/websockets/websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 77, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 147, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 144, in app
+    await func(session)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 509, in app
+    await dependant.call(**solved_result.values)
+  File "/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py", line 1481, in heartbeat_socket
+    finally:
+NameError: name 'WebSocketDisconnect' is not defined
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:59702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59702 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59704 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59704 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59704 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59704 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59704 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59706 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59708 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59710 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59712 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59714 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59716 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59718 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59720 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59722 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59724 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59704 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59734 - "POST /ingest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59753 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59758 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59761 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59761 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59761 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59767 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59770 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59772 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59774 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59776 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59778 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59781 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59783 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59784 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59787 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59761 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:59812 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:59828 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59830 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Context error: name 'memory_db' is not defined
+Reasoning Error: call_llm() got an unexpected keyword argument 'temperature'
+Loop Error: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+WebSocket Error: local variable 'compile_error' referenced before assignment
+🔌 Client disconnected
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+🔌 Client connected to WebSocket
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59832 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59832 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59837 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59839 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59841 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59843 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59845 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59847 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59849 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59851 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59855 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:59832 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+⚠️ Proactive Suggestion Failed: Cannot connect to host localhost:8081 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 8081, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 8081)]
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+🔍 Starting Complexity Audit...
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+Voice Engine Error: module 'sounddevice' has no attribute 'rec'

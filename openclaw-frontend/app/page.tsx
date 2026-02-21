@@ -64,6 +64,7 @@ export default function Home() {
     connectionStatus,
     thoughtTrace,
     thoughtStatus,
+    currentCitations,
     setMessages,
     sendAction,
     statusMessage,
@@ -453,6 +454,7 @@ export default function Home() {
                     sendAction={sendAction}
                     statusMessage={statusMessage}
                     socket={socket}
+                    currentCitations={currentCitations}
                   />
                 ) : (
                   <div className={clsx(

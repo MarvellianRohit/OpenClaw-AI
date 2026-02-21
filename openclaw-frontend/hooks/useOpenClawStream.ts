@@ -8,6 +8,7 @@ export interface Message {
     role: "user" | "assistant";
     content: string;
     timestamp: number;
+    citations?: any[];
 }
 
 type ConnectionStatus = "connecting" | "open" | "closed" | "error";
@@ -22,10 +23,12 @@ export function useOpenClawStream() {
     const [socket, setSocket] = useState<WebSocket | null>(null);
     const [thoughtTrace, setThoughtTrace] = useState<any>(null);
     const [thoughtStatus, setThoughtStatus] = useState<"idle" | "thinking" | "planned">("idle");
+    const [currentCitations, setCurrentCitations] = useState<any[]>([]);
 
     const wsRef = useRef<WebSocket | null>(null);
     const reconnectTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const streamRef = useRef("");
+    const citationsRef = useRef<any[]>([]);
 
     const connect = useCallback(() => {
         if (wsRef.current) {
@@ -57,6 +60,9 @@ export function useOpenClawStream() {
                 } else if (data.type === "thought") {
                     setThoughtStatus(data.status);
                     if (data.trace) setThoughtTrace(data.trace);
+                } else if (data.type === "citations") {
+                    setCurrentCitations(data.data);
+                    citationsRef.current = data.data;
                 } else if (data.done) {
                     setIsProcessing(false);
                     setStatusMessage("");
@@ -69,11 +75,14 @@ export function useOpenClawStream() {
                                 role: "assistant",
                                 content: streamRef.current,
                                 timestamp: Date.now(),
+                                citations: citationsRef.current
                             },
                         ]);
                     }
                     streamRef.current = "";
                     setCurrentStream("");
+                    citationsRef.current = [];
+                    setCurrentCitations([]);
                 } else if (data.error) {
                     console.error("Server Error:", data.error);
                     setIsProcessing(false);
@@ -124,18 +133,20 @@ export function useOpenClawStream() {
     const sendMessage = useCallback((content: string, activeFile?: string | null) => {
         if (!content.trim() || !wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
 
+        // Optimistic UI update
         const userMsg: Message = {
             id: Date.now().toString(),
             role: "user",
-            content,
-            timestamp: Date.now(),
+            content: content, // Assuming 'contentToSend' was a typo and should be 'content'
+            timestamp: Date.now()
         };
         setMessages((prev) => [...prev, userMsg]);
-        setIsProcessing(true);
-        setStatusMessage("Sending...");
-
-        streamRef.current = "";
         setCurrentStream("");
+        setCurrentCitations([]);
+        citationsRef.current = [];
+        setStatusMessage("Thinking...");
+        setIsProcessing(true);
+        setThoughtStatus("idle");
 
         wsRef.current.send(JSON.stringify({
             message: content,
@@ -189,6 +200,7 @@ export function useOpenClawStream() {
         statusMessage,
         socket,
         thoughtTrace,
-        thoughtStatus
+        thoughtStatus,
+        currentCitations
     };
 }

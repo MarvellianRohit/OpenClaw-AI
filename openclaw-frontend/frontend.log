@@ -1,0 +1,25 @@
+
+> openclaw-frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.62.141.83:3000
+
+✓ Starting...
+✓ Ready in 388ms
+Error: Cannot apply unknown utility class `brushed-metal`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Ee (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:16:36740)][0m
+    [2m[at /Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Pr (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:3:1733)][0m
+    [2m[at _ (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Te (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at pn (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:103:5)][0m
+    [2m[at async dn (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Xr (/Users/rohitchandra/Documents/OpenClaw AI/openclaw-frontend/node_modules/@tailwindcss/node/dist/index.js:10:3417)][0m
+ GET /sw.js 500 in 1341ms (compile: 1266ms, render: 75ms)
+ GET /icon-192.png 500 in 2.9s (compile: 2.9s, render: 9ms)
+ GET /icons/icon-192x192.png 500 in 2.9s (compile: 2.9s, render: 4ms)
+[?25h

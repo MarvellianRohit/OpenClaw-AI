@@ -53,10 +53,6 @@
   mix-blend-mode: overlay;
 }
 
-/* Apply brushed metal texture to all glass panels */
-.glass-panel {
-  @apply brushed-metal;
-}
 
 /* Custom Scrollbar for Titanium Aesthetic */
 ::-webkit-scrollbar {
