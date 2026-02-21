@@ -1307,6 +1307,45 @@ async def websocket_memory(websocket: WebSocket):
         print("🧠 Memory Visualizer Disconnected")
 
 
+@app.websocket("/ws/variable_map")
+async def variable_map_socket(websocket: WebSocket):
+    await websocket.accept()
+    print("📍 Variable Map Connected")
+    
+    from variable_tracer import LiveTracer
+    tracer_task = None
+
+    try:
+        while True:
+            data = await websocket.receive_text()
+            req = json.loads(data)
+            code = req.get("code")
+            
+            if not code:
+                await websocket.send_json({"error": "No code provided"})
+                continue
+            
+            # Cancel previous run if still active
+            if tracer_task and not tracer_task.done():
+                tracer_task.cancel()
+            
+            async def run_trace():
+                tracer = LiveTracer(code, delay=0.5)
+                try:
+                    async for step_json in tracer.execute_async_generator():
+                        await websocket.send_text(step_json)
+                except asyncio.CancelledError:
+                    pass
+                except Exception as e:
+                    await websocket.send_json({"error": str(e)})
+
+            tracer_task = asyncio.create_task(run_trace())
+            
+    except Exception as e:
+        if tracer_task and not tracer_task.done():
+            tracer_task.cancel()
+        print(f"📍 Variable Map Disconnected: {e}")
+
 @app.get("/agent/trace")
 async def get_agent_trace():
     """Returns the latest thought trace for visualization."""

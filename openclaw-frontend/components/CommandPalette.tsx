@@ -24,6 +24,7 @@ interface CommandPaletteProps {
         toggleTerminal: () => void;
         checkLeaks: () => void;
         runBuild: () => void;
+        toggleVariableMap: () => void;
     };
     stats: any;
 }
@@ -36,6 +37,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectFile, actions,
 
     // Hardcoded Actions for Natural Language Matching
     const staticActions = [
+        { id: "var_map", label: "Open Live Variable Map", keywords: ["variable", "map", "trace", "graph", "live"], icon: Activity, action: actions.toggleVariableMap },
         { id: "zen", label: "Toggle Zen Mode", keywords: ["zen", "focus", "hide"], icon: Layout, action: actions.toggleZen },
         { id: "term", label: "Toggle Terminal", keywords: ["terminal", "console", "cli"], icon: Terminal, action: actions.toggleTerminal },
         { id: "leak", label: "Check for Memory Leaks", keywords: ["leak", "memory", "detect", "scan"], icon: Activity, action: actions.checkLeaks },
