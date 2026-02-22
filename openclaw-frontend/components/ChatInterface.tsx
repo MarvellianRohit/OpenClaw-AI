@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, User, Copy, Check, Wand2, Network } from "lucide-react";
+import { Bot, User, Copy, Check, Wand2, Network, Zap } from "lucide-react";
+import Image from "next/image";
 import FluidInput from "./FluidInput";
 import { clsx } from "clsx";
 import { useOpenClawStream } from "@/hooks/useOpenClawStream";
@@ -337,6 +338,19 @@ export default function ChatInterface({
         return () => socket.removeEventListener("message", handleMessage);
     }, [socket, onShowSummary]);
 
+    // Quick-start chip listener
+    useEffect(() => {
+        const handler = (e: Event) => {
+            const text = (e as CustomEvent).detail as string;
+            if (text) {
+                setInputText(text);
+                setTimeout(() => handleSend(text), 100);
+            }
+        };
+        window.addEventListener("openclaw-prompt", handler);
+        return () => window.removeEventListener("openclaw-prompt", handler);
+    }, []);
+
     const handleEndSession = () => {
         if (socket) {
             socket.send(JSON.stringify({ type: "summarize_session" }));
@@ -471,12 +485,113 @@ export default function ChatInterface({
 
     return (
         <div className={clsx(
-            "flex-1 flex flex-col h-full relative overflow-hidden bg-gradient-to-b from-obsidian to-[#0d0d0d] transition-all duration-500",
-            isProcessing && "shadow-[inset_0_0_20px_rgba(6,182,212,0.15)] border-l-2 border-r-2 border-neon-cyan/30"
-        )}>
+            "flex-1 flex flex-col h-full relative overflow-hidden transition-all duration-500",
+            isProcessing && "border-l border-r border-neon-cyan/20"
+        )}
+            style={{
+                background: "radial-gradient(ellipse at 20% 50%, rgba(6,182,212,0.07) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 55%), radial-gradient(ellipse at 50% 90%, rgba(16,185,129,0.05) 0%, transparent 50%), linear-gradient(180deg, #080c10 0%, #060a0d 50%, #040809 100%)"
+            }}>
+
+            {/* Ambient Grid Overlay */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+                backgroundImage: `linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px)`,
+                backgroundSize: "48px 48px"
+            }} />
+
+            {/* Ambient Orbs */}
+            <motion.div
+                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-[-100px] left-[-100px] w-80 h-80 rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)" }}
+            />
+            <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+                className="absolute bottom-[-80px] right-[-80px] w-96 h-96 rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)" }}
+            />
+            {isProcessing && (
+                <motion.div
+                    animate={{ opacity: [0.3, 0.7, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ boxShadow: "inset 0 0 40px rgba(6,182,212,0.12)" }}
+                />
+            )}
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin scrollbar-thumb-gray-800">
+            <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent relative z-10">
+                {/* Empty State Welcome — shown when no messages */}
+                {allMessages.length === 0 && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex flex-col items-center justify-center h-full min-h-[60vh] gap-8 select-none"
+                    >
+                        {/* Logo */}
+                        <motion.div
+                            animate={{ y: [0, -8, 0], filter: ["drop-shadow(0 0 20px rgba(6,182,212,0.4))", "drop-shadow(0 0 40px rgba(6,182,212,0.7))", "drop-shadow(0 0 20px rgba(6,182,212,0.4))"] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <Image
+                                src="/openclaw-logo.png"
+                                alt="OpenClaw AI"
+                                width={120}
+                                height={120}
+                                className="opacity-90"
+                            />
+                        </motion.div>
+
+                        {/* Title */}
+                        <div className="text-center">
+                            <motion.h1
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-3xl font-bold tracking-tight mb-2"
+                                style={{ background: "linear-gradient(135deg, #06B6D4 0%, #a78bfa 50%, #34d399 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                            >
+                                OpenClaw AI
+                            </motion.h1>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="text-sm font-mono text-white/30 tracking-widest uppercase"
+                            >
+                                M3 MAX · LOCAL INFERENCE · TITANIUM CORE
+                            </motion.p>
+                        </div>
+
+                        {/* Quick-start chips */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7 }}
+                            className="flex flex-wrap gap-3 justify-center max-w-lg"
+                        >
+                            {[
+                                "⚡ Write a Python script",
+                                "🔍 Explain the codebase",
+                                "🐛 Find bugs in open file",
+                                "📦 Generate unit tests",
+                            ].map((chip) => (
+                                <button
+                                    key={chip}
+                                    onClick={() => {
+                                        const text = chip.replace(/^[\s\S]{2}\s/, "");
+                                        window.dispatchEvent(new CustomEvent("openclaw-prompt", { detail: text }));
+                                    }}
+                                    className="px-4 py-2 rounded-full text-xs font-mono border border-white/10 bg-white/5 text-white/50 hover:bg-neon-cyan/10 hover:border-neon-cyan/40 hover:text-neon-cyan transition-all duration-200 cursor-pointer backdrop-blur"
+                                >
+                                    {chip}
+                                </button>
+                            ))}
+                        </motion.div>
+                    </motion.div>
+                )}
                 {allMessages.map((msg) => (
                     <motion.div
                         key={msg.id}

@@ -104,6 +104,23 @@ async def startup_event():
 
     asyncio.create_task(memory_monitor())
 
+    # Pre-warm CHAT_MODEL (phi3:mini) so it's loaded and ready before first user message
+    async def prewarm_chat_model():
+        try:
+            await asyncio.sleep(5)  # Let uvicorn finish starting
+            import requests as _req
+            print(f"⚡ Pre-warming {CHAT_MODEL} for instant chat responses...")
+            resp = _req.post(INFERENCE_URL, json={
+                "model": CHAT_MODEL,
+                "messages": [{"role": "user", "content": "ping"}],
+                "max_tokens": 1,
+                "keep_alive": -1  # Keep model loaded in memory forever
+            }, timeout=60)
+            print(f"⚡ {CHAT_MODEL} warm — status {resp.status_code}")
+        except Exception as e:
+            print(f"⚡ Pre-warm skipped: {e}")
+    asyncio.create_task(prewarm_chat_model())
+
     # Phase BM: Episodic Memory Greeting
     async def generate_episodic_greeting():
         global PENDING_GREETING
@@ -466,6 +483,8 @@ indexer = get_indexer()
 # indexer.build_index() # Optional: Rebuild on startup if needed, or rely on persisted index
 
 INFERENCE_URL = "http://localhost:11434/v1/chat/completions" # Local Ollama Proxy
+CHAT_MODEL    = "phi3:mini"                   # Fast model for interactive chat (2.2GB)
+BRIEF_MODEL   = "llama3.1:70b-instruct-q8_0" # High-quality model for briefings & summaries
 
 # --- Hardware Vitals ---
 from monitor import monitor
@@ -845,7 +864,7 @@ async def call_llm(prompt: str, max_tokens: int = 2048):
                 "messages": [{"role": "user", "content": prompt}],
                 "max_tokens": max_tokens
             }
-            resp = _requests.post(INFERENCE_URL, json=payload, timeout=120)
+            resp = _requests.post(INFERENCE_URL, json=payload, timeout=180)
             if resp.status_code == 200:
                 return resp.json()['choices'][0]['message']['content']
             else:
@@ -1025,17 +1044,22 @@ async def websocket_endpoint(websocket: WebSocket):
                 # Add recent history if available (simplified here)
                 # In a real app, we'd append the last N messages of context.
                 
-                async with aiohttp.ClientSession() as session:
-                    async with session.post(INFERENCE_URL, json={
-                        "messages": conversation_messages,
-                        "max_tokens": 512
-                    }) as response:
-                        if response.status == 200:
-                            data = await response.json()
-                            summary = data['choices'][0]['message']['content']
-                            await websocket.send_text(json.dumps({"type": "summary", "content": summary}))
-                        else:
-                            await websocket.send_text(json.dumps({"error": "Failed to generate summary"}))
+                def _sync_summary():
+                        import requests as _req
+                        r = _req.post(INFERENCE_URL, json={
+                            "model": CHAT_MODEL,
+                            "messages": conversation_messages,
+                            "max_tokens": 512,
+                            "keep_alive": -1
+                        }, timeout=60)
+                        if r.status_code == 200:
+                            return r.json()['choices'][0]['message']['content']
+                        return None
+                summary = await asyncio.to_thread(_sync_summary)
+                if summary:
+                    await websocket.send_text(json.dumps({"type": "summary", "content": summary}))
+                else:
+                    await websocket.send_text(json.dumps({"error": "Failed to generate summary"}))
                 continue
 
             user_message = message_data.get("message") or message_data.get("content") or ""
@@ -1135,78 +1159,28 @@ async def websocket_endpoint(websocket: WebSocket):
             if citations:
                 await websocket.send_text(json.dumps({"type": "citations", "data": citations}))
 
-            # Phase BJ: Reasoning Engine Trigger
-            # Only trigger for complex queries
-            if len(user_message.split()) > 8 or "plan" in user_message.lower():
-                if reasoning_module.reasoning_engine:
-                    await websocket.send_text(json.dumps({"type": "thought", "status": "thinking"}))
-                    # Pass context so reasoning has info
-                    plan_trace = await reasoning_module.reasoning_engine.generate_plan(user_message, context_str)
-                    if "plan" in plan_trace:
-                         context_str += f"\n\n[HIDDEN THOUGHT PLAN]:\n{json.dumps(plan_trace['plan'], indent=2)}\n"
-                         await websocket.send_text(json.dumps({"type": "thought", "status": "planned", "trace": plan_trace}))
-            
-            system_prompt_base = (
-                "You are OpenClaw, a high-performance AI assistant.\n"
-                "You have access to the user's M3 Max hardware specs.\n"
-                "If writing code, ensure it is correct and efficient.\n"
+            # --- Compact system prompt (phi3:mini has 4K context) ---
+            # Keep system msg under ~300 tokens; attach only the most relevant context snippet
+            system_message_content = (
+                "You are OpenClaw, an AI coding assistant running on Apple M3 Max hardware.\n"
+                "Be helpful, concise, and accurate. When writing code, prefer Python unless asked otherwise.\n"
             )
-            
-            # Phase AG: Use Cached Context
-            # We assume the inference server caches the prefix if we send the exact same system message start?
-            # Actually, llama.cpp caching works by hashing the prompt prefix.
-            # So we must ensure the `system` message is identical to the warmup message.
-            
-            # Reconstruct the exact string used in warmup
-            base_system_msg = (
-                "You are OpenClaw. Always Keep this Project Context in mind:\n"
-                f"{GLOBAL_PROJECT_CONTEXT}\n\n"
-                "You are a high-performance AI assistant optimized for M3 Max.\n"
-                "If writing code, ensure it is correct, efficient, and fits the Titanium/Industrial design.\n"
-            )
-            
-            # Phase BX: Inject Prompt Laboratory Tuning
-            tuning_msg = "\n[PERSONALITY TUNING INSTRUCTIONS]\n"
-            if PROMPT_TUNING["creativity"] > 70:
-                tuning_msg += "- Be highly creative, brainstorm outside the box, and suggest unconventional solutions.\n"
-            elif PROMPT_TUNING["creativity"] < 30:
-                tuning_msg += "- Be extremely literal, orthodox, and stick strictly to established best practices.\n"
 
-            if PROMPT_TUNING["rigor"] > 70:
-                tuning_msg += "- Enforce maximum technical rigor. Explain Big-O complexity, edge cases, and type safety constraints deeply.\n"
-            elif PROMPT_TUNING["rigor"] < 30:
-                tuning_msg += "- Keep technical explanations light and accessible. Focus on the 'happy path' over edge cases.\n"
-
-            if PROMPT_TUNING["conciseness"] > 70:
-                tuning_msg += "- Be EXTREMELY concise. Zero fluff. Skip pleasantries. Use bullet points and output code immediately.\n"
-            elif PROMPT_TUNING["conciseness"] < 30:
-                tuning_msg += "- Be highly conversational, warm, and elaborate fully on every step like a friendly mentor.\n"
-
-            if PROMPT_TUNING["proactivity"] > 70:
-                tuning_msg += "- Be highly proactive. Anticipate the user's next 3 questions and provide solutions for them before asked.\n"
-            elif PROMPT_TUNING["proactivity"] < 30:
-                tuning_msg += "- Answer ONLY the question asked. Do not assume any future steps.\n"
-                
-            base_system_msg += tuning_msg
-            
-            system_message_content = base_system_msg
+            # Append only the single best RAG/codebase hit, hard-capped at 800 chars
             if context_str:
-                 # Append dynamic context AFTER the fixed cached prefix
-                 system_message_content += f"\n\nDynamic Context:\n{context_str}"
-            
-            # Compiler Self-Correction Loop
-            MAX_RETRIES = 2
-            import re
-            
+                trimmed = context_str[:800]
+                system_message_content += f"\nRelevant context:\n{trimmed}\n"
+
             conversation_messages = [
                 {"role": "system", "content": system_message_content},
                 {"role": "user", "content": user_message}
             ]
-            
+
             final_response_content = ""
 
-            async with aiohttp.ClientSession() as session:
-                for attempt in range(MAX_RETRIES + 1):
+
+            import requests as _requests
+            for attempt in range(MAX_RETRIES + 1):
                     # Notify Status
                     if attempt > 0:
                         await websocket.send_text(json.dumps({"status": f"Compiler Error Detected. Self-Correcting (Attempt {attempt}/{MAX_RETRIES})..."}))
@@ -1214,74 +1188,71 @@ async def websocket_endpoint(websocket: WebSocket):
                         await websocket.send_text(json.dumps({"status": "Thinking & Verifying..."}))
 
                     payload = {
+                        "model": CHAT_MODEL,
                         "messages": conversation_messages,
                         "stream": False, 
-                        "max_tokens": 1024
+                        "max_tokens": 2048,
+                        "keep_alive": -1
                     }
                     
                     try:
-                        async with session.post(INFERENCE_URL, json=payload) as response:
-                            if response.status != 200:
-                                await websocket.send_text(json.dumps({"error": f"Inference error: {response.status}"}))
-                                break 
-                            
-                            resp_json = await response.json()
-                            if not resp_json or not resp_json.get('choices'):
-                                await websocket.send_text(json.dumps({"error": "Invalid response"}))
-                                break
-                            
-                            content = resp_json['choices'][0]['message']['content']
-                            conversation_messages.append({"role": "assistant", "content": content})
-
-                            # Code Verification
-                            code_blocks = re.findall(r"```(c|python)\n(.*?)```", content, re.DOTALL)
-                            compile_error = None
-                            
-                            if code_blocks:
-                                all_passed = True
-                                for lang, code in code_blocks:
-                                    success, error = compiler_agent.check_code(code, lang)
-                                    if not success:
-                                        compile_error = error
-                                        all_passed = False
-                                        break
-                                
-                                if all_passed and memory_db:
-                                    for lang, code in code_blocks:
-                                        memory_db.add(code, lang, tags=["compiled_success"])
-                                        # Phase AK: Save Snapshot on successful build
-                                        # We need to know which file this code belongs to.
-                                        # Compiler loop often has this in the prompt or context.
-                                        # For now, if we detect a // file: marker, use it.
-                                        file_match = re.search(r"//\s*file:\s*(.+)", code)
-                                        if file_match:
-                                            target_path = file_match.group(1).strip()
-                                            save_snapshot(target_path, code)
-                            
-                            if compile_error and attempt < MAX_RETRIES:
-                                print(f"Verification Failed: {compile_error}")
-                                conversation_messages.append({"role": "system", "content": f"The code you provided failed to compile/lint with error:\n{compile_error}\nPlease fix it."})
-                                continue 
-                            
-                            final_response_content = content
+                        def _do_inference(p):
+                            return _requests.post(INFERENCE_URL, json=p, timeout=180)
+                        response = await asyncio.to_thread(_do_inference, payload)
+                        if response.status_code != 200:
+                            await websocket.send_text(json.dumps({"error": f"Inference error: {response.status_code}: {response.text[:200]}"}))
                             break 
+                        
+                        resp_json = response.json()
+                        if not resp_json or not resp_json.get('choices'):
+                            await websocket.send_text(json.dumps({"error": "Invalid response from LLM"}))
+                            break
+                        
+                        content = resp_json['choices'][0]['message']['content']
+                        conversation_messages.append({"role": "assistant", "content": content})
+
+                        # Code Verification
+                        code_blocks = re.findall(r"```(c|python)\n(.*?)```", content, re.DOTALL)
+                        compile_error = None
+                        
+                        if code_blocks:
+                            all_passed = True
+                            for lang, code in code_blocks:
+                                success, error = compiler_agent.check_code(code, lang)
+                                if not success:
+                                    compile_error = error
+                                    all_passed = False
+                                    break
+                            
+                            if all_passed and memory_db:
+                                for lang, code in code_blocks:
+                                    memory_db.add(code, lang, tags=["compiled_success"])
+                                    file_match = re.search(r"//\s*file:\s*(.+)", code)
+                                    if file_match:
+                                        target_path = file_match.group(1).strip()
+                                        save_snapshot(target_path, code)
+                        
+                        if compile_error and attempt < MAX_RETRIES:
+                            print(f"Verification Failed: {compile_error}")
+                            conversation_messages.append({"role": "system", "content": f"The code you provided failed to compile/lint with error:\n{compile_error}\nPlease fix it."})
+                            continue 
+                        
+                        final_response_content = content
+                        break 
 
                     except Exception as e:
-                        print(f"Loop Error: {e}")
-                        await websocket.send_text(json.dumps({"error": str(e)}))
+                        print(f"Loop Error: {type(e).__name__}: {e}")
+                        await websocket.send_text(json.dumps({"error": f"{type(e).__name__}: {e}"}))
                         break
+            
+            # Stream Final Response
+            if final_response_content:
+                chunk_size = 20
+                for i in range(0, len(final_response_content), chunk_size):
+                    await websocket.send_text(json.dumps({"chunk": final_response_content[i:i+chunk_size]}))
+                    await asyncio.sleep(0.005)
                 
-                # Stream Final Response
-                if final_response_content:
-                    chunk_size = 20
-                    for i in range(0, len(final_response_content), chunk_size):
-                        await websocket.send_text(json.dumps({"chunk": final_response_content[i:i+chunk_size]}))
-                        await asyncio.sleep(0.005)
-                    
-                    await websocket.send_text(json.dumps({"done": True}))
-                else:
-                    if not compile_error: 
-                         pass # Error already sent
+                await websocket.send_text(json.dumps({"done": True}))
 
     except Exception as e:
         print(f"WebSocket Error: {e}")
