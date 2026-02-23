@@ -7,17 +7,11 @@
         [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
         
   @app.on_event("startup")
-INFO:     Started server process [21861]
+INFO:     Started server process [47897]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:52184 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52186 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52188 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-🎙️ Initializing Local Whisper (tiny)...
+🎙️ Voice Engine: audio deps unavailable — voice dictation disabled (WS /ws/voice still works via openai-whisper).
 Loading embedding model: all-MiniLM-L6-v2...
 Index loaded from code_index.pkl (36 chunks)
 Loading embedding model: all-MiniLM-L6-v2...
@@ -36,878 +30,539 @@ Error parsing /Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/li
 🧠 Reasoning Engine Online.
 👀 Peripheral Monitor watching: .
 👀 Peripheral Monitor Started.
-🎙️ Claw is listening for your command...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔌 Client connected to WebSocket
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52192 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52194 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52196 - "WebSocket /ws/vitals" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52198 - "WebSocket /ws/vitals" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52200 - "WebSocket /ws/vitals" [accepted]
+🎙️ Microphone loop skipped (no audio hw / deps).
+INFO:     127.0.0.1:61710 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61710 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61712 - "WebSocket /ws/chat" [accepted]
 INFO:     connection open
 🔌 Client connected to WebSocket
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52202 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52204 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52206 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52208 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52212 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-🔌 Client connected to WebSocket
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
 🧠 Memory Context Found: At 2 PM, we struggled with a memory leak in the li...
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52214 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61710 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61710 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61753 - "WebSocket /ws/vitals" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52216 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61710 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61710 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61838 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52218 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61840 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52220 - "WebSocket /ws/vitals" [accepted]
+INFO:     127.0.0.1:61842 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52222 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61844 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52224 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61846 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52226 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61848 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52229 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61850 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52231 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61853 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52233 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61855 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52235 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61857 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52237 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52239 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52241 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52243 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52245 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52247 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52249 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52251 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-🔌 Client connected to WebSocket
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52253 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52255 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52257 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
+🚀 High RAM Detected (102.4GB). Scaling to 131072 tokens.
 🔍 Starting Complexity Audit...
-INFO:     127.0.0.1:52190 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52190 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52260 - "WebSocket /ws/voice" [accepted]
+📉 RAM pressure detected (14.2GB). Reverting to 32768 tokens.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61863 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61865 - "POST /tools/chat HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61881 - "WebSocket /ws/vitals" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52262 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61883 - "WebSocket /ws/chat" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52265 - "WebSocket /ws/voice" [accepted]
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+🔌 Client connected to WebSocket
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61885 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /fs/tree HTTP/1.1" 200 OK
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61885 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61887 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52267 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:61889 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:52269 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52271 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52273 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52275 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52277 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52279 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52283 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52285 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:52287 - "WebSocket /ws/voice" [accepted]
-INFO:     connection open
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:53494 - "GET /status HTTP/1.1" 200 OK
 INFO:     connection closed
-INFO:     127.0.0.1:53618 - "WebSocket /ws/chat" [accepted]
+INFO:     127.0.0.1:61891 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Context error: name 'memory_db' is not defined
-Reasoning Error: call_llm() got an unexpected keyword argument 'temperature'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-WebSocket Error: local variable 'compile_error' referenced before assignment
+INFO:     127.0.0.1:61893 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61895 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61897 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61899 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61902 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61904 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61905 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61907 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:61925 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61927 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+🧠 Generated Memory Greeting: Welcome back! I recall our previous session where we successfully resolved the memory leak in your linked list by properly deallocating the head node at 2 PM; let's pick up where we left off and tackle any new challenges that have arisen since then.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+WebSocket Error: (1001, '')
 🔌 Client disconnected
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔌 Client connected to WebSocket
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:52190 - "GET /tools/morning-brief HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🧠 Generated Memory Greeting: "Welcome back! I recall that during our last session, we successfully resolved a memory leak in your linked list implementation by ensuring proper deallocation of the head node at 2 PM, and I'm ready to help you tackle the next challenge."
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:53597 - "GET /tools/morning-brief HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-INFO:     127.0.0.1:53603 - "GET /tools/morning-brief HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:53698 - "GET /status HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:53700 - "GET /tools/morning-brief HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53764 - "WebSocket /ws/vitals" [accepted]
-INFO:     connection open
-INFO:     127.0.0.1:53765 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-INFO:     connection closed
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
 🔌 Client connected to WebSocket
 📨 Sending Pending Memory Greeting...
-WebSocket Error: (<CloseCode.ABNORMAL_CLOSURE: 1006>, '')
-🔌 Client disconnected
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-WebSocket Error: (1001, '')
-🔌 Client disconnected
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-WebSocket Error: (1001, '')
-🔌 Client disconnected
-WebSocket Error: (1001, '')
-🔌 Client disconnected
-WebSocket Error: (1001, '')
-🔌 Client disconnected
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:53967 - "GET /status HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🚀 High RAM Detected (106.3GB). Scaling to 131072 tokens.
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-🔍 Starting Complexity Audit...
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:54060 - "WebSocket /ws/vitals" [accepted]
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61929 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /fs/tree HTTP/1.1" 200 OK
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61929 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /fs/tree HTTP/1.1" 200 OK
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61929 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61929 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61933 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54062 - "WebSocket /ws/chat" [accepted]
+INFO:     127.0.0.1:61935 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
+INFO:     127.0.0.1:61937 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:61939 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61941 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61943 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61945 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61947 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61949 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61951 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61956 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+Context error: name 'memory_db' is not defined
+Reasoning Error: call_llm() got an unexpected keyword argument 'temperature'
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61710 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+🔍 Starting Complexity Audit...
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+INFO:     127.0.0.1:61959 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/rohitchandra/Documents/OpenClaw AI/openclaw-env-39/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/gateway.py:78: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [50267]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63040 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63042 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63044 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63046 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63048 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63051 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63055 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63057 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63059 - "WebSocket /ws/vitals" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63063 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63065 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63067 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63069 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63071 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63073 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63075 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63078 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63080 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63082 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63084 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63086 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63090 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63104 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63105 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+🎙️ Voice Engine: audio deps unavailable — voice dictation disabled (WS /ws/voice still works via openai-whisper).
+Loading embedding model: all-MiniLM-L6-v2...
+Index loaded from code_index.pkl (36 chunks)
+Loading embedding model: all-MiniLM-L6-v2...
+Index loaded from code_index.pkl (36 chunks)
+🕸️ Building Knowledge Graph...
+Error parsing /Users/rohitchandra/Documents/OpenClaw AI/openclaw-backend/venv/lib/python3.9/site-packages/joblib/test/test_func_inspect_special_encoding.py: 'utf-8' codec can't decode byte 0xa4 in position 64: invalid start byte
+🔥 Warming up KV Cache...
+💓 Heartbeat Service Started.
+👁️ Observer Module Activated.
+🛡️ Deadlock Detector Active.
+🤖 Agent Engine Online.
+📦 Sandbox Agent Online (Docker-Ready).
+🧠 Memory System Initialized.
+📜 Lore Engine Online.
+💓 System Heartbeat Active.
+🧠 Reasoning Engine Online.
+👀 Peripheral Monitor watching: .
+👀 Peripheral Monitor Started.
+🎙️ Microphone loop skipped (no audio hw / deps).
+🧠 Memory Context Found: At 2 PM, we struggled with a memory leak in the li...
 🔌 Client connected to WebSocket
-INFO:     127.0.0.1:54064 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /fs/tree HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:54064 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /fs/tree HTTP/1.1" 200 OK
-Voice Engine Error: module 'sounddevice' has no attribute 'rec'
-INFO:     127.0.0.1:54064 - "GET /status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54064 - "GET /fs/tree HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54067 - "WebSocket /ws/voice" [accepted]
+🔍 Starting Complexity Audit...
+⚡ Pre-warming phi3:mini for instant chat responses...
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚠️  RAM ceiling (110.0 GB) approached — consider reducing model batch size.
+⚡ phi3:mini warm — status 200
+🧠 Generated Memory Greeting: Welcome back! I recall our previous discussion where we successfully debugged the memory leak in your linked list implementation by correctly freeing the head node at 2 PM, and I'm ready to help you tackle the next challenge.
+🔌 Client connected to WebSocket
+📨 Sending Pending Memory Greeting...
+INFO:     127.0.0.1:63109 - "GET /status HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     127.0.0.1:63149 - "WebSocket /ws/vitals" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54069 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63151 - "WebSocket /ws/chat" [accepted]
+INFO:     connection open
+🔍 Starting Complexity Audit...
+WebSocket Error: (1001, '')
+🔌 Client disconnected
+🔌 Client connected to WebSocket
+INFO:     127.0.0.1:63153 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /fs/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63158 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63160 - "WebSocket /ws/voice" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63162 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
 INFO:     connection closed
-INFO:     127.0.0.1:54071 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63164 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54073 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63166 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54075 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63168 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54078 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63170 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54080 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63172 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54082 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63175 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54084 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63176 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54085 - "WebSocket /ws/voice" [accepted]
+INFO:     127.0.0.1:63180 - "WebSocket /ws/voice" [accepted]
 INFO:     connection open
-INFO:     127.0.0.1:54090 - "WebSocket /ws/voice" [accepted]
+Context error: name 'memory_db' is not defined
+Reasoning Error: call_llm() got an unexpected keyword argument 'temperature'
+🔍 Starting Complexity Audit...
+Loop Error: ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+INFO:     127.0.0.1:63153 - "GET /tools/morning-brief HTTP/1.1" 200 OK
+🚀 High RAM Detected (101.7GB). Scaling to 131072 tokens.
+🔍 Starting Complexity Audit...
+🔍 Starting Complexity Audit...
+INFO:     127.0.0.1:63257 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63277 - "WebSocket /ws/chat" [accepted]
 INFO:     connection open
 INFO:     connection closed
-INFO:     127.0.0.1:54104 - "WebSocket /ws/chat" [accepted]
-INFO:     connection open
+🔌 Client connected to WebSocket
+Context error: name 'memory_db' is not defined
+📉 RAM pressure detected (73.2GB). Reverting to 32768 tokens.
+🔍 Starting Complexity Audit...
+Loop Error: ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+WebSocket Error: 
+🔌 Client disconnected
+🔍 Starting Complexity Audit...
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63333 - "GET /json/list HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     Waiting for background tasks to complete. (CTRL+C to force quit)
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [50267]
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
